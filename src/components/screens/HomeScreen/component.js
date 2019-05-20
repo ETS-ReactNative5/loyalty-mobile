@@ -16,48 +16,29 @@ import SearchScreen from '../SearchScreen';
 import RewardScreen from '../RewardScreen';
 import MoreScreen from '../MoreScreen';
 import EText from '../../elements/EText';
+import styles from './style';
+import {HOME_TABS} from '../../../commons/Constants'
+import _ from 'lodash';
 
-const getTabIconFocus = (focused, routeName, isNotified) => {
-  switch (routeName) {
-    case 'product':
-      return focused ? <ETabIcon icon={require('../../../../res/home-icon-focus.png')}/>
-        : <ETabIcon icon={require('../../../../res/home-icon.png')}/>
-    case 'specialOffer':
-      return focused ? <ETabIcon icon={require('../../../../res/gift-icon-focus.png')} isNotified={isNotified}/>
-        : <ETabIcon icon={require('../../../../res/gift-icon.png')} isNotified={isNotified}/>
-    case 'search':
-      return focused ? <ETabIcon icon={require('../../../../res/search-icon-focus.png')}/>
-        : <ETabIcon icon={require('../../../../res/search-icon.png')}/>
-    case 'reward':
-      return focused ? <ETabIcon icon={require('../../../../res/reward-icon-focus.png')} isNotified={isNotified}/>
-        : <ETabIcon icon={require('../../../../res/reward-icon.png')} isNotified={isNotified}/>
-    case 'more':
-      return focused ? <ETabIcon icon={require('../../../../res/more-icon-focus.png')} isNotified={isNotified}/>
-        : <ETabIcon icon={require('../../../../res/more-icon.png')} isNotified={isNotified}/>
-    default:
-      return
-  }
-}
-
-const getTextFocus = (focused, routeName) => {
-  switch (routeName) {
-    case 'product':
-      return focused ? <EText text={'Home'} style={{color: '#FFFFFF'}} />
-        : <EText text={'Home'} style={{color: '#FFFFFF', opacity: 0.8}} />
-    case 'search':
-      return focused ? <EText text={'Search'} style={{color: '#FFFFFF'}} />
-      : <EText text={'Search'} style={{color: '#FFFFFF', opacity: 0.8}} />
-    case 'specialOffer':
-      return focused ? <EText text={'Special'} style={{color: '#FFFFFF'}} />
-      : <EText text={'Special'} style={{color: '#FFFFFF', opacity: 0.8}} />
-    case 'reward':
-      return focused ? <EText text={'Reward'} style={{color: '#FFFFFF'}} />
-      : <EText text={'Reward'} style={{color: '#FFFFFF', opacity: 0.8}} />
-    case 'more':
-      return focused ? <EText text={'More'} style={{color: '#FFFFFF'}} />
-      : <EText text={'More'} style={{color: '#FFFFFF', opacity: 0.8}} />
-    default:
-      return
+class HomeTab extends Component {
+  render() {
+    const { name, uri, uriFocus, hasFocus } = this.props
+    const viewTabIcon = {
+      style: styles.viewTabIcon
+    },
+    iconProps = {
+      icon: hasFocus ? uriFocus : uri
+    },
+    textProps = {
+      text: name,
+      style: hasFocus ? styles.textFocus : styles.text
+    }
+    return (
+      <View {...viewTabIcon}>
+        <ETabIcon {...iconProps}/>
+        <EText {...textProps} />
+      </View>
+    )
   }
 }
 
@@ -70,17 +51,17 @@ export const HomeTabNavigation = TabNavigator(
     more: {screen: MoreScreen},
   },
   {
-    navigationOptions: ({navigation, screenProps}) => ({
+    navigationOptions: ({navigation}) => ({
       tabBarIcon: ({focused}) => {
-        const isNotified = screenProps.totalUnread > 0
         const {routeName} = navigation.state;
-
-        return (
-          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            {getTabIconFocus(focused, routeName, isNotified)}
-            {getTextFocus(focused, routeName)}
-          </View>
-        )
+        if(_.has(HOME_TABS, routeName)) {
+          const {name, uri, uriFocus} = HOME_TABS[routeName]
+          const tabProps = {
+            name, uri, uriFocus, hasFocus: focused
+          }
+          return <HomeTab {...tabProps} />
+        }
+        return null
       }
     }),
     swipeEnabled: false,
