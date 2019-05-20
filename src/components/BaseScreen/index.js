@@ -7,9 +7,9 @@ import React, { Component } from 'react'
 import { View, ViewPropTypes } from 'react-native'
 import styles from './style'
 import PropTypes from 'prop-types'
-import { HEADER_TYPE } from '../../Constants';
+import { HEADER_TYPE } from '../../commons/Constants';
 import HeaderBackground from './partials/HeaderBackground';
-import { goBack, isEmpty } from '../../Utils';
+import { goBack, isEmpty } from '../../commons/Utils';
 
 export default class BaseScreen extends Component {
 

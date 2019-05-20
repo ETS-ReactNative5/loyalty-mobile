@@ -9,7 +9,7 @@ import {Image, TouchableOpacity, ViewPropTypes, Text} from 'react-native'
 import PropTypes from 'prop-types'
 import styles from './style'
 import EText from '../EText';
-import { appStyleConstants } from '../../../Constants';
+import { appStyleConstants } from '../../../commons/Constants';
 
 export const ECheckboxType = {
     CheckBox: 1,

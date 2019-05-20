@@ -6,13 +6,13 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {actions} from "../redux/actions/Actions";
 import {bindActionCreators} from 'redux';
-import LoyaltyComponent from './component';
+import MoreComponent from './component';
+import { actions } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
     return {
-        appScreen: state.apps.appScreens,
+        //map state from store to component props
     }
 }
 
@@ -21,12 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     return {...{dispatch: dispatch}, ...bindActionCreators(actions, dispatch)};
 }
 
-class Loyalty extends Component {
+class MoreScreen extends Component {
     render() {
         return (
-            <LoyaltyComponent {...this.props}/>
+            <MoreComponent {...this.props}/>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Loyalty)
+export default connect(mapStateToProps, mapDispatchToProps)(MoreScreen)

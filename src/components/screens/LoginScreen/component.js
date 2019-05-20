@@ -10,11 +10,11 @@ import {NavigationActions} from 'react-navigation';
 import BaseScreen from "../../BaseScreen";
 import styles from './style'
 import ETextInput from '../../elements/ETextInput';
-import { getStrings } from '../../../Strings';
+import { getStrings } from '../../../commons/Strings';
 import EButton, { TextButtonTypes } from '../../elements/EButton';
 import { getStore } from '../../../../App';
-import { actions } from '../../../redux/actions/Actions';
-import { appScreenName } from '../../../Constants';
+import { actions } from '../../../redux/actions';
+import { appScreenName } from '../../../commons/Constants';
 
 const webLink = {
 	termConditions: 'https://www.circlek.com.vn/en/terms-of-use/',

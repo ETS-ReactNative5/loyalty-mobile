@@ -71,7 +71,7 @@ EImage.propTypes = {
     onLoad: PropTypes.func
 }
 EImage.defaultProps = {
-    source: require('../../../../res/home-ico.png'),
+    source: require('../../../../res/home-icon.png'),
     uri: '',
     style: null,
     resizeMode: 'contain',

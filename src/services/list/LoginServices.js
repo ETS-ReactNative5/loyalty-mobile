@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import CryptoJS from 'crypto-js'
 import RESTFull from '../RESTFull';
 import API from '../API';
-import { AsyncStorageConstants, AES_KEY } from '../../Constants';
+import { AsyncStorageConstants, AES_KEY } from '../../commons/Constants';
 import { getStore } from '../../../App';
 
 

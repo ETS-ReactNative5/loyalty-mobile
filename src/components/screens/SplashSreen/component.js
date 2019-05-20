@@ -4,10 +4,10 @@
 *
 */
 import React, { Component } from "react";
-import { View, Image } from "react-native";
-import { getStore } from "../../../../App";
+import { View } from "react-native";
 import styles from "./style";
-import { actions } from "../../../redux/actions/Actions";
+import { actions } from "../../../redux/actions";
+import { getStore } from "../../../../App";
 
 export default class SplashComponent extends Component {
   componentDidMount() {
@@ -15,14 +15,9 @@ export default class SplashComponent extends Component {
   }
 
   render() {
-    const logoProps = {
-      source: require("../../../../res/app-white-ico.png"),
-      style: styles.logo,
-      resizeMode: "contain"
-    };
     return (
       <View style={styles.container}>
-        <Image {...logoProps} />
+        <Text>Loyalty</Text>
       </View>
     );
   }

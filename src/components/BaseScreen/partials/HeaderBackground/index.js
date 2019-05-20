@@ -7,7 +7,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import { actions } from '../../../../redux/actions/Actions';
+import { actions } from '../../../../redux/actions';
 import HeaderBackgroundComponent from './component';
 
 function mapStateToProps(state) {

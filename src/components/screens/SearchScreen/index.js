@@ -7,7 +7,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import SpecialOfferComponent from './component';
+import SearchComponent from './component';
 import { actions } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
@@ -21,12 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     return {...{dispatch: dispatch}, ...bindActionCreators(actions, dispatch)};
 }
 
-class SpecialOfferScreen extends Component {
+class SearchScreen extends Component {
     render() {
         return (
-            <SpecialOfferComponent {...this.props}/>
+            <SearchComponent {...this.props}/>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpecialOfferScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen)

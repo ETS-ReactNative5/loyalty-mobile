@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { deviceWidth } from '../../../../Constants';
+import { deviceWidth } from '../../../../commons/Constants';
 
 const percent = 160 / 375;
 

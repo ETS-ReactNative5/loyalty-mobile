@@ -5,7 +5,7 @@
 */
 
 import { StyleSheet } from 'react-native'
-import { appStyleConstants } from '../../../Constants';
+import { appStyleConstants } from '../../../commons/Constants';
 
 export default StyleSheet.create({
 	container: {

@@ -4,53 +4,53 @@
 *
 */
 
-import ActionTypes from "./ActionTypes";
+import {ACTION_TYPE} from "./type";
 
 export const actions = {
   //put all actions
   onInternetConnectionChange(status) {
     return {
-      type: ActionTypes.ON_INTERNET_CONNECTION_CHANGE,
+      type: ACTION_TYPE.ON_INTERNET_CONNECTION_CHANGE,
       status
     }
   },
   doLogin(email, pass) {
     return {
-      type: ActionTypes.DO_LOGIN,
+      type: ACTION_TYPE.DO_LOGIN,
       email, pass,
     }
   },
   doLogout() {
     return {
-      type: ActionTypes.DO_LOGOUT
+      type: ACTION_TYPE.DO_LOGOUT
     }
   },
   saveAutoLogin(email, pass) {
     return {
-      type: ActionTypes.SAVE_AUTO_LOGIN,
+      type: ACTION_TYPE.SAVE_AUTO_LOGIN,
       email,
       pass
     }
   },
   getAutoLogin() {
     return {
-      type: ActionTypes.GET_AUTO_LOGIN
+      type: ACTION_TYPE.GET_AUTO_LOGIN
     }
   },
   showNoticedDialog(props) {
     return {
-      type: ActionTypes.SHOW_NOTICED_DIALOG,
+      type: ACTION_TYPE.SHOW_NOTICED_DIALOG,
       props
     }
   },
   hideNoticedDialog() {
     return {
-      type: ActionTypes.HIDE_NOTICED_DIALOG,
+      type: ACTION_TYPE.HIDE_NOTICED_DIALOG,
     }
   },
   getListAppointment(status, dateStart, dateEnd, page) {
     return {
-      type: ActionTypes.GET_APPOINTMENT,
+      type: ACTION_TYPE.GET_APPOINTMENT,
       page,
       status,
       dateStart,
@@ -59,101 +59,101 @@ export const actions = {
   },
   getListHistoryAppointment(currentPage, pageSize) {
     return {
-      type: ActionTypes.GET_HISTORY_APPOINTMENT,
+      type: ACTION_TYPE.GET_HISTORY_APPOINTMENT,
       currentPage,
       pageSize
     }
   },
   putUpdateStaff(params) {
     return {
-      type: ActionTypes.UPDATE_STAFF,
+      type: ACTION_TYPE.UPDATE_STAFF,
       params
     }
   },
   putChangePassword(params) {
     return {
-      type: ActionTypes.CHANGE_PASSWORD,
+      type: ACTION_TYPE.CHANGE_PASSWORD,
       params
     }
   },
   postForgotPassword(params, screen) {
     return {
-      type: ActionTypes.FORGOT_PASSWORD,
+      type: ACTION_TYPE.FORGOT_PASSWORD,
       params,
       screen
     }
   },
   getBookingDetail(orderId) {
     return {
-      type: ActionTypes.GET_BOOKING_DETAIL,
+      type: ACTION_TYPE.GET_BOOKING_DETAIL,
       orderId
     }
   },
   changeStateBooking(orderId, stateChange) {
     return {
-      type: ActionTypes.CHANGE_STATE_BOOKING,
+      type: ACTION_TYPE.CHANGE_STATE_BOOKING,
       orderId,
       stateChange
     }
   },
   getComments(orderId) {
     return {
-      type: ActionTypes.GET_COMMENTS,
+      type: ACTION_TYPE.GET_COMMENTS,
       orderId
     }
   },
   postComment(params) {
     return {
-      type: ActionTypes.POST_COMMENT,
+      type: ACTION_TYPE.POST_COMMENT,
       params
     }
   },
   getHistoryState(orderId) {
     return {
-      type: ActionTypes.GET_HISTORY_STATE,
+      type: ACTION_TYPE.GET_HISTORY_STATE,
       orderId
     }
   },
   updateDeviceToken(token) {
     return {
-      type: ActionTypes.UPDATE_DEVICE_TOKEN,
+      type: ACTION_TYPE.UPDATE_DEVICE_TOKEN,
       token,
     }
   },
   getNotifications(page, pageSize) {
     return {
-      type: ActionTypes.GET_NOTIFICATIONS,
+      type: ACTION_TYPE.GET_NOTIFICATIONS,
       page,
       pageSize,
     }
   },
   readAllNotification() {
     return {
-      type: ActionTypes.READ_ALL_NOTIFICATION,
+      type: ACTION_TYPE.READ_ALL_NOTIFICATION,
     }
   },
   readNotification(id) {
     return {
-      type: ActionTypes.READ_NOTIFICATION,
+      type: ACTION_TYPE.READ_NOTIFICATION,
       id
     }
   },
   changeNotificationUnread(isAdd) {
     return {
-      type: ActionTypes.CHANGE_NOTIFICATION_UNREAD,
+      type: ACTION_TYPE.CHANGE_NOTIFICATION_UNREAD,
       isAdd
     }
   },
   toastMessage(message, messageRandom) {
     return {
-      type: ActionTypes.TOAST_MESSAGE,
+      type: ACTION_TYPE.TOAST_MESSAGE,
       message,
       messageRandom
     }
   },
   getAppointmentNoti() {
     return {
-      type: ActionTypes.GET_APPOINTMENT_NOTI,
+      type: ACTION_TYPE.GET_APPOINTMENT_NOTI,
     }
   },
 }

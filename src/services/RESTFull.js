@@ -1,7 +1,7 @@
 import { getStore } from "../../App";
-import { getStrings } from "../Strings";
+import { getStrings } from "../commons/Strings";
 import _ from 'lodash';
-import Utils from "../adapter/Utils";
+import { isEmpty } from "../commons/Utils";
 
 const TIME_OUT = 30000;
 
@@ -19,7 +19,7 @@ function handling(_method, url, requestData) {
 				};
 				reject(e);
 			}
-			if (_method === 'GET' && !Utils.isEmpty(requestData)) {
+			if (_method === 'GET' && !isEmpty(requestData)) {
 				let parameter = '?'
 				_.keys(requestData).forEach((param, key) => {
 					parameter += '&' + param + '=' + requestData[param]

@@ -5,7 +5,7 @@
 */
 
 //default state
-import ActionTypes from "../actions/ActionTypes";
+import {ACTION_TYPE} from "../actions/type";
 
 const initState = {
 	isResetSuccess: false,
@@ -17,79 +17,79 @@ const initState = {
 export default users = (state = initState, action = {}) => {
 	switch (action.type) {
 		//handle actions
-		case ActionTypes.DO_LOGIN:
+		case ACTION_TYPE.DO_LOGIN:
 			return {
 				...state,
 				isFetching: true
 			}
-		case ActionTypes.DO_LOGIN_SUCCESS:
+		case ACTION_TYPE.DO_LOGIN_SUCCESS:
 			return {
 				...state,
 				accessToken: action.data.token,
 				isFetching: false,
 				user: action.data
 			}
-		case ActionTypes.DO_LOGIN_FAILURE:
+		case ACTION_TYPE.DO_LOGIN_FAILURE:
 			return {
 				...state,
 				isFetching: false
 			}
-		case ActionTypes.DO_LOGOUT: 
+		case ACTION_TYPE.DO_LOGOUT: 
 			return {
 				...state,
 				isFetching: true
 			}
-		case ActionTypes.DO_LOGOUT_SUCCESS:
+		case ACTION_TYPE.DO_LOGOUT_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
 				accessToken: null,
 				user: {}
 			}
-		case ActionTypes.DO_LOGOUT_FAILURE: 
+		case ACTION_TYPE.DO_LOGOUT_FAILURE: 
 			return {
 				...state,
 				isFetching: false
 			}
-		case ActionTypes.UPDATE_STAFF:
+		case ACTION_TYPE.UPDATE_STAFF:
 			return {
 				...state,
 				isFetching: true
 			}
-		case ActionTypes.UPDATE_STAFF_SUCCESS:
+		case ACTION_TYPE.UPDATE_STAFF_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
 				user: action.data
 			}
-		case ActionTypes.UPDATE_STAFF_FAILURE:
+		case ACTION_TYPE.UPDATE_STAFF_FAILURE:
 			return {
 				...state,
 				isFetching: false
 			}
-		case ActionTypes.CHANGE_PASSWORD:
+		case ACTION_TYPE.CHANGE_PASSWORD:
 			return {
 				...state,
 				isFetching: true
 			}
-		case ActionTypes.CHANGE_PASSWORD_SUCCESS:
-		case ActionTypes.CHANGE_PASSWORD_FAILURE:
+		case ACTION_TYPE.CHANGE_PASSWORD_SUCCESS:
+		case ACTION_TYPE.CHANGE_PASSWORD_FAILURE:
 			return {
 				...state,
 				isFetching: false
 			}
-		case ActionTypes.FORGOT_PASSWORD:
+		case ACTION_TYPE.FORGOT_PASSWORD:
 			return {
 				...state,
 				isFetching: true
 			}
-		case ActionTypes.FORGOT_PASSWORD_SUCCESS:
+		case ACTION_TYPE.FORGOT_PASSWORD_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
 				isResetSuccess: true,
 			}
-		case ActionTypes.FORGOT_PASSWORD_FAILURE:
+		case ACTION_TYPE.FORGOT_PASSWORD_FAILURE:
 			return {
 				...state,
 				isFetching: false,

@@ -4,7 +4,7 @@
 *
 */
 import {combineReducers} from 'redux'
-import ActionTypes from '../actions/ActionTypes'
+import {ACTION_TYPE} from '../actions/type'
 import apps from './AppReducer'
 import users from './UserReducer'
 
@@ -15,7 +15,7 @@ const appReducer = combineReducers({
 })
 
 export default rootReducer = (state, action) => {
-  if (action.type === ActionTypes.DO_LOGOUT_SUCCESS) {
+  if (action.type === ACTION_TYPE.DO_LOGOUT_SUCCESS) {
     state = undefined
   }
 

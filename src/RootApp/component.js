@@ -17,9 +17,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {addNavigationHelpers, NavigationActions, StackNavigator} from 'react-navigation'
 import { addListener } from '../redux/stores/ReactNavigationRedux'
 import {getStore} from "../../App";
-import {actions} from "../redux/actions/Actions";
-import {appScreenName} from "../Constants";
-import { goBack } from '../Utils';
+import {actions} from "../redux/actions";
+import {appScreenName} from "../commons/Constants";
+import { goBack } from '../commons/Utils';
 import LoginScreen from '../components/screens/LoginScreen';
 import HomeScreen from '../components/screens/HomeScreen';
 import SplashSreen from '../components/screens/SplashSreen';
@@ -73,7 +73,7 @@ const fade = (props) => {
 	}
 }
 
-export default class LoyaltyComponent extends Component {
+export default class RootAppComponent extends Component {
 
     constructor(props) {
         super(props)

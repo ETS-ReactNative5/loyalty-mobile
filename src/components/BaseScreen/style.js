@@ -4,7 +4,7 @@
 *
 */
 import { StyleSheet, Platform } from 'react-native'
-import { appStyleConstants } from "../../Constants";
+import { appStyleConstants } from "../../commons/Constants";
 
 const headerHeight = 60
 export default StyleSheet.create({

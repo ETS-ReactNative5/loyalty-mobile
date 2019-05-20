@@ -6,14 +6,17 @@
 
 import React, {Component} from 'react'
 import {View} from 'react-native'
+import { NavigationActions } from 'react-navigation';
 import BaseScreen from '../../BaseScreen';
 import styles from './style';
-import { getStrings } from '../../../Strings';
+import { getStrings } from '../../../commons/Strings';
 import EButton, { TextButtonTypes } from '../../elements/EButton';
 import ETextInput from '../../elements/ETextInput';
 import EText from '../../elements/EText';
 import ECheckbox from '../../elements/ECheckbox';
 import _ from 'lodash';
+import { getStore } from '../../../../App';
+import { appScreenName } from '../../../commons/Constants';
 
 const INTERESTED = [
   {title: 'Special Offers', value: '1', isChoose: true},
@@ -33,7 +36,7 @@ export default class AboutMeComponent extends Component {
   }
 
   onSubmit = () => {
-    
+    getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
   }
 
   setInterests = (itemInterest) => {

@@ -7,8 +7,10 @@ import {StyleSheet} from "react-native";
 export default StyleSheet.create({
   container: {
     width: 36,
-    height: 31,
-    justifyContent: 'flex-end'
+    height: 36,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {
     width: 24,

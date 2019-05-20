@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { deviceWidth, appStyleConstants } from '../../../Constants'; 
+import { deviceWidth, appStyleConstants } from '../../../commons/Constants'; 
 
 export default StyleSheet.create({
   baseContainer: {
@@ -33,5 +33,8 @@ export default StyleSheet.create({
   },
   viewCheckBox: {
     alignItems: 'flex-start',
+    alignSelf: 'flex-start',
+    width: deviceWidth - 72,
+    marginVertical: 8,
   }
 });

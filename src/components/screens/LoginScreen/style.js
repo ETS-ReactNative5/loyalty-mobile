@@ -5,7 +5,7 @@
 */
 
 import {StyleSheet} from 'react-native'
-import { appStyleConstants, deviceWidth } from '../../../Constants';
+import { appStyleConstants, deviceWidth } from '../../../commons/Constants';
 
 const percentMarginTop = 56 / 375
 

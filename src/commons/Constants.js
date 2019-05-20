@@ -11,7 +11,7 @@ import { ifIphoneX } from 'react-native-iphone-x-helper'
 
 export const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window')
 
-export const AES_KEY = "WE_SERVICES_AES_KEY"
+export const AES_KEY = "LOYALTY_AES_KEY"
 export const PAGE_SIZE = 10
 
 export const AsyncStorageConstants = {
@@ -27,7 +27,10 @@ export const appScreenName = {
 
 export const homeTabName = {
 	product: 'product',
-  specialOffer: 'specialOffer',
+	specialOffer: 'specialOffer',
+	search: 'search',
+	reward: 'reward',
+	more: 'more',
 }
 
 export const appStyleConstants = {

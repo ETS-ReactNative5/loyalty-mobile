@@ -30,6 +30,6 @@ ETabIcon.propTypes = {
 }
 
 ETabIcon.defaultProps = {
-  icon: require('../../../../res/home-ico.png'),
+  icon: require('../../../../res/home-icon.png'),
   isNotified: false
 }

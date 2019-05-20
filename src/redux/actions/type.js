@@ -4,7 +4,7 @@
 *
 */
 
-export default {
+export const ACTION_TYPE = {
     //on internet connection change (true/false)
     ON_INTERNET_CONNECTION_CHANGE: 'ON_INTERNET_CONNECTION_CHANGE',
 

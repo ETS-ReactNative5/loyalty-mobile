@@ -8,7 +8,7 @@ import React, { Component } from 'react'
 import { TextInput, View, ViewPropTypes, Keyboard } from 'react-native'
 import PropTypes from 'prop-types'
 import styles from './style'
-import { appStyleConstants } from "../../../Constants";
+import { appStyleConstants } from "../../../commons/Constants";
 
 export default class ETextInput extends Component {
 	constructor(props) {

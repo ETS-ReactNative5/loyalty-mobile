@@ -6,13 +6,13 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {actions} from "../redux/actions";
 import {bindActionCreators} from 'redux';
-import SpecialOfferComponent from './component';
-import { actions } from '../../../redux/actions';
+import RootAppComponent from './component';
 
 const mapStateToProps = (state) => {
     return {
-        //map state from store to component props
+        appScreen: state.apps.appScreens,
     }
 }
 
@@ -21,12 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     return {...{dispatch: dispatch}, ...bindActionCreators(actions, dispatch)};
 }
 
-class SpecialOfferScreen extends Component {
+class RootApp extends Component {
     render() {
         return (
-            <SpecialOfferComponent {...this.props}/>
+            <RootAppComponent {...this.props}/>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpecialOfferScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(RootApp)

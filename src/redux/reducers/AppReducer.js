@@ -4,10 +4,10 @@
 *
 */
 
-import {AppNavigator} from "../../Loyalty/component";
-import {appScreenName, homeTabName} from "../../Constants";
+import {AppNavigator} from "../../RootApp/component";
+import {appScreenName, homeTabName} from "../../commons/Constants";
 import {combineReducers} from 'redux'
-import ActionTypes from "../actions/ActionTypes";
+import {ACTION_TYPE} from "../actions/type";
 import { HomeTabNavigation } from "../../components/screens/HomeScreen/component";
 
 //default state
@@ -24,7 +24,7 @@ const initialHomeTabState = HomeTabNavigation.router.getStateForAction(
 const appCommons = (state = initState, action = {}) => {
     switch (action.type) {
         //handle actions
-        case ActionTypes.ON_INTERNET_CONNECTION_CHANGE:
+        case ACTION_TYPE.ON_INTERNET_CONNECTION_CHANGE:
             return {
                 ...state,
                 internetConnection: action.status

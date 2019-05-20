@@ -3,13 +3,13 @@ import {View, Text} from 'react-native';
 import style from './style';
 import BaseScreen from '../../BaseScreen';
 
-export default class ProductComponent extends Component {
+export default class MoreComponent extends Component {
   
   render() {
     return (
       <BaseScreen>
         <View style={style.view}>
-          <Text>Product Screen</Text>
+          <Text>More Screen</Text>
         </View>
       </BaseScreen>
     )

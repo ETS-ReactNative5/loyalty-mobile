@@ -8,8 +8,8 @@ import React, {Component} from 'react'
 import {Keyboard, Text, TouchableOpacity, TouchableWithoutFeedback, View, ViewPropTypes} from 'react-native'
 import PropTypes from 'prop-types'
 import styles from './style'
-import Utils from '../../../adapter/Utils';
 import EText from '../EText';
+import { isEmpty } from '../../../commons/Utils';
 
 export const TextButtonTypes = {
     black: 1,
@@ -41,7 +41,7 @@ export default class EButton extends Component {
 
     getTextStyleFromType = () => {
         const {textColor} = this.props
-        if(!Utils.isEmpty(textColor)) {
+        if(!isEmpty(textColor)) {
             return textColor
         }
         switch (this.props.type) {
