@@ -1,0 +1,51 @@
+platform :ios, '9.0'
+
+target 'Loyalty' do
+  # this is very important to have!
+  rn_path = '../node_modules/react-native'
+  pod 'yoga', path: "#{rn_path}/ReactCommon/yoga/yoga.podspec"
+  pod 'React', path: rn_path, subspecs: [
+    'Core',
+    'RCTActionSheet',
+    'RCTAnimation',
+    'RCTGeolocation',
+    'RCTImage',
+    'RCTLinkingIOS',
+    'RCTNetwork',
+    'RCTSettings',
+    'RCTText',
+    'RCTVibration',
+    'RCTWebSocket'
+  ]
+
+  pod 'RNImageCropPicker', :path =>  '../node_modules/react-native-image-crop-picker'
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
+  pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
+
+  # Pods for ReactPushNotifications - Add these lines
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
+  pod 'react-native-async-storage', :path => '../node_modules/@react-native-community/async-storage'
+  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
+
+
+end
+
+# very important to have, unless you removed React dependencies for Libraries
+# and you rely on Cocoapods to manage it
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == "React"
+      target.remove_from_project
+    end
+
+    if target.name == "yoga"
+      target.remove_from_project
+    end
+  end
+end
