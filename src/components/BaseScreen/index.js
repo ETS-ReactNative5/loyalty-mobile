@@ -9,7 +9,9 @@ import styles from './style'
 import PropTypes from 'prop-types'
 import { HEADER_TYPE } from '../../commons/Constants';
 import HeaderBackground from './partials/HeaderBackground';
+import HeaderSearch from './partials/HeaderSearch';
 import { goBack, isEmpty } from '../../commons/Utils';
+import HeaderTitle from './partials/HeaderTitle';
 
 export default class BaseScreen extends Component {
 
@@ -19,20 +21,22 @@ export default class BaseScreen extends Component {
 		switch(typeHeader) {
 			case SEARCH:
 				const searchProps = {
+					...this.props,
 					searchText, 
 					onSearch,
 					onBack: this.onBack.bind(this)
 				}
-				return <View {...searchProps} />
+				return <HeaderSearch {...searchProps} />
 			case TITLE:
 				const titleProps = {
+					...this.props,
 					title, 
 					onBack: this.onBack.bind(this)
 				}
-				return <View {...titleProps} />
+				return <HeaderTitle {...titleProps} />
 			case BACKGROUND_IMAGE:
 			default:
-					return <HeaderBackground />
+					return <HeaderBackground {...this.props} />
 		}
 	}
 
@@ -41,7 +45,6 @@ export default class BaseScreen extends Component {
 		if(!isEmpty(this.props.onBack) && typeof this.props.onBack === 'function') {
 			this.props.onBack()
 		}
-		return true
 	}
 
 	render() {

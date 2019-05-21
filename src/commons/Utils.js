@@ -28,14 +28,13 @@ export const isEmail = (email) => {
 }
 
 function showDialogExitApp() {
-  // console.log('ok dialog')
   Alert.alert(
     '',
     'Do you want to exit app',
     [
       {
         text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
+        onPress: () => {},
         style: 'cancel',
       },
       {text: 'OK', onPress: () => BackHandler.exitApp()},

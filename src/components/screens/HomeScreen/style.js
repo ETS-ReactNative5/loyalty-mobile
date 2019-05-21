@@ -8,9 +8,9 @@ export default StyleSheet.create({
   },
   text: {
     color: '#FFFFFF',
+    opacity: 0.8,
   },
   textFocus: {
     color: '#FFFFFF', 
-    opacity: 0.8
   }
 })

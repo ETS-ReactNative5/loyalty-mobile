@@ -10,6 +10,7 @@ export default class HeaderBackgroundComponent extends Component {
   render() {
     const { headerImage, sourceImage } = this.props
     const viewProps = {
+      ...this.props,
       style: style.view
     },
     backgroundProps = _.isEmpty(headerImage) 
@@ -21,7 +22,6 @@ export default class HeaderBackgroundComponent extends Component {
       style: style.background,
       uri: headerImage
     }
-    console.log('BackgroundProps:', backgroundProps)
     return (
       <View {...viewProps}>
         <EImage {...backgroundProps} />

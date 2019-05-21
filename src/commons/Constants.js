@@ -64,6 +64,6 @@ export const HOME_TABS = {
   product: {name: 'Home', uri: require('../../res/home-icon.png'), uriFocus: require('../../res/home-icon-focus.png')},
   specialOffer: {name: 'Special', uri: require('../../res/gift-icon.png'), uriFocus: require('../../res/gift-icon-focus.png')},
   search: {name: 'Search', uri: require('../../res/search-icon.png'), uriFocus: require('../../res/search-icon-focus.png')},
-  reward: {name: 'Special', uri: require('../../res/star-icon.png'), uriFocus: require('../../res/star-icon-focus.png')},
+  reward: {name: 'Reward', uri: require('../../res/star-icon.png'), uriFocus: require('../../res/star-icon-focus.png')},
   more: {name: 'More', uri: require('../../res/more-icon.png'), uriFocus: require('../../res/more-icon-focus.png')},
 }
