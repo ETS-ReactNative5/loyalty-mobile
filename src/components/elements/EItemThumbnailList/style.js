@@ -8,7 +8,12 @@ export default StyleSheet.create({
     borderBottomColor: '#DADADA',
   },
   imageIcon: {
-    
+      // backgroundColor: 'green',
+      width: 400,
+      height: 200,
+      maxWidth: '100%',
+      maxHeight: '100%',
+      resizeMode: 'cover'
   },
   describe: {
     

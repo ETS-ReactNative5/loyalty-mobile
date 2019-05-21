@@ -7,7 +7,6 @@ import EText from '../../elements/EText';
 import { appScreenName } from '../../../commons/Constants';
 import EList from '../../elements/list/EList';
 import { getStore } from '../../../../App';
-
 const data = [
   {
     source: require('../../../../res/avatar-default.png'), 
@@ -19,6 +18,62 @@ const data = [
     title: 'Log out', 
     onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.login}))}
   },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  {
+    source: require('../../../../res/avatar-default.png'), 
+    title: 'Tri Tran', 
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+  },
+  
 ]
 
 export default class MoreComponent extends Component {

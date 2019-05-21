@@ -27,10 +27,10 @@ export default class EListThumbnail extends Component {
 
 }
 
-EList.propTypes = {
+EListThumbnail.propTypes = {
   data: PropTypes.array
 }
 
-EList.defaultProps = {
-  data: []
-}
+// EListThumbnail.defaultProps = {
+//   data: []
+// }

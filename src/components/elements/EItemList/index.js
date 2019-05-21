@@ -26,7 +26,7 @@ export default class EItemList extends Component {
     }
     return (
       <TouchableOpacity {...viewProps}>
-        <EImage {...imageProps} />
+        <EImage  {...imageProps} />
         <EText {...textProps} />
       </TouchableOpacity>
     )

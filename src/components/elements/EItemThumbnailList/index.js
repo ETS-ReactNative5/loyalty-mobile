@@ -44,7 +44,7 @@ export default class EItemThumbnailList extends Component {
 
 }
 
-EItemList.propTypes = {
+EItemThumbnailList.propTypes = {
   title: PropTypes.string.isRequired,
   brief: PropTypes.string.isRequired,
   hasDescribe: PropTypes.bool.isRequired,
@@ -53,11 +53,11 @@ EItemList.propTypes = {
   onPress: PropTypes.func,
 }
 
-EItemList.defaultProps = {
-  title: 'Title name',
-  brief: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
-  hasDescribe: true,
-  image: '',
-  source: require('../../../../res/default-image.png'),
-  onPress: () => {}
-}
+  // EItemThumbnailList.defaultProps = {
+  //   title: 'Title name',
+  //   brief: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+  //   hasDescribe: true,
+  //   image: '',
+  //   source: require('../../../../res/default-image.png'),
+  //   onPress: () => {}
+  // }
