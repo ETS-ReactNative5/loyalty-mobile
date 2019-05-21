@@ -19,6 +19,7 @@ import LoginScreen from '../components/screens/LoginScreen';
 import HomeScreen from '../components/screens/HomeScreen';
 import SplashSreen from '../components/screens/SplashSreen';
 import AboutMeScreen from '../components/screens/AboutMeScreen';
+import ProfileScreen from '../components/screens/ProfileScreen';
 
 let fcmToken = null;
 
@@ -31,6 +32,7 @@ export const AppNavigator = StackNavigator({
     splash: { screen: SplashSreen },
     login: { screen: LoginScreen },
     aboutme: {screen: AboutMeScreen},
+    profile: {screen: ProfileScreen},
     home: { screen: HomeScreen },
   },
 	{

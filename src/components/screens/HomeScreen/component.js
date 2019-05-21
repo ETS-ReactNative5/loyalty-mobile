@@ -45,8 +45,8 @@ class HomeTab extends Component {
 export const HomeTabNavigation = TabNavigator(
   {
     product: {screen: ProductScreen},
-    specialOffer: {screen: SpecialOfferScreen},
     search: {screen: SearchScreen},
+    specialOffer: {screen: SpecialOfferScreen},
     reward: {screen: RewardScreen},
     more: {screen: MoreScreen},
   },

@@ -12,7 +12,7 @@ const data = [
   {
     source: require('../../../../res/avatar-default.png'), 
     title: 'Tri Tran', 
-    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))}
   },
   {
     source: require('../../../../res/logout-icon.png'), 

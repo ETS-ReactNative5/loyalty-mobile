@@ -23,6 +23,7 @@ export const appScreenName = {
 	login: 'login',
 	home: 'home',
 	aboutme: 'aboutme',
+	profile: 'profile',
 }
 
 export const homeTabName = {
