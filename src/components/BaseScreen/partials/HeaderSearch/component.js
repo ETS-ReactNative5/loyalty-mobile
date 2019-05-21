@@ -24,7 +24,6 @@ export default class HeaderSearchComponent extends Component {
     searchProps = {
       style: styles.searchText,
       placeHolder: 'Find a store...',
-      placeholderTextColor: '#828282',
       value: searchText,
       onPress: onSearch,
       onChangeText: onChangeText, 

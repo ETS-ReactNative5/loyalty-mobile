@@ -5,12 +5,17 @@
 */
 
 import {StyleSheet} from 'react-native'
+import { appStyleConstants } from '../../../commons/Constants';
 
 export default StyleSheet.create({
     view: {
-      backgroundColor: '#FFFFFF',
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      backgroundColor: '#FFFFFF',
+      padding: appStyleConstants.NORMAL_SCREEN_MARGIN,
+    },
+    headerTitle: {
+      fontSize: 30,
+      fontWeight: '600',
+      paddingBottom: appStyleConstants.NORMAL_SCREEN_MARGIN,
     }
 })
