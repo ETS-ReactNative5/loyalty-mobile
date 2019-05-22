@@ -24,24 +24,24 @@ export default StyleSheet.create({
 
     },
     headerText:{
-      padding:10,
-      fontSize: 20,
+      padding:5,
+      fontSize: 16,
     },
-    searchBar: {
+    search: {
       paddingLeft: 10,
       marginTop: 15,
-      flex: 1,
-      flexDirection: 'row'
+      
     },
     content: {
       flex: 10,
     },
-    bigHeader: {
+    tittleContent: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      color: '#DB291D',
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#DB291D',
-      justifyContent: 'center',
       textAlign: 'center'
-    },
+    }
 
 })
