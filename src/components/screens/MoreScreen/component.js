@@ -7,6 +7,7 @@ import EText from '../../elements/EText';
 import { appScreenName } from '../../../commons/Constants';
 import EList from '../../elements/list/EList';
 import { getStore } from '../../../../App';
+import { actions } from '../../../redux/actions';
 
 const data = [
   {
@@ -17,7 +18,7 @@ const data = [
   {
     source: require('../../../../res/logout-icon.png'), 
     title: 'Log out', 
-    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.login}))}
+    onPress: () => {getStore().dispatch(actions.doLogout())}
   },
 ]
 
