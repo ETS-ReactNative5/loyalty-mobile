@@ -20,6 +20,10 @@ import HomeScreen from '../components/screens/HomeScreen';
 import SplashSreen from '../components/screens/SplashSreen';
 import AboutMeScreen from '../components/screens/AboutMeScreen';
 import ProfileScreen from '../components/screens/ProfileScreen';
+import { getStore } from '../../App';
+import { actions } from '../redux/actions';
+import AsyncStorage from '@react-native-community/async-storage';
+import { TOKEN_KEY } from '../commons/Constants';
 
 let fcmToken = null;
 
@@ -87,6 +91,10 @@ export default class RootAppComponent extends Component {
         );
         BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
         AppState.addEventListener('change', this.handleAppStateChange);
+        AsyncStorage.getItem(TOKEN_KEY).then((data) => {
+            console.log('Token:', data)
+            getStore().dispatch(actions.getAutoLogin(data))
+        })
     }
 
     handleAppStateChange = (nextAppState) => {

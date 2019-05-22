@@ -51,7 +51,7 @@ router.post('/', (req, res, next) => {
         let newUser = INIT_ACCOUNT(user.email, user.password);
         DATAS['data'].push(newUser)
         jsonHandler.write(PATH_DATA.PROFILE, DATAS);
-        res.status(200).json({error: 1, token: newUser.token})
+        res.status(200).json({error: 1, data: newUser.token})
       } else {
         //login existed account
         let existedUser = profiles[0]
@@ -66,7 +66,7 @@ router.post('/', (req, res, next) => {
           });
           DATAS['data'] = updateDATA
           jsonHandler.write(PATH_DATA.PROFILE, DATAS)
-          res.status(200).json({error: 0, token: existedUser.token})
+          res.status(200).json({error: 0, data: existedUser.token})
         } else {
           res.status(200).json({error: -1, message: 'Log in failed'})
         }

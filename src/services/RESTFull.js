@@ -1,15 +1,18 @@
 import { getStore } from "../../App";
 import { getStrings } from "../commons/Strings";
+import AsyncStorage from '@react-native-community/async-storage';
 import _ from 'lodash';
 import { isEmpty } from "../commons/Utils";
+import { ERROR_CODE, TOKEN_KEY } from "../commons/Constants";
 
 const TIME_OUT = 30000;
 
 function handling(_method, url, requestData) {
-	let authorization = (getStore().getState() && getStore().getState().users && getStore().getState().users.accessToken)
+	let isSaveToken = _.includes(url, 'login')
+	let authorization = (getStore().getState() && getStore().getState().users && getStore().getState().users.token)
 		?
-		"Bearer " + getStore().getState().users.accessToken : null
-	// let authorization = null
+		"Bearer " + getStore().getState().users.token : null
+
 	return Promise.race([
 		new Promise((resolve, reject) => {
 			if (!checkInternetConnection()) {
@@ -20,11 +23,15 @@ function handling(_method, url, requestData) {
 				reject(e);
 			}
 			if (_method === 'GET' && !isEmpty(requestData)) {
-				let parameter = '?'
-				_.keys(requestData).forEach((param, key) => {
-					parameter += '&' + param + '=' + requestData[param]
-				})
-				url += parameter
+				if(_.includes(url, 'profile')) {
+					authorization = isEmpty(authorization) ? "Bearer " + requestData.token : authorization
+				} else {
+					let parameter = '?'
+					_.keys(requestData).forEach((param, key) => {
+						parameter += '&' + param + '=' + requestData[param]
+					})
+					url += parameter
+				}
 			}
 			return fetch(url, {
 				method: _method,
@@ -39,34 +46,19 @@ function handling(_method, url, requestData) {
 					return response.json()
 				})
 				.then(responseJson => {
-					if (_.isString(responseJson) && _.includes(responseJson, 'Not Found') > -1) {
-						reject({
-							error: -1,
-							message: 'Request Not Found!'
+					const error = _.get(responseJson, 'error', ERROR_CODE.ERROR)
+					if(error < 0) {
+						reject({message: _.get(responseJson, 'message', 'No message')})
+					}
+					if(isSaveToken) {
+						AsyncStorage.clear(() => {
+							AsyncStorage.setItem(TOKEN_KEY, responseJson.data)
 						})
 					}
-					let resultError = ''
-					if(_.has(responseJson, 'error')) {
-						const details = _.get(responseJson, 'details', [])
-						if(!_.isEmpty(details) && details.length > 0) {
-							_.forEach(details, (detail, _dkey) => {
-								const violations = _.get(detail, 'field_violations', [])
-								if(!_.isEmpty(violations)) {
-									resultError = _.get(violations[0], 'description', '')
-									return
-								}
-							})
-						}
-						if(_.isEmpty(resultError)) {
-							resultError = _.get(responseJson, 'message', '')
-						}
-						reject({error: -1, message: resultError})
-					}
-					resolve(responseJson)
+					resolve(responseJson);
 				})
 				.catch(error => {
 					reject({
-						error: -1,
 						message: error.toString() === 'TypeError: Network request failed' ? getStrings().noInternetConnection : error.toString()
 					});
 				});
@@ -84,8 +76,9 @@ function handling(_method, url, requestData) {
 }
 
 function checkInternetConnection() {
-	let store = getStore();
-	return store.getState() && store.getState().apps && store.getState().apps.appCommons && store.getState().apps.appCommons.internetConnection;
+	return true
+	// let store = getStore();
+	// return store.getState() && store.getState().apps && store.getState().apps.appCommons && store.getState().apps.appCommons.internetConnection;
 }
 
 export default class RESTFull {
