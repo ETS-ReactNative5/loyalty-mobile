@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import style from './style';
 import BaseScreen from '../../BaseScreen';
 import EText from '../../elements/EText';
@@ -51,15 +51,32 @@ const data = [
 export default class ProductComponent extends Component {
   
   render() {
-    const headerProps = {
-      text: 'PRODUCT'
+    const userProps = {
+      style: style.userProps,
+      text: 'We have promotions and deals from our specialty stores lined up for you',
+    },
+          headerProps = {
+      style: style.headerProps,
+      text: 'Hey Yumi',
+    },
+          productProps = {
+      style: style.productProps,
+      text: 'PRODUCTS',
     }
     return (
       <BaseScreen>
-        <View style={style.view}>
-          <EText {...headerProps} />
+      <ScrollView>
+      <View style={style.view}>
+        <View style={style.headerView}>
+        <EText {...headerProps} />
+        <EText {...userProps} />
+        <EText {...productProps} />
+        </View>
+          
           <EListThumbnail data = {data} />
         </View>
+      </ScrollView>
+      
       </BaseScreen>
     )
   }

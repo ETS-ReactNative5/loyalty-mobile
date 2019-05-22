@@ -1,27 +1,31 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   view: {
-    flexDirection: 'row',
+    flexDirection: "column",
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#DADADA',
-  },
+    borderBottomColor: "#DADADA",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center"
+  },  
   imageIcon: {
-    // flex: 1,
-    // flexDirection: 'column',
-    width: 100,
-    height: 200,
-    justifyContent: 'center',
-    alignItems: 'center'
+    width: 400,
+    height: 400,
   },
-  describe: {
-
-  },
+  describe: {},
   title: {
-  
+    textAlign: "center",
+    color: "crimson",
+    paddingTop: 30,
+    fontSize: 30,
+    fontWeight: 'bold'
   },
   brief: {
-    
+    textAlign: "center",
+    paddingTop: 30,
+    color: 'black',
+    textShadowColor: 'black',
   }
-})
+});
