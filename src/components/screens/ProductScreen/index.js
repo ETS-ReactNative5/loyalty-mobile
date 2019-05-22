@@ -9,6 +9,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 import ProductComponent from './component';
 import { actions } from '../../../redux/actions';
+import { getStore } from '../../../../App';
 
 const mapStateToProps = (state) => {
     return {

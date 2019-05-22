@@ -13,8 +13,10 @@ import { actions } from '../../../redux/actions';
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
+        specialOffer: state.specials.result
     }
 }
+
 
 const mapDispatchToProps = (dispatch) => {
     //map dispatch to component props

@@ -7,17 +7,19 @@ import EText from '../../elements/EText';
 import { appScreenName } from '../../../commons/Constants';
 import EList from '../../elements/list/EList';
 import { getStore } from '../../../../App';
+import { actions } from '../../../redux/actions';
+
 const data = [
   {
     source: require('../../../../res/avatar-default.png'), 
     title: 'Tri Tran', 
-    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))}
+    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))}
   },
   {
     source: require('../../../../res/logout-icon.png'), 
     title: 'Log out', 
-    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.login}))}
-  }, 
+    onPress: () => {getStore().dispatch(actions.doLogout())}
+  },
 ]
 
 export default class MoreComponent extends Component {

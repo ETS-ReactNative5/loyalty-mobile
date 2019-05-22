@@ -7,11 +7,13 @@ import {combineReducers} from 'redux'
 import {ACTION_TYPE} from '../actions/type'
 import apps from './AppReducer'
 import users from './UserReducer'
+import specials from './SpecialOfferReducer'
 
 //combine all reducer
 const appReducer = combineReducers({
     apps,
     users,
+    specials
 })
 
 export default rootReducer = (state, action) => {

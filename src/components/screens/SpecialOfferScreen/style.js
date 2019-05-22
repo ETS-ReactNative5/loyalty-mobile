@@ -33,7 +33,9 @@ export default StyleSheet.create({
       
     },
     content: {
-      flex: 10,
+      textAlign: 'center',
+      fontSize: 12,
+      fontWeight: 'bold'
     },
     tittleContent: {
       justifyContent: 'center',

@@ -10,7 +10,7 @@ import {ACTION_TYPE} from "../actions/type";
 const initState = {
 	isResetSuccess: false,
 	isFetching: false,
-	accessToken: null,
+	token: null,
 	user: {}
 }
 
@@ -25,14 +25,14 @@ export default users = (state = initState, action = {}) => {
 		case ACTION_TYPE.DO_LOGIN_SUCCESS:
 			return {
 				...state,
-				accessToken: action.data.token,
-				isFetching: false,
-				user: action.data
+				token: action.data,
+				isFetching: false
 			}
 		case ACTION_TYPE.DO_LOGIN_FAILURE:
 			return {
 				...state,
-				isFetching: false
+				isFetching: false,
+				e: action.e
 			}
 		case ACTION_TYPE.DO_LOGOUT: 
 			return {
@@ -43,57 +43,35 @@ export default users = (state = initState, action = {}) => {
 			return {
 				...state,
 				isFetching: false,
-				accessToken: null,
-				user: {}
+				token: null
 			}
 		case ACTION_TYPE.DO_LOGOUT_FAILURE: 
+		return {
+			...state,
+			isFetching: false,
+			e: action.e
+		}
+		case ACTION_TYPE.DO_AUTO_LOGIN:
 			return {
 				...state,
-				isFetching: false
+				isFetching: true,
 			}
-		case ACTION_TYPE.UPDATE_STAFF:
+		case ACTION_TYPE.GET_PROFILE:
 			return {
 				...state,
-				isFetching: true
+				isFetching: true,
 			}
-		case ACTION_TYPE.UPDATE_STAFF_SUCCESS:
+		case ACTION_TYPE.GET_PROFILE_SUCCESS:
 			return {
 				...state,
 				isFetching: false,
 				user: action.data
 			}
-		case ACTION_TYPE.UPDATE_STAFF_FAILURE:
-			return {
-				...state,
-				isFetching: false
-			}
-		case ACTION_TYPE.CHANGE_PASSWORD:
-			return {
-				...state,
-				isFetching: true
-			}
-		case ACTION_TYPE.CHANGE_PASSWORD_SUCCESS:
-		case ACTION_TYPE.CHANGE_PASSWORD_FAILURE:
-			return {
-				...state,
-				isFetching: false
-			}
-		case ACTION_TYPE.FORGOT_PASSWORD:
-			return {
-				...state,
-				isFetching: true
-			}
-		case ACTION_TYPE.FORGOT_PASSWORD_SUCCESS:
+		case ACTION_TYPE.GET_PROFILE_FAILURE:
 			return {
 				...state,
 				isFetching: false,
-				isResetSuccess: true,
-			}
-		case ACTION_TYPE.FORGOT_PASSWORD_FAILURE:
-			return {
-				...state,
-				isFetching: false,
-				isResetSuccess: false,
+				e: action.e
 			}
 		default:
 			return state
