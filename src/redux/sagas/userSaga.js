@@ -23,18 +23,19 @@ function* doLogin(action) {
         e: 'Login error'
       })
     }
-    if(result.error === 0) {
-      getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
-      getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.product}))
-    } else if (result.error === 1) {
-      getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))
-    }
     getStore().dispatch(actions.getProfile(result.data))
     yield put({
       type: ACTION_TYPE.DO_LOGIN_SUCCESS,
       data: result.data
     })
-    
+    setTimeout(() => {
+      getStore().dispatch(actions.doAppData(result.data))
+      if(result.error === 0) {
+        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
+      } else if (result.error === 1) {
+        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))
+      }
+    }, 200)
   } catch (e) {
     yield put({
       type: ACTION_TYPE.DO_LOGIN_FAILURE,
@@ -59,14 +60,25 @@ function* doLogout() {
   }
 }
 
-function* doAutoLogin(action) {
-  if(isEmpty(action.token)) {
+function* doAutoLogin() {
+  try {
+    const token = yield call(services.login.autoLogin)
+    if(isEmpty(token)) {
+      getStore().dispatch(actions.doLogout());
+      return;
+    }
+    yield put({
+      type: ACTION_TYPE.DO_LOGIN_SUCCESS,
+      data: token,
+    })
+    getStore().dispatch(actions.doAppData(token));
+    getStore().dispatch(actions.getProfile(token));
+    setTimeout(() => {
+      getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
+    }, 200)
+  } catch(e) {
     getStore().dispatch(actions.doLogout());
-    return;
   }
-  getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
-  getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.product}))
-  getStore().dispatch(actions.getProfile(action.token))
 }
 
 function* getProfile(action) {

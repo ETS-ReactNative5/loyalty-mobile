@@ -5,6 +5,7 @@ const _ = require('lodash')
 
 exports.accessToken = (req, res, next) => {
   const bearerHeader = req.headers.authorization
+  console.log('Token:', bearerHeader)
   if(typeof bearerHeader === 'undefined') {
     res.status(200).json(RESPONSE.FORBIDDEN);
   }
@@ -14,6 +15,7 @@ exports.accessToken = (req, res, next) => {
       res.status(200).json(RESPONSE.FORBIDDEN);
     } else {
       req.userId = data.userId;
+      console.log('UserID:', req.userId, ' - token:', data)
       next();
     }
   })

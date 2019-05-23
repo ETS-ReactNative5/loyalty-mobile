@@ -25,12 +25,6 @@ import { actions } from '../redux/actions';
 import AsyncStorage from '@react-native-community/async-storage';
 import { TOKEN_KEY } from '../commons/Constants';
 
-let fcmToken = null;
-
-export function getFcmToken() {
-    return fcmToken;
-}
-
 // Create app stack navigator
 export const AppNavigator = StackNavigator({
     splash: { screen: SplashSreen },
@@ -91,10 +85,7 @@ export default class RootAppComponent extends Component {
         );
         BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
         AppState.addEventListener('change', this.handleAppStateChange);
-        AsyncStorage.getItem(TOKEN_KEY).then((data) => {
-            console.log('Token:', data)
-            getStore().dispatch(actions.getAutoLogin(data))
-        })
+        getStore().dispatch(actions.getAutoLogin());
     }
 
     handleAppStateChange = (nextAppState) => {

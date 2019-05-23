@@ -14,6 +14,12 @@ export const actions = {
       status
     }
   },
+  doAppData(token) {
+    return {
+      type: ACTION_TYPE.DO_APP_DATA,
+      token
+    }
+  },
   doLogin(email, pass) {
     return {
       type: ACTION_TYPE.DO_LOGIN,
@@ -25,16 +31,20 @@ export const actions = {
       type: ACTION_TYPE.DO_LOGOUT
     }
   },
-  getAutoLogin(token) {
+  getAutoLogin() {
     return {
-      type: ACTION_TYPE.DO_AUTO_LOGIN,
-      token,
+      type: ACTION_TYPE.DO_AUTO_LOGIN
     }
   },
   getProfile(token) {
     return {
       type: ACTION_TYPE.GET_PROFILE,
       token
+    }
+  },
+  getProductCategories() {
+    return {
+      type: ACTION_TYPE.GET_PRODUCT_CATEGORIES
     }
   },
   showNoticedDialog(props) {

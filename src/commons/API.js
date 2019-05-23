@@ -4,6 +4,8 @@ const API_HOST = API_DOMAIN + API_VERSION;
 
 export default APIs = {
 
+    doAppData: API_HOST + '/app-data',
+
     doLogin: API_HOST + '/login',
 
     doLogout: API_HOST + '/logout',

@@ -4,6 +4,7 @@ import API from '../../commons/API';
 import {isEmpty} from '../../commons/Utils';
 import _ from 'lodash';
 import { TOKEN_KEY } from '../../commons/Constants';
+import Storage from '../../commons/Storage';
 
 
 export default LoginServices = {
@@ -24,6 +25,10 @@ export default LoginServices = {
       console.error('Error:', e);
       return {error: -1, message: e}
     }
+  },
+
+  autoLogin: async () => {
+    return await Storage.getToken()
   },
 
   getProfile: (token) => {

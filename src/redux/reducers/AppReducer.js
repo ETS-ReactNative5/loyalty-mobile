@@ -13,7 +13,8 @@ import { HomeTabNavigation } from "../../components/screens/HomeScreen/component
 //default state
 const initState = {
     internetConnection: true,
-    isFetching: false
+    isFetching: false,
+    appData: {}
 }
 
 const initialAppScreenState = AppNavigator.router.getStateForAction(
@@ -28,6 +29,20 @@ const appCommons = (state = initState, action = {}) => {
             return {
                 ...state,
                 internetConnection: action.status
+            }
+        case ACTION_TYPE.DO_APP_DATA:
+            return {
+                ...state,
+            }
+        case ACTION_TYPE.DO_APP_DATA_SUCCESS:
+            return {
+                ...state,
+                appData: action.data
+            }
+        case ACTION_TYPE.DO_APP_DATA_FAILURE:
+            return {
+                ...state,
+                e: action.e
             }
         default:
             return state

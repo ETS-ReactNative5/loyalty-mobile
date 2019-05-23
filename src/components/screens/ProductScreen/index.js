@@ -13,6 +13,7 @@ import { actions } from '../../../redux/actions';
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
+        // categories: state.products.categories
     }
 }
 

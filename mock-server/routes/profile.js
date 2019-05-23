@@ -17,7 +17,10 @@ router.get('/', accessToken, (req, res, next) => {
     if(_.isEmpty(profile) || profile.length > 1) {
       res.status(200).json({error: -1, message: 'Not found user!'});
     } else {
-      res.status(200).json({error: 0, data: profile[0]})
+      const result = profile[0];
+      delete result.password;
+      delete result.token;
+      res.status(200).json({error: 0, data: result})
     }
   })
 });

@@ -7,7 +7,11 @@ const {accessToken} = require('../handler/accessHandler');
 
 router.get('/', accessToken, (req, res, next) => {
   jsonHandler.read('./data/appData.json', (data) => {
-    res.status(200).json(JSON.parse(data));
+    try{
+      res.status(200).json({error: 0, data: JSON.parse(data)});
+    } catch(e) {
+      res.status(200).json({error: -1, message: e});
+    }
   })
 });
 
