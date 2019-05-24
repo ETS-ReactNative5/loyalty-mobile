@@ -31,17 +31,8 @@ export default LoginServices = {
     return await Storage.getToken()
   },
 
-  getProfile: (token) => {
-    try {
-      if(isEmpty(token)) {
-        return { error: -1, message: 'No token or it has expired!' }
-      }
-      return RESTFull.get(API.doProfile, {token});
-    } catch(e) {
-      console.error('Error:', e);
-      return {error: -1, message: e}
-    }
-    
+  getProfile: () => {
+    return RESTFull.get(API.doProfile);
   }
 
 }

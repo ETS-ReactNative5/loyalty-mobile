@@ -12,7 +12,7 @@ import services from '../../services';
 import _ from 'lodash';
 import { getStore } from '../../../App';
 import { actions } from '../actions';
-import { appScreenName, homeTabName } from '../../commons/Constants';
+import { appScreenName } from '../../commons/Constants';
 
 function* doLogin(action) {
   try {
@@ -23,7 +23,7 @@ function* doLogin(action) {
         e: 'Login error'
       })
     }
-    getStore().dispatch(actions.getProfile(result.data))
+    getStore().dispatch(actions.getProfile())
     yield put({
       type: ACTION_TYPE.DO_LOGIN_SUCCESS,
       data: result.data
@@ -51,7 +51,7 @@ function* doLogout() {
     yield put({
       type: ACTION_TYPE.DO_LOGOUT_SUCCESS,
     })
-    
+    getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.login}))
   } catch (e) {
     yield put({
       type: ACTION_TYPE.DO_LOGOUT_FAILURE,
@@ -71,8 +71,8 @@ function* doAutoLogin() {
       type: ACTION_TYPE.DO_LOGIN_SUCCESS,
       data: token,
     })
-    getStore().dispatch(actions.doAppData(token));
-    getStore().dispatch(actions.getProfile(token));
+    getStore().dispatch(actions.doAppData());
+    getStore().dispatch(actions.getProfile());
     setTimeout(() => {
       getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
     }, 200)
@@ -81,9 +81,9 @@ function* doAutoLogin() {
   }
 }
 
-function* getProfile(action) {
+function* getProfile() {
   try {
-    const result = yield call(services.login.getProfile, action.token)
+    const result = yield call(services.login.getProfile)
     if(result.error < 0) {
       getStore().dispatch(actions.doLogout());
       return;

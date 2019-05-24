@@ -7,14 +7,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import SpecialOfferComponent from './component';
+import WebViewComponent from "./component";
 import { actions } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
-    const {name, avatarImage} = state.users.user
     return {
-        list: state.specialOffers.offers,
-        name, avatarImage
     }
 }
 
@@ -23,12 +20,12 @@ const mapDispatchToProps = (dispatch) => {
     return {...{dispatch: dispatch}, ...bindActionCreators(actions, dispatch)};
 }
 
-class SpecialOfferScreen extends Component {
+class WebViewScreen extends Component {
     render() {
         return (
-            <SpecialOfferComponent {...this.props}/>
+            <WebViewComponent {...this.props}/>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpecialOfferScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(WebViewScreen)

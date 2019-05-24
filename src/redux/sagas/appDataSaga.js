@@ -12,7 +12,7 @@ import { isEmpty } from '../../commons/Utils';
 function* getAppData(action) {
   try {
     console.log('Calling app Saga here!');
-   const result = yield call(services.appData.getData, action.token)
+   const result = yield call(services.appData.getData)
    console.log('App Data:', result)
    if(isEmpty(result)) {
      console.log('Resutl calling:', result)

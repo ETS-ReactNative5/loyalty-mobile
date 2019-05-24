@@ -20,10 +20,9 @@ import HomeScreen from '../components/screens/HomeScreen';
 import SplashSreen from '../components/screens/SplashSreen';
 import AboutMeScreen from '../components/screens/AboutMeScreen';
 import ProfileScreen from '../components/screens/ProfileScreen';
+import WebViewScreen from '../components/screens/WebViewScreen';
 import { getStore } from '../../App';
 import { actions } from '../redux/actions';
-import AsyncStorage from '@react-native-community/async-storage';
-import { TOKEN_KEY } from '../commons/Constants';
 
 // Create app stack navigator
 export const AppNavigator = StackNavigator({
@@ -32,6 +31,7 @@ export const AppNavigator = StackNavigator({
     aboutme: {screen: AboutMeScreen},
     profile: {screen: ProfileScreen},
     home: { screen: HomeScreen },
+    webview: {screen: WebViewScreen},
   },
 	{
 		navigationOptions: {

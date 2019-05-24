@@ -5,7 +5,7 @@
 */
 
 import React, {Component} from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View, ViewPropTypes } from 'react-native'
 import PropTypes from 'prop-types'
 import styles from './style'
 import _ from 'lodash'
@@ -15,12 +15,13 @@ export default class EAvatar extends Component {
 
     render() {
         const {avatar, onPress} = this.props
+        const avatarStyle = [styles.avatar, this.props.style]
         const viewProps = {
             style: styles.view,
             onPress
         },
-        avatarProp = _.isEmpty(avatar) ? {style: styles.avatar, source: require('../../../../res/avatar-default.png')}
-                    : {style: styles.avatar, uri: avatar},
+        avatarProp = _.isEmpty(avatar) ? {style: avatarStyle, source: require('../../../../res/avatar-default.png')}
+                    : {style: avatarStyle, uri: avatar},
         editProps = {
             style: styles.edit,
         },
@@ -42,9 +43,11 @@ export default class EAvatar extends Component {
 
 EAvatar.propTypes = {
     avatar: PropTypes.string,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
+    style: ViewPropTypes.style,
 }
 EAvatar.defaultProps = {
     avatar: '',
-    onPress: () => {}
+    onPress: () => {},
+    style: null
 }

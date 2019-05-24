@@ -18,7 +18,7 @@ const initState = {
 }
 
 const initialAppScreenState = AppNavigator.router.getStateForAction(
-    AppNavigator.router.getActionForPathAndParams(appScreenName.login));
+    AppNavigator.router.getActionForPathAndParams(appScreenName.splash));
 const initialHomeTabState = HomeTabNavigation.router.getStateForAction(
     HomeTabNavigation.router.getActionForPathAndParams(homeTabName.product));
 

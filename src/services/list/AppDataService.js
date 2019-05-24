@@ -6,7 +6,7 @@ import _ from 'lodash';
 export default LoginServices = {
 
   getData: (token) => {  
-    return RESTFull.get(API.doAppData, {token})
+    return RESTFull.get(API.doAppData)
   },
 
 }

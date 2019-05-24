@@ -17,17 +17,24 @@ export default StyleSheet.create({
       width: '100%',
       top: headerHeight + (Platform.OS === 'ios' ? 25 : 0),
     },
-    avatar: {
-      position: 'absolute',
-      top: 100,
+    backView: {
+      flexDirection: 'row',
+    },
+    iconBack: {
+      height: 20,
+    },
+    textBack: {
+      color: '#757575',
+      fontWeight: '500',
+      marginLeft: -10,
+      marginTop: 2,
     },
     viewProfile: {
       backgroundColor: '#FFFFFF',
       width: '100%',
       height: deviceHeight,
-      alignItems: 'center',
       position: 'absolute',
       top: 45,
-      paddingTop: 70,
+      paddingTop: 30,
     }
 })

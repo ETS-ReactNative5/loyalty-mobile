@@ -22,6 +22,7 @@ export const appScreenName = {
 	home: 'home',
 	aboutme: 'aboutme',
 	profile: 'profile',
+	webview: 'webview',
 }
 
 export const homeTabName = {

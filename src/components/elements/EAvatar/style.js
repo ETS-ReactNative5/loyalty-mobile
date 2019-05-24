@@ -12,7 +12,10 @@ export default StyleSheet.create({
     },
     avatar: {
         height: '100%',
-        width: '100%'
+        width: '100%',
+        borderRadius: 45,
+        borderColor: '#757575',
+        borderWidth: 1,
     },
     edit: {
         position: 'absolute',

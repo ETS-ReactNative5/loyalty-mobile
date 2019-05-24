@@ -20,6 +20,7 @@ router.get('/', accessToken, (req, res, next) => {
       const result = profile[0];
       delete result.password;
       delete result.token;
+      delete result.userId;
       res.status(200).json({error: 0, data: result})
     }
   })

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import styles from './style';
 import EItemThumbnailList from '../../EItemThumbnailList';
+import EText from '../../EText';
 
 export default class EListThumbnail extends Component {
 
@@ -22,15 +23,30 @@ export default class EListThumbnail extends Component {
   }
 
   render() {
-    return <FlatList {...this.dataProps} />
+    const {title, subContent} = this.props,
+    titleProps = {
+      text: _.toUpper(title),
+      style: styles.title
+    },
+    subContentProps = {
+      text: subContent,
+      style: styles.subContent
+    }
+    return (
+      <View>
+        {!_.isEmpty(title) && (<EText {...titleProps} />)}
+        {!_.isEmpty(subContent) && (<EText {...subContentProps} />)}
+        <FlatList {...this.dataProps} />
+      </View>
+    )
   }
 
 }
 
-EList.propTypes = {
+EListThumbnail.propTypes = {
   data: PropTypes.array
 }
 
-EList.defaultProps = {
+EListThumbnail.defaultProps = {
   data: []
 }
