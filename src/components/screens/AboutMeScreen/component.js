@@ -17,6 +17,7 @@ import ECheckbox from '../../elements/ECheckbox';
 import _ from 'lodash';
 import { getStore } from '../../../../App';
 import { appScreenName } from '../../../commons/Constants';
+import EDatePicker from '../../elements/EDatePicker';
 
 const INTERESTED = [
   {title: 'Special Offers', value: '1', isChoose: true},
@@ -105,15 +106,20 @@ export default class AboutMeComponent extends Component {
 			autoCapitalize: 'none',
     },
     dateOfBirthProps = {
-			style: styles.textInput,
+			style: styles.dateInput,
 			placeholder: getStrings().dateOfBirth,
-			onChangeText: (text) => {
+			onDateChange: (date) => {
 				this.setState({
-					dateOfBirth: text
+					dateOfBirth: date
 				})
-			},
-			autoCapitalize: 'none',
+      },
+      getDateStr: () => {
+        this.setState({
+          dateOfBirth: date
+        })
+      }
     },
+
     titleInterestProps = {
       style: styles.title,
       text: getStrings().interest
@@ -132,7 +138,8 @@ export default class AboutMeComponent extends Component {
 				<View {...aboutFormProps}>
 					<ETextInput {...fitstNameProps} />
 					<ETextInput {...lastNameProps} />
-          <ETextInput {...dateOfBirthProps} />
+          <EDatePicker {...dateOfBirthProps} />
+         
 				</View>
         <EText {...titleInterestProps} />
         <View {...aboutFormProps}>

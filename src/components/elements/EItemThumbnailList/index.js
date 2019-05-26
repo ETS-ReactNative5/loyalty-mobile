@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import EImage from '../EImage';
 import EText from '../EText';

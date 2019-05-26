@@ -29,5 +29,12 @@ export default StyleSheet.create({
       position: 'absolute',
       top: 45,
       paddingTop: 70,
+    },
+    text: {
+        margin: 3
+    },
+    boldText: {
+      margin: 3,
+      fontWeight: 'bold'
     }
 })

@@ -13,7 +13,7 @@ import EImage from '../EImage';
 
 export default class EAvatar extends Component {
 
-    render() {
+    render() {  
         const {avatar, onPress} = this.props
         const viewProps = {
             style: styles.view,
