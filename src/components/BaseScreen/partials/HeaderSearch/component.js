@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View} from 'react-native'
+import {View, TouchableOpacity} from 'react-native'
 import styles from './style'
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -34,7 +34,9 @@ export default class HeaderSearchComponent extends Component {
     }
     return (
       <View {...viewProps}>
-        <EImage {...backProps} />
+        <TouchableOpacity onPress={() => goBack()}>
+          <EImage {...backProps} />
+        </TouchableOpacity>
         <ETextInput {...searchProps} />
         <EImage {...searchIconProps} />
       </View>

@@ -43,6 +43,8 @@ export default StyleSheet.create({
     width: 20,
     marginTop: 12,
   },
+  textSearch: {
+  },
   listView: {
   }
 

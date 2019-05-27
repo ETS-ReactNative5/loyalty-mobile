@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, ScrollView} from 'react-native';
+import {NavigationActions} from 'react-navigation';
 import styles from './style';
 import BaseScreen from '../../BaseScreen';
 import { getStore } from '../../../../App';
@@ -12,6 +13,7 @@ import EText from '../../elements/EText';
 import EAvatar from '../../elements/EAvatar';
 import ETextInput from '../../elements/ETextInput';
 import EListThumbnail from '../../elements/list/EListThumbnail';
+import { appScreenName } from '../../../commons/Constants';
 
 export default class SpecialOfferComponent extends Component {
   
@@ -44,7 +46,8 @@ export default class SpecialOfferComponent extends Component {
       style: styles.iconSearchView,
     },
     textSearchProps = {
-      placeholder: 'Search...'
+      placeholder: 'Search...',
+      style: styles.textSearch,
     },
     listOfferProps = {
       title: 'Special',

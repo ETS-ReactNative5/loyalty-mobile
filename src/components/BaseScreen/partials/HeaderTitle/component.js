@@ -10,14 +10,17 @@ import EText from '../../../elements/EText';
 export default class HeaderTitleComponent extends Component {
 
   render() {
-    const { title, onBack } = this.props,
+    let backImage = _.get(this.props.style, 'backgroundColor', '#FFFFFF') === '#FFFFFF' 
+                    ? require('../../../../../res/back-icon.png')
+                    : require('../../../../../res/back-icon-white.png')
+    const { title } = this.props,
     viewProps = {
       ...this.props,
       style: [styles.view, this.props.style]
     },
     backProps = {
       style: styles.back,
-      source: require('../../../../../res/back-icon.png'), 
+      source: backImage, 
     },
     viewTitleProps = {
       style: styles.viewTitle

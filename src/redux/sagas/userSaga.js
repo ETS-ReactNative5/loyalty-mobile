@@ -33,7 +33,7 @@ function* doLogin(action) {
       if(result.error === 0) {
         getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
       } else if (result.error === 1) {
-        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.aboutme}))
+        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))
       }
     }, 200)
   } catch (e) {
