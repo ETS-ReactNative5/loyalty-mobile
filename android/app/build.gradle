@@ -141,7 +141,6 @@ dependencies {
     implementation project(':react-native-webview')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-image-crop-picker')
-    implementation project(':react-native-firebase')
     implementation project(':react-native-fast-image')
     implementation project(':react-native-device-info')
     implementation project(':@react-native-community_netinfo')

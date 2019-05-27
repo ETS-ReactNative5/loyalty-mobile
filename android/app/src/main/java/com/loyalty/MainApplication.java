@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
-import io.invertase.firebase.RNFirebasePackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.reactnativecommunity.netinfo.NetInfoPackage;
@@ -34,7 +33,6 @@ public class MainApplication extends Application implements ReactApplication {
             new RNCWebViewPackage(),
             new LinearGradientPackage(),
             new PickerPackage(),
-            new RNFirebasePackage(),
             new FastImageViewPackage(),
             new RNDeviceInfo(),
             new NetInfoPackage(),
