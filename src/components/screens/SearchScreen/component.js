@@ -1,21 +1,44 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
-import style from './style';
-import BaseScreen from '../../BaseScreen';
-import { HEADER_TYPE } from '../../../commons/Constants';
+import {Easing, View} from 'react-native';
+import {addNavigationHelpers, StackNavigator} from 'react-navigation'
+import {addListener} from '../../../redux/stores/ReactNavigationRedux'
+import SearchMainScreen from '../SearchMainScreen';
+import SearchDetailScreen from '../SearchDetailScreen';
+import { fade } from '../../../commons/Constants';
+
+// Create app stack navigator
+export const SearchScreenNavigator = StackNavigator(
+  {
+      searchMain: SearchMainScreen,
+      searchDetail: SearchDetailScreen,
+  },
+  {
+      navigationOptions: {
+          header: null,
+      },
+      transitionConfig: () => ({
+          transitionSpec: {
+              duration: 0,
+              easing: Easing.linear,
+          },
+          screenInterpolator: (props) => {
+              return fade(props)
+          }
+      })
+  }
+)
 
 export default class SearchComponent extends Component {
   
   render() {
-    const baseProps = {
-      typeHeader: HEADER_TYPE.SEARCH
-    }
+    const {dispatch, searchTabs} = this.props;
     return (
-      <BaseScreen {...baseProps}>
-        <View style={style.view}>
-          <Text>Search Screen</Text>
-        </View>
-      </BaseScreen>
+      <View style={{
+        flex: 1
+    }}>
+        <SearchScreenNavigator
+            navigation={addNavigationHelpers({dispatch, state: searchTabs, addListener})}/>
+    </View>
     )
   }
 

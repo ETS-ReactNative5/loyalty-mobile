@@ -33,6 +33,11 @@ export const homeTabName = {
 	more: 'more',
 }
 
+export const searchScreenName = {
+	searchMain: 'searchMain',
+	searchDetail: 'searchDetail',
+}
+
 export const appStyleConstants = {
 	iphoneXPadding: Platform.OS === 'ios' ? ifIphoneX(25, 0) : 0,
 	smallFont: 13,
@@ -69,7 +74,7 @@ export const HOME_TABS = {
 }
 
 export const INTERESTED = [
-  {title: 'Special Offers', value: '1', isChoose: true},
+  {title: 'Special Offers', value: '1', isChoose: false},
   {title: 'Food', value: '2', isChoose: false},
   {title: 'Drinks', value: '3', isChoose: false},
   {title: 'Phone Cards', value: '4', isChoose: false},
@@ -80,4 +85,34 @@ export const ERROR_CODE = {
 	SUCCESS: 0,
 	ERROR: -1,
 	FORBIDDEN: -403,
+}
+
+export const DATETIME_TYPE = {
+	DATE: 'date',
+	TIME: 'time',
+	DATE_TIME: 'datetime',
+}
+
+export const DEFAULT_DATE_FORMAT = 'DD/MM/YYYY'
+export const DEFAULT_TIME_FORMAT = 'HH:mm:ss a'
+export const DEFAULT_DATETIME_FORMAT = DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT
+
+// create fade effect for App transition
+export const fade = (props) => {
+	const { position, scene } = props
+
+	const index = scene.index
+
+	const translateX = 0
+	const translateY = 0
+
+	const opacity = position.interpolate({
+		inputRange: [index - 0.7, index, index + 0.7],
+		outputRange: [0.3, 1, 0.3]
+	})
+
+	return {
+		opacity,
+		transform: [{ translateX }, { translateY }]
+	}
 }

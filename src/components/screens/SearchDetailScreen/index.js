@@ -7,13 +7,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import SearchComponent from './component';
+import SearchDetailComponent from './component';
 import { actions } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
-        searchTabs: state.apps.searchScreens
     }
 }
 
@@ -22,12 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     return {...{dispatch: dispatch}, ...bindActionCreators(actions, dispatch)};
 }
 
-class SearchScreen extends Component {
+class SearchDetailScreen extends Component {
     render() {
         return (
-            <SearchComponent {...this.props}/>
+            <SearchDetailComponent {...this.props}/>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchDetailScreen)

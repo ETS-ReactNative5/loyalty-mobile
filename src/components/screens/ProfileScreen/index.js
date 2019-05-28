@@ -13,7 +13,8 @@ import { actions } from '../../../redux/actions';
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
-        user: state.users.user
+        user: state.users.user,
+        interestedFields: state.apps.appCommons.appData.interestedFields
     }
 }
 

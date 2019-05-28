@@ -115,7 +115,7 @@ ETextInput.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	editable: PropTypes.bool,
 	height: PropTypes.number,
-	textInputStyle: ViewPropTypes.style,
+	textInputStyle: TextInput.propTypes.style,
 }
 
 ETextInput.defaultProps = {
