@@ -85,7 +85,7 @@ export default class RootAppComponent extends Component {
         );
         BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
         AppState.addEventListener('change', this.handleAppStateChange);
-        getStore().dispatch(actions.getAutoLogin());
+        // getStore().dispatch(actions.getAutoLogin());
     }
 
     handleAppStateChange = (nextAppState) => {

@@ -69,7 +69,7 @@ export const HOME_TABS = {
 }
 
 export const INTERESTED = [
-  {title: 'Special Offers', value: '1', isChoose: true},
+  {title: 'Special Offers', value: '1', isChoose: false},
   {title: 'Food', value: '2', isChoose: false},
   {title: 'Drinks', value: '3', isChoose: false},
   {title: 'Phone Cards', value: '4', isChoose: false},
@@ -81,3 +81,13 @@ export const ERROR_CODE = {
 	ERROR: -1,
 	FORBIDDEN: -403,
 }
+
+export const DATETIME_TYPE = {
+	DATE: 'date',
+	TIME: 'time',
+	DATE_TIME: 'datetime',
+}
+
+export const DEFAULT_DATE_FORMAT = 'DD/MM/YYYY'
+export const DEFAULT_TIME_FORMAT = 'HH:mm:ss a'
+export const DEFAULT_DATETIME_FORMAT = DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT
