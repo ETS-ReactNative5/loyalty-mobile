@@ -37,7 +37,7 @@ export default class SearchMainComponent extends Component {
     searchInfoProps = {
       style: styles.searchText,
       text: this.state.itemCount + 'Search Result For ' + ': ' + this.state.name
-    }
+    },
     header1Props = {
       style: styles.header,
       text: 'STRAWBERRY TEA'
