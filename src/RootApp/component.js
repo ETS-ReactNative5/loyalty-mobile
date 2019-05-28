@@ -21,52 +21,33 @@ import SplashSreen from '../components/screens/SplashSreen';
 import AboutMeScreen from '../components/screens/AboutMeScreen';
 import ProfileScreen from '../components/screens/ProfileScreen';
 import WebViewScreen from '../components/screens/WebViewScreen';
-import { getStore } from '../../App';
-import { actions } from '../redux/actions';
+import { fade } from '../commons/Constants';
 
 // Create app stack navigator
-export const AppNavigator = StackNavigator({
-    splash: { screen: SplashSreen },
-    login: { screen: LoginScreen },
-    aboutme: {screen: AboutMeScreen},
-    profile: {screen: ProfileScreen},
-    home: { screen: HomeScreen },
-    webview: {screen: WebViewScreen},
-  },
-	{
-		navigationOptions: {
-			header: null,
-		},
-		transitionConfig: () => ({
-			transitionSpec: {
-				duration: 0,
-				easing: Easing.linear,
-			},
-			screenInterpolator: (props) => {
-				return fade(props)
-			}
-		})
-	})
-
-// create fade effect for App transition
-const fade = (props) => {
-	const { position, scene } = props
-
-	const index = scene.index
-
-	const translateX = 0
-	const translateY = 0
-
-	const opacity = position.interpolate({
-		inputRange: [index - 0.7, index, index + 0.7],
-		outputRange: [0.3, 1, 0.3]
-	})
-
-	return {
-		opacity,
-		transform: [{ translateX }, { translateY }]
-	}
-}
+export const AppNavigator = StackNavigator(
+    {
+        splash: { screen: SplashSreen },
+        login: { screen: LoginScreen },
+        aboutme: {screen: AboutMeScreen},
+        profile: {screen: ProfileScreen},
+        home: { screen: HomeScreen },
+        webview: {screen: WebViewScreen},
+    },
+    {
+        navigationOptions: {
+            header: null,
+        },
+        transitionConfig: () => ({
+            transitionSpec: {
+                duration: 0,
+                easing: Easing.linear,
+            },
+            screenInterpolator: (props) => {
+                return fade(props)
+            }
+        })
+    }
+)
 
 export default class RootAppComponent extends Component {
 
@@ -85,7 +66,6 @@ export default class RootAppComponent extends Component {
         );
         BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
         AppState.addEventListener('change', this.handleAppStateChange);
-        // getStore().dispatch(actions.getAutoLogin());
     }
 
     handleAppStateChange = (nextAppState) => {
