@@ -12,7 +12,7 @@ import ETabIcon from '../../elements/ETabIcon';
 import EDisappearingTabBar from '../../elements/EDisappearingTabBar';
 import ProductScreen from '../ProductScreen';
 import SpecialOfferScreen from '../SpecialOfferScreen';
-import SearchScreen from '../SearchScreen';
+import SearchScreen from '../SearchNewScreen';
 import RewardScreen from '../RewardScreen';
 import MoreScreen from '../MoreScreen';
 import EText from '../../elements/EText';
