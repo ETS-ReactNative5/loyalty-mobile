@@ -24,10 +24,6 @@ target 'Loyalty' do
 
   pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
 
-  # Pods for ReactPushNotifications - Add these lines
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
-
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
   pod 'react-native-async-storage', :path => '../node_modules/@react-native-community/async-storage'

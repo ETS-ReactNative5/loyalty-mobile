@@ -23,7 +23,6 @@
     "react-native-datepicker": "^1.7.2",
     "react-native-device-info": "^1.1.0",
     "react-native-fast-image": "5.2.0",
-    "react-native-firebase": "5.2.3",
     "react-native-image-crop-picker": "^0.23.0",
     "react-native-iphone-x-helper": "1.2.0",
     "react-native-keyboard-aware-scroll-view": "0.8.0",
