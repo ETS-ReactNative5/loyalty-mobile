@@ -17,6 +17,8 @@ import ECheckbox from '../../elements/ECheckbox';
 import _ from 'lodash';
 import { getStore } from '../../../../App';
 import { appScreenName } from '../../../commons/Constants';
+import EDatePicker from '../../elements/EDatePicker';
+
 
 const INTERESTED = [
   {title: 'Special Offers', value: '1', isChoose: true},
@@ -30,11 +32,10 @@ export default class AboutMeComponent extends Component {
   state = {
     firstName: '',
     lastName: '',
-    dateOfBirth: '',
+    // dateOfBirth: '',
     interests: INTERESTED,
     isChecked: false,
   }
-
   onSubmit = () => {
     getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
   }
@@ -90,7 +91,7 @@ export default class AboutMeComponent extends Component {
 			onChangeText: (text) => {
 				this.setState({
 					firstName: text
-				})
+        })
 			},
 			autoCapitalize: 'none',
 		},
@@ -105,14 +106,8 @@ export default class AboutMeComponent extends Component {
 			autoCapitalize: 'none',
     },
     dateOfBirthProps = {
-			style: styles.textInput,
-			placeholder: getStrings().dateOfBirth,
-			onChangeText: (text) => {
-				this.setState({
-					dateOfBirth: text
-				})
-			},
-			autoCapitalize: 'none',
+			style: styles.dateInput,
+      placeholder: getStrings().dateOfBirth,
     },
     titleInterestProps = {
       style: styles.title,
@@ -132,7 +127,8 @@ export default class AboutMeComponent extends Component {
 				<View {...aboutFormProps}>
 					<ETextInput {...fitstNameProps} />
 					<ETextInput {...lastNameProps} />
-          <ETextInput {...dateOfBirthProps} />
+          {/* <ETextInput {...dateOfBirthProps} /> */}
+          <EDatePicker {...dateOfBirthProps}/>
 				</View>
         <EText {...titleInterestProps} />
         <View {...aboutFormProps}>

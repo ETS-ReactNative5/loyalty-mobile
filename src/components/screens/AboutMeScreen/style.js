@@ -24,6 +24,14 @@ export default StyleSheet.create({
     borderWidth: 1,
     height: deviceWidth * appStyleConstants.PERCENT_INPUT,
   },
+  dateInput:{
+    borderColor: '#828282',
+    borderWidth: 1,
+    marginTop: appStyleConstants.NORMAL_SCREEN_MARGIN,
+    height: deviceWidth * appStyleConstants.PERCENT_INPUT,
+    width: '100%',
+    marginTop: 35
+  },
   submit: {
     marginTop: appStyleConstants.NORMAL_SCREEN_MARGIN,
   },
