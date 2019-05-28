@@ -13,7 +13,7 @@ import HeaderBackgroundComponent from './component';
 function mapStateToProps(state) {
   return {
     //map state from store to component props
-    headerImage: '',
+    headerImage: state.apps.appCommons.appData.bannerHeaderImage,
   }
 }
 

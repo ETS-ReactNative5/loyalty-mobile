@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View} from 'react-native'
+import {View, TouchableOpacity} from 'react-native'
 import styles from './style'
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -8,28 +8,32 @@ import EImage from '../../../elements/EImage';
 import EText from '../../../elements/EText';
 
 export default class HeaderTitleComponent extends Component {
-  
+
   render() {
-    const { title, onBack } = this.props,
+    let backImage = _.get(this.props.style, 'backgroundColor', '#FFFFFF') === '#FFFFFF' 
+                    ? require('../../../../../res/back-icon.png')
+                    : require('../../../../../res/back-icon-white.png')
+    const { title } = this.props,
     viewProps = {
       ...this.props,
-      style: styles.view
+      style: [styles.view, this.props.style]
     },
     backProps = {
       style: styles.back,
-      source: require('../../../../../res/back-icon.png'), 
-      onPress: onBack
+      source: backImage, 
     },
     viewTitleProps = {
       style: styles.viewTitle
     },
     titleProps = {
-      style: styles.text,
+      style: [styles.text, this.props.titleStyle],
       text: title,
     }
     return (
       <View {...viewProps}>
-        <EImage {...backProps} />
+        <TouchableOpacity onPress={this.props.onBack}>
+          <EImage {...backProps} />
+        </TouchableOpacity>
         <View {...viewTitleProps}>
           <EText {...titleProps} />
         </View>

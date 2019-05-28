@@ -13,8 +13,12 @@ export default StyleSheet.create({
   imageIcon: {
     width: 400,
     height: 400,
+    width: '100%',
+    paddingVertical: 10,
   },
-  describe: {},
+  describe: {
+    alignItems: 'center'
+  },
   title: {
     textAlign: "center",
     color: "crimson",
@@ -27,5 +31,9 @@ export default StyleSheet.create({
     paddingTop: 30,
     color: 'black',
     textShadowColor: 'black',
-  }
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: '#DB291D',
+    paddingBottom: 15,
+  },
 });

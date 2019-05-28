@@ -14,15 +14,15 @@ export const { width: deviceWidth, height: deviceHeight } = Dimensions.get('wind
 export const AES_KEY = "LOYALTY_AES_KEY"
 export const PAGE_SIZE = 10
 
-export const AsyncStorageConstants = {
-	autoLogin: '@Loyalty_auto_login',
-}
+export const TOKEN_KEY = "12j098y3bd938ju9"
 
 export const appScreenName = {
 	splash: 'splash',
 	login: 'login',
 	home: 'home',
 	aboutme: 'aboutme',
+	profile: 'profile',
+	webview: 'webview',
 }
 
 export const homeTabName = {
@@ -66,4 +66,18 @@ export const HOME_TABS = {
   search: {name: 'Search', uri: require('../../res/search-icon.png'), uriFocus: require('../../res/search-icon-focus.png')},
   reward: {name: 'Reward', uri: require('../../res/star-icon.png'), uriFocus: require('../../res/star-icon-focus.png')},
   more: {name: 'More', uri: require('../../res/more-icon.png'), uriFocus: require('../../res/more-icon-focus.png')},
+}
+
+export const INTERESTED = [
+  {title: 'Special Offers', value: '1', isChoose: true},
+  {title: 'Food', value: '2', isChoose: false},
+  {title: 'Drinks', value: '3', isChoose: false},
+  {title: 'Phone Cards', value: '4', isChoose: false},
+]
+
+export const ERROR_CODE = {
+	FIRST_LOGIN: 1,
+	SUCCESS: 0,
+	ERROR: -1,
+	FORBIDDEN: -403,
 }

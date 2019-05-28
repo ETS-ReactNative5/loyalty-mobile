@@ -1,91 +1,66 @@
 import { getStore } from "../../App";
 import { getStrings } from "../commons/Strings";
+import AsyncStorage from '@react-native-community/async-storage';
 import _ from 'lodash';
 import { isEmpty } from "../commons/Utils";
+import { ERROR_CODE, TOKEN_KEY } from "../commons/Constants";
+import Storage from "../commons/Storage";
 
 const TIME_OUT = 30000;
 
-function handling(_method, url, requestData) {
-	let authorization = (getStore().getState() && getStore().getState().users && getStore().getState().users.accessToken)
+const handling = async (_method, url, requestData) => {
+	return await Storage.getToken().then((token) => {
+		let authorization = (getStore().getState() && getStore().getState().users && getStore().getState().users.accessToken)
 		?
 		"Bearer " + getStore().getState().users.accessToken : null
-	// let authorization = null
-	return Promise.race([
-		new Promise((resolve, reject) => {
-			if (!checkInternetConnection()) {
-				const e = {
-					error: -1,
-					message: getStrings().noInternetConnection
-				};
-				reject(e);
-			}
-			if (_method === 'GET' && !isEmpty(requestData)) {
-				let parameter = '?'
-				_.keys(requestData).forEach((param, key) => {
-					parameter += '&' + param + '=' + requestData[param]
-				})
-				url += parameter
-			}
-			return fetch(url, {
-				method: _method,
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: authorization,
-					"Cache-Control": "no-cache"
-				},
-				body: _method !== 'GET' ? requestData : null,
+		if(isEmpty(authorization) && !isEmpty(token)) {
+			authorization = "Bearer " + token
+		}
+		if (!checkInternetConnection()) {
+			return { error: -1, message: getStrings().noInternetConnection };
+		}
+		if (_method === 'GET' && !isEmpty(requestData)) {
+			let parameter = '?'
+			_.keys(requestData).forEach((param, key) => {
+				parameter += '&' + param + '=' + requestData[param]
 			})
-				.then(response => {
-					return response.json()
-				})
-				.then(responseJson => {
-					if (_.isString(responseJson) && _.includes(responseJson, 'Not Found') > -1) {
-						reject({
-							error: -1,
-							message: 'Request Not Found!'
-						})
-					}
-					let resultError = ''
-					if(_.has(responseJson, 'error')) {
-						const details = _.get(responseJson, 'details', [])
-						if(!_.isEmpty(details) && details.length > 0) {
-							_.forEach(details, (detail, _dkey) => {
-								const violations = _.get(detail, 'field_violations', [])
-								if(!_.isEmpty(violations)) {
-									resultError = _.get(violations[0], 'description', '')
-									return
-								}
-							})
-						}
-						if(_.isEmpty(resultError)) {
-							resultError = _.get(responseJson, 'message', '')
-						}
-						reject({error: -1, message: resultError})
-					}
-					resolve(responseJson)
-				})
-				.catch(error => {
-					reject({
-						error: -1,
-						message: error.toString() === 'TypeError: Network request failed' ? getStrings().noInternetConnection : error.toString()
-					});
-				});
-		}),
-		new Promise((resolve, reject) => {
-			setTimeout(() => {
-				let e = {
-					error: -1,
-					message: getStrings().timeOutError
-				};
-				reject(e);
-			}, TIME_OUT);
+			url += parameter
+		}
+		return {error: 0, data: {_method, url, requestData, authorization}}
+	}).then((result) => {
+		if(result.error < 0) {
+			return result
+		}
+		const {_method, url, requestData, authorization} = result.data
+		return fetch(url, {
+			method: _method,
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: authorization,
+				"Cache-Control": "no-cache"
+			},
+			body: _method !== 'GET' ? requestData : null,
+		}).then(response => {
+			return response.json()
 		})
-	]);
+		.then(responseJson => {
+			const error = _.get(responseJson, 'error', ERROR_CODE.ERROR)
+			if(error < 0) {
+				return {message: _.get(responseJson, 'message', 'No message')}
+			}
+			if(_.includes(url, 'login')) {
+				AsyncStorage.setItem(TOKEN_KEY, responseJson.data)
+			}
+			return responseJson;
+		})
+	})
 }
 
+
 function checkInternetConnection() {
-	let store = getStore();
-	return store.getState() && store.getState().apps && store.getState().apps.appCommons && store.getState().apps.appCommons.internetConnection;
+	return true
+	// let store = getStore();
+	// return store.getState() && store.getState().apps && store.getState().apps.appCommons && store.getState().apps.appCommons.internetConnection;
 }
 
 export default class RESTFull {

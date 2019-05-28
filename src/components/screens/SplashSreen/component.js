@@ -8,16 +8,23 @@ import { View } from "react-native";
 import styles from "./style";
 import { actions } from "../../../redux/actions";
 import { getStore } from "../../../../App";
+import EImage from "../../elements/EImage";
 
 export default class SplashComponent extends Component {
   componentDidMount() {
-    getStore().dispatch(actions.getAutoLogin());
+    getStore().dispatch(actions.getAutoLogin())
   }
 
   render() {
+    const {logo} = this.props
+    const logoProps = {
+      uri: logo,
+      style: styles.logo,
+      resizeMode: 'contain'
+    }
     return (
       <View style={styles.container}>
-        <Text>Loyalty</Text>
+        <EImage {...logoProps}/>
       </View>
     );
   }

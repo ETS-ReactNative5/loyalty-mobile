@@ -10,10 +10,11 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'black'
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
   },
   logo: {
-    width: 50,
-    height: 50
+    width: 200,
+    height: 200
   }
 })

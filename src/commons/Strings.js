@@ -57,5 +57,7 @@ const strings = {
         currentPassword: "Current Password",
         newPassword: "New Password",
         confirmPassword: "Confirm Password",
+        describeProductScreen: "We have promotions and deals from our specialty stores lined up for you.",
+        contenSpecialOfferScreen: "Circle K always brings you new, special, attractive and exciting promotions, from Monthly Promotions, Cheap Prices to daily meals that you can't miss."
     }
 }

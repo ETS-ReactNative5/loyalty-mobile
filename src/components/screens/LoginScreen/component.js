@@ -37,7 +37,6 @@ export default class LoginComponent extends Component {
 	onLogin = () => {
 		const {email, password} = this.state
 		getStore().dispatch(actions.doLogin(email, password))
-		getStore().dispatch(NavigationActions.navigate({ routeName: appScreenName.aboutme }))
 	}
 
 	openWebLink = (link) => {
@@ -101,12 +100,6 @@ export default class LoginComponent extends Component {
 		descriptionProps = {
 			style: styles.description
 		},
-		textDesProps = {
-			text: getStrings().descriptionLoginForm
-		},
-		andDesProps = {
-			text: getStrings().and
-		}
 		termConProps = {
 			text: getStrings().termConditions,
 			onPress: () => this.openWebLink(webLink.termConditions)

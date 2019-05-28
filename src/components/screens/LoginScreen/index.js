@@ -13,7 +13,7 @@ import { actions } from '../../../redux/actions';
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
-        accessToken: state.users.accessToken,
+        token: state.users.token,
         isResetSuccess: state.users.isResetSuccess || false
     }
 }

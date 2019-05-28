@@ -19,19 +19,19 @@ import LoginScreen from '../components/screens/LoginScreen';
 import HomeScreen from '../components/screens/HomeScreen';
 import SplashSreen from '../components/screens/SplashSreen';
 import AboutMeScreen from '../components/screens/AboutMeScreen';
-
-let fcmToken = null;
-
-export function getFcmToken() {
-    return fcmToken;
-}
+import ProfileScreen from '../components/screens/ProfileScreen';
+import WebViewScreen from '../components/screens/WebViewScreen';
+import { getStore } from '../../App';
+import { actions } from '../redux/actions';
 
 // Create app stack navigator
 export const AppNavigator = StackNavigator({
     splash: { screen: SplashSreen },
     login: { screen: LoginScreen },
     aboutme: {screen: AboutMeScreen},
+    profile: {screen: ProfileScreen},
     home: { screen: HomeScreen },
+    webview: {screen: WebViewScreen},
   },
 	{
 		navigationOptions: {
@@ -85,6 +85,7 @@ export default class RootAppComponent extends Component {
         );
         BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
         AppState.addEventListener('change', this.handleAppStateChange);
+        getStore().dispatch(actions.getAutoLogin());
     }
 
     handleAppStateChange = (nextAppState) => {

@@ -4,17 +4,38 @@
 *
 */
 import AsyncStorage from '@react-native-community/async-storage';
-import { all, put, takeLatest } from 'redux-saga/effects'
+import { all, put, call, takeLatest } from 'redux-saga/effects';
+import {NavigationActions} from 'react-navigation';
 import {ACTION_TYPE} from "../actions/type";
+import { isEmpty } from '../../commons/Utils';
+import services from '../../services';
+import _ from 'lodash';
+import { getStore } from '../../../App';
+import { actions } from '../actions';
+import { appScreenName } from '../../commons/Constants';
 
 function* doLogin(action) {
   try {
-    
+    const result = yield call(services.login.doLogin, action.email, action.pass)
+    if(isEmpty(result) || !_.has(result, 'token') || isEmpty(result.token)) {
+      yield put({
+        type: ACTION_TYPE.DO_LOGIN_FAILURE,
+        e: 'Login error'
+      })
+    }
+    getStore().dispatch(actions.getProfile())
     yield put({
       type: ACTION_TYPE.DO_LOGIN_SUCCESS,
-      data
+      data: result.data
     })
-    
+    setTimeout(() => {
+      getStore().dispatch(actions.doAppData(result.data))
+      if(result.error === 0) {
+        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
+      } else if (result.error === 1) {
+        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))
+      }
+    }, 200)
   } catch (e) {
     yield put({
       type: ACTION_TYPE.DO_LOGIN_FAILURE,
@@ -29,9 +50,8 @@ function* doLogout() {
     AsyncStorage.clear();
     yield put({
       type: ACTION_TYPE.DO_LOGOUT_SUCCESS,
-      data
     })
-    
+    getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.login}))
   } catch (e) {
     yield put({
       type: ACTION_TYPE.DO_LOGOUT_FAILURE,
@@ -39,9 +59,53 @@ function* doLogout() {
     })
   }
 }
+
+function* doAutoLogin() {
+  try {
+    const token = yield call(services.login.autoLogin)
+    if(isEmpty(token)) {
+      getStore().dispatch(actions.doLogout());
+      return;
+    }
+    yield put({
+      type: ACTION_TYPE.DO_LOGIN_SUCCESS,
+      data: token,
+    })
+    getStore().dispatch(actions.doAppData());
+    getStore().dispatch(actions.getProfile());
+    setTimeout(() => {
+      getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
+    }, 200)
+  } catch(e) {
+    getStore().dispatch(actions.doLogout());
+  }
+}
+
+function* getProfile() {
+  try {
+    const result = yield call(services.login.getProfile)
+    if(result.error < 0) {
+      getStore().dispatch(actions.doLogout());
+      return;
+    } 
+    yield put({
+      type: ACTION_TYPE.GET_PROFILE_SUCCESS,
+      data: result.data
+    })
+  } catch(e) {
+    yield put({
+      type: ACTION_TYPE.GET_PROFILE_FAILURE,
+      e
+    })
+  }
+
+}
+
 export default function* root() {
   yield all([
     takeLatest(ACTION_TYPE.DO_LOGIN, doLogin),
-    takeLatest(ACTION_TYPE.DO_LOGOUT, doLogout)
+    takeLatest(ACTION_TYPE.DO_LOGOUT, doLogout),
+    takeLatest(ACTION_TYPE.DO_AUTO_LOGIN, doAutoLogin),
+    takeLatest(ACTION_TYPE.GET_PROFILE, getProfile),
   ]);
 }

@@ -1,9 +1,10 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import CryptoJS from 'crypto-js'
 import RESTFull from '../RESTFull';
-import API from '../API';
-import { AsyncStorageConstants, AES_KEY } from '../../commons/Constants';
-import { getStore } from '../../../App';
+import API from '../../commons/API';
+import {isEmpty} from '../../commons/Utils';
+import _ from 'lodash';
+import { TOKEN_KEY } from '../../commons/Constants';
+import Storage from '../../commons/Storage';
 
 
 export default LoginServices = {
@@ -16,45 +17,22 @@ export default LoginServices = {
     return RESTFull.post(API.doLogin, body)
   },
 
-  doSaveAutoLogin: async (email, pass) => {
-    try {
-      let encryptPassword = CryptoJS.AES.encrypt(
-        JSON.stringify(pass),
-        AES_KEY
-      ).toString();
-      let myAccount = {
-        email: email,
-        pass: encryptPassword
-      };
-      return await AsyncStorage.setItem(AsyncStorageConstants.autoLogin, JSON.stringify(myAccount))
-    }catch (e) {
-      return {
-        error: -1,
-        message: 'Cannot save info to auto login'
-      }
-    }
-  },
-  doGetAutoLogin: async () => {
-    try {
-      const result = await AsyncStorage.getItem(AsyncStorageConstants.autoLogin)
-      if(result) {
-        let myAccount = JSON.parse(result)
-        myAccount.pass = JSON.parse(CryptoJS.AES.decrypt(myAccount.pass, AES_KEY).toString(CryptoJS.enc.Utf8));
-        return myAccount
-      }
-      return {}
-    }catch (e) {
-      return {
-        error: -1,
-        message: 'Cannot get info to auto login'
-      }
-    }
-  },
   doLogout: () => {
-    let UID = getStore().getState().users.user.id
-    let body = JSON.stringify({
-      userID: UID
-    });
-    return RESTFull.post(API.doLogout, body)
+    try {
+      AsyncStorage.clear();
+      return {error: 0, message: 'Log out successfully!'}
+    } catch(e) {
+      console.error('Error:', e);
+      return {error: -1, message: e}
+    }
+  },
+
+  autoLogin: async () => {
+    return await Storage.getToken()
+  },
+
+  getProfile: () => {
+    return RESTFull.get(API.doProfile);
   }
+
 }

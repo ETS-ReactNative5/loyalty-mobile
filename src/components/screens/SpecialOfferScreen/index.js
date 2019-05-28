@@ -11,8 +11,10 @@ import SpecialOfferComponent from './component';
 import { actions } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
+    const {name, avatarImage} = state.users.user
     return {
-        //map state from store to component props
+        list: state.specialOffers.offers,
+        name, avatarImage
     }
 }
 

@@ -10,8 +10,9 @@ import PropTypes from 'prop-types'
 import { HEADER_TYPE } from '../../commons/Constants';
 import HeaderBackground from './partials/HeaderBackground';
 import HeaderSearch from './partials/HeaderSearch';
-import { goBack, isEmpty } from '../../commons/Utils';
+import { goBack } from '../../commons/Utils';
 import HeaderTitle from './partials/HeaderTitle';
+import _ from 'lodash';
 
 export default class BaseScreen extends Component {
 
@@ -31,7 +32,7 @@ export default class BaseScreen extends Component {
 				const titleProps = {
 					...this.props,
 					title, 
-					onBack: this.onBack.bind(this)
+					onBack: this.onBack
 				}
 				return <HeaderTitle {...titleProps} />
 			case BACKGROUND_IMAGE:
@@ -42,7 +43,7 @@ export default class BaseScreen extends Component {
 
 	onBack() {
 		goBack()
-		if(!isEmpty(this.props.onBack) && typeof this.props.onBack === 'function') {
+		if(_.has(this.props, 'onBack') && _.isUndefined(this.props.onBack)) {
 			this.props.onBack()
 		}
 	}
