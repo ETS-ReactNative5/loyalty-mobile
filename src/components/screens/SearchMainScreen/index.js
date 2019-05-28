@@ -7,14 +7,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import ProfileComponent from './component';
+import SearchMainComponent from './component';
 import { actions } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
-        user: state.users.user,
-        interestedFields: state.apps.appCommons.appData.interestedFields
     }
 }
 
@@ -23,12 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     return {...{dispatch: dispatch}, ...bindActionCreators(actions, dispatch)};
 }
 
-class ProfileScreen extends Component {
+class SearchMainScreen extends Component {
     render() {
         return (
-            <ProfileComponent {...this.props}/>
+            <SearchMainComponent {...this.props}/>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchMainScreen)

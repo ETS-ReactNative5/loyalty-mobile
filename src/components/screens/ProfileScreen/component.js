@@ -14,25 +14,61 @@ import ECheckbox from '../../elements/ECheckbox';
 import _ from 'lodash';
 import EButton, { TextButtonTypes } from '../../elements/EButton';
 import { getStrings } from '../../../commons/Strings';
+import EDateTime from '../../elements/EDateTime';
 
 export default class ProfileComponent extends Component {
 
   state = {
-    interests: INTERESTED
+    user: this.props.user || {
+      address: "",
+      avatarImage: "",
+      currentBalancePoints: 0,
+      dateOfBirth: "",
+      email: "",
+      interestedFields: [],
+      language: "en-English",
+      name: "",
+      offers: 0,
+      phone: "+84 ",
+      qrcodeImage: "",
+      registerDate: "",
+      rewardPoints: 0,
+      vouchers: 0
+    }
   }
 
   setInterests = (itemInterest) => {
-    const {interests} = this.state
-    let nextInterests = _.map(interests, (item, key) => {
+    let _user = this.state.user
+    let nextInterests = _.map(_user.interestedFields, (item, key) => {
       return item.value === itemInterest.value ? itemInterest : item
     })
+    _user.interestedFields = nextInterests
     this.setState({
-      interests: nextInterests
+      user: _user
     })
   }
 
   onSubmit = () => {
 
+  }
+
+  changeDateTime = (date) => {
+    let _user = this.state.user
+    _user.dateOfBirth = date
+    this.setState({user: _user})
+  }
+
+  getInterestFields = () => {
+    const {interestedFields} = this.props
+    const { user } = this.state
+    const userFields = user.interestedFields
+    return _.map(interestedFields, (item, k) => {
+      return {
+        value: item.value,
+        name: item.name,
+        isChoose: _.indexOf(userFields, item.value) >= 0
+      }
+    })
   }
 
   get renderBackButton() {
@@ -59,24 +95,26 @@ export default class ProfileComponent extends Component {
   }
 
   get renderProfile() {
-    const user = this.props
+    const {user} = this.props
     
     inforProps = {
       style: styles.inforView
     }
     return (
       <View {...inforProps}>
-        <EditText title={'Name'} value={'Yumi Nguyen'} />
-        <EditText title={'Date of Birth'} value={'14/12/1994'} />
-        <EditText title={'Address'} value={'Ho Chi Minh City, Vietnam'} />
-        <EditText title={'Phone'} value={'+84 773432667'} />
-        <EditText title={'Email'} value={'yumi.nguyen@gmail.com'} />
+        <EditText title={'Name'} value={user.name} />
+        <View style={{alignItems: 'center'}}>
+          <EText style={{fontWeight: 'bold', color: '#000000'}} text={'Date of Birth'} />
+          <EDateTime iconButton={editIcon} value={user.dateOfBirth} onChange={(date) => this.changeDateTime(date)} />
+        </View>
+        <EditText title={'Address'} value={user.address} />
+        <EditText title={'Phone'} value={user.phone} />
+        <EditText title={'Email'} value={user.email} />
       </View>
     )
   }
 
   get renderInteresting() {
-    const {interests} = this.state
     const _this = this
     const interestTitleProps = {
       style: styles.interestTitle,
@@ -85,13 +123,14 @@ export default class ProfileComponent extends Component {
     interestedProps = {
       style: styles.interestView
     }
+    let interests = this.getInterestFields()
     return (
       <View>
         <EText {...interestTitleProps} />
         <View {...interestedProps}>
           {_.map(interests, (item, key) => {
             let checkboxProps = {
-              text: item.title,
+              text: item.name,
               isChecked: item.isChoose,
               onPress: () => {
                 item.isChoose = !item.isChoose

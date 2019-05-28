@@ -11,10 +11,10 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F98608',
   },
   logo: {
-    width: 200,
-    height: 200
+    width: 450,
+    height: 450,
   }
 })

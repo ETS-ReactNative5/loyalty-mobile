@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
-import styles from './style';
+import {View, Text} from 'react-native';
+import style from './style';
 import BaseScreen from '../../BaseScreen';
 import { HEADER_TYPE } from '../../../commons/Constants';
-import EText from '../../elements/EText';
-import EImage from '../../elements/EImage';
-import {NavigationActions} from 'react-navigation';
-import { actions } from '../../../redux/actions';
-import { getStore } from '../../../../App';
-import { appScreenName } from '../../../commons/Constants';
+import {addNavigationHelpers, StackNavigator} from 'react-navigation'
 
-export default class SearchComponent extends Component {
+
+export default class SearchMainComponent extends Component {
+  
+  // render() {
+  //   const baseProps = {
+  //     typeHeader: HEADER_TYPE.SEARCH
+  //   }
+  //   return (
+  //     <BaseScreen {...baseProps}>
+  //       <View style={style.view}>
+  //         <Text>Search Main Screen</Text>
+  //       </View>
+  //     </BaseScreen>
+  //   )
+  // }
   state = {
     itemCount: '(2)',
     name: 'Nestea'
@@ -22,7 +31,7 @@ export default class SearchComponent extends Component {
     },
           touchProps={
             style: styles.touch,
-            onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))}
+            
           }
           searchInfoProps ={
             style: styles.searchText,

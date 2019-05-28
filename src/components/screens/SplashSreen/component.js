@@ -18,7 +18,7 @@ export default class SplashComponent extends Component {
   render() {
     const {logo} = this.props
     const logoProps = {
-      uri: logo,
+      source: require('../../../../res/bg-screen.png'),
       style: styles.logo,
       resizeMode: 'contain'
     }

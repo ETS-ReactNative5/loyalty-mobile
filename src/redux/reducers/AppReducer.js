@@ -5,10 +5,11 @@
 */
 
 import {AppNavigator} from "../../RootApp/component";
-import {appScreenName, homeTabName} from "../../commons/Constants";
+import {appScreenName, homeTabName, searchScreenName} from "../../commons/Constants";
 import {combineReducers} from 'redux'
 import {ACTION_TYPE} from "../actions/type";
 import { HomeTabNavigation } from "../../components/screens/HomeScreen/component";
+import { SearchScreenNavigator } from "../../components/screens/SearchScreen/component";
 
 //default state
 const initState = {
@@ -21,6 +22,8 @@ const initialAppScreenState = AppNavigator.router.getStateForAction(
     AppNavigator.router.getActionForPathAndParams(appScreenName.splash));
 const initialHomeTabState = HomeTabNavigation.router.getStateForAction(
     HomeTabNavigation.router.getActionForPathAndParams(homeTabName.product));
+const initialSearchState = SearchScreenNavigator.router.getStateForAction(
+        SearchScreenNavigator.router.getActionForPathAndParams(searchScreenName.searchDetail));
 
 const appCommons = (state = initState, action = {}) => {
     switch (action.type) {
@@ -59,8 +62,14 @@ const homeTabs = (state = initialHomeTabState, action) => {
     return nextState || state;
 };
 
+const searchScreens = (state = initialSearchState, action) => {
+    const nextState = SearchScreenNavigator.router.getStateForAction(action, state);
+    return nextState || state;
+};
+
 export default combineReducers({
     appCommons,
     appScreens,
-    homeTabs
+    homeTabs,
+    searchScreens,
 })
