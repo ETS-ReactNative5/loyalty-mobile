@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import style from './style';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import styles from './style';
 import BaseScreen from '../../BaseScreen';
 import { HEADER_TYPE } from '../../../commons/Constants';
-import { addNavigationHelpers, StackNavigator } from 'react-navigation'
+import EText from '../../elements/EText';
+import EImage from '../../elements/EImage';
 
 
 export default class SearchMainComponent extends Component {
@@ -87,15 +88,15 @@ export default class SearchMainComponent extends Component {
       }
     return (
       <BaseScreen {...baseProps}>
-        {/* <View style={styles.view}> */}
+        <View style={styles.view}>
           <View style={styles.searchInfo}>
-            <EText {...searchInfoProps} />
+            <EText {...searchInfoProps}  />
           </View>
           <ScrollView>
             <View style={styles.item1}>
               <EImage {...heartImgProps} />
               <TouchableOpacity  {...touchProps}>
-                <EImage {...direction1Props} />
+                <EImage  {...direction1Props} />
               </TouchableOpacity>
               <EImage {...conditionProps} />
               <EImage {...image1Props} />
@@ -118,9 +119,8 @@ export default class SearchMainComponent extends Component {
               <EText {...footerProps} />
             </View>
           </ScrollView>
-        {/* </View> */}
+        </View>
       </BaseScreen>
     )
   }
-
 }
