@@ -33,7 +33,7 @@ export default class SearchMainComponent extends Component {
       touchProps = {
         style: styles.touch,
 
-      }
+      },
     searchInfoProps = {
       style: styles.searchText,
       text: this.state.itemCount + 'Search Result For ' + ': ' + this.state.name
