@@ -34,9 +34,12 @@ export default StyleSheet.create({
     marginTop: appStyleConstants.SMALL_SCREEN_MARGIN,
   },
   title: {
-
+    fontWeight: 'bold',
+    color: '#F98608',
+    paddingBottom: 5,
   },
   description: {
-
+    textAlign: 'justify',
+    color: '#000000',
   }
 })

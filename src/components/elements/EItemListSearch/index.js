@@ -33,7 +33,7 @@ export default class EItemListSearch extends Component {
     const viewProps = {
       style: styles.view,
     },
-    
+
     pressProps = {
       onPress: () => this.onLocation()
     },
@@ -66,7 +66,7 @@ export default class EItemListSearch extends Component {
     },
     titleProps = {
       style: styles.title,
-      text: title,
+      text: _.toUpper(title),
     },
     descriptionProps = {
       style: styles.description,
