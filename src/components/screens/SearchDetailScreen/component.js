@@ -7,20 +7,29 @@ import EImage from '../../elements/EImage';
 import EText from '../../elements/EText';
 
 
+
 //test onPress 
 import { getStore } from '../../../../App';
 import {NavigationActions} from 'react-navigation';
 import { appScreenName } from '../../../commons/Constants';
+import EMapView from '../../elements/EMapView';
 
+const listStoresByProduct = [
+  {
 
+  }
+]
+
+const storeInfo = listStoresByProduct[0]
 
 export default class SearchDetailComponent extends Component {
   
   render() {
     const baseProps = {
-      typeHeader: HEADER_TYPE.SEARCH
+      typeHeader: HEADER_TYPE.SEARCH,
+      showBack: true,
     },
-        mapProps ={
+     mapProps ={
           style: styles.map,
           source: require('../../../../res/image21.png'),
           resizeMode: 'contain'
@@ -62,30 +71,33 @@ export default class SearchDetailComponent extends Component {
           style: styles.number,
           text: 'Get Directions'
         }
-        
+
     return (
       <BaseScreen {...baseProps}>
         <View style={styles.view}>
+          <EMapView  />
+        <View>
           <View style={styles.map}>
-            <EImage {...mapProps} />
+          <EImage {...mapProps} />
           </View>
           <View style={styles.textInput}>
-            <EText {...addressProps}/>
-            <EText {...wardProps}/>
-            <EText {...directionProps}/>
-            <EText {...nationalProps}/>
+          <EText {...addressProps}/>
+          <EText {...wardProps}/>
+          <EText {...directionProps}/>
+          <EText {...nationalProps}/>
           </View>
           <View style={styles.footer}>
           <EImage {...toolProps} />
           <View style={styles.phonenum}>
-              <EText {...phoneProps} />
-              <EText {...numberProps} />
+          <EText {...phoneProps} />
+          <EText {...numberProps} />
           </View>
           <View style={styles.getLocation}>
-            <EImage {...locationProps} />
-            <EText {...locationTextProps} />
+          <EImage {...locationProps} />
+          <EText {...locationTextProps} />
           </View>
-          </View>
+        </View>
+        </View>
         </View>
       </BaseScreen>
     )

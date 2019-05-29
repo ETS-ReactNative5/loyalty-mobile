@@ -13,10 +13,21 @@ import EText from '../../elements/EText';
 import EAvatar from '../../elements/EAvatar';
 import ETextInput from '../../elements/ETextInput';
 import EListThumbnail from '../../elements/list/EListThumbnail';
-import { appScreenName } from '../../../commons/Constants';
+import { appScreenName, homeTabName, searchScreenName } from '../../../commons/Constants';
 
 export default class SpecialOfferComponent extends Component {
   
+  state = {
+    searchKey: ''
+  }
+
+  searchHandle = () => {
+    getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.search}));
+    getStore().dispatch(NavigationActions.navigate({routeName: searchScreenName.searchMain}));
+    getStore().dispatch(actions.getProduct(this.state.searchKey));
+    getStore().dispatch(actions.doSearch(this.state.searchKey));
+  }
+
   componentDidMount() {
     getStore().dispatch(actions.getSpecialOffer());
   }
@@ -48,6 +59,8 @@ export default class SpecialOfferComponent extends Component {
     textSearchProps = {
       placeholder: 'Search...',
       style: styles.textSearch,
+      onChangeText: (text) => {this.setState({searchKey: text})},
+      onBlur: () => this.searchHandle()
     },
     listOfferProps = {
       title: 'Special',

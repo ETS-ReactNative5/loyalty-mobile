@@ -5,6 +5,7 @@
 */
 
 import {StyleSheet} from 'react-native'
+import { appStyleConstants } from '../../../commons/Constants';
 
 export default StyleSheet.create({
     view: {
@@ -15,6 +16,9 @@ export default StyleSheet.create({
       flexDirection: 'column',
       alignItems: 'stretch',
       justifyContent: 'center',
+    },
+    search: {
+      paddingHorizontal: appStyleConstants.LARGE_SCREEN_MARGIN,
     },
     searchText:{
       fontSize: 20,

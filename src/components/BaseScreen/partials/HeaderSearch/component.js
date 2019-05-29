@@ -6,27 +6,49 @@ import _ from 'lodash';
 import { goBack } from '../../../../commons/Utils';
 import ETextInput from '../../../elements/ETextInput';
 import EImage from '../../../elements/EImage';
+import { getStore } from '../../../../../App';
+import { actions } from '../../../../redux/actions';
 
 export default class HeaderSearchComponent extends Component {
   
+  state = {
+    searchKey: this.props.searchText || '',
+  }
+
+  searchHandle = () => {
+    const {searchKey} = this.state
+    getStore().dispatch(actions.doSearch(searchKey));
+    this.props.onSearch(searchKey);
+  } 
+
+  changeTextHandle = (e) => {
+    this.setState({searchKey: e}, () => {
+      this.props.onChangeText()
+    })
+  }
+
+  backHandle = () => {
+    goBack();
+    this.props.onBack();
+  }
+
   render() {
-    const { searchText, onSearch, onBack, onChangeText } = this.props,
+    const { showBack } = this.props,
     viewProps = {
       ...this.props,
       style: styles.view,
-      onBlur: onSearch
+      onBlur: () => this.searchHandle()
     },
     backProps = {
       style: styles.back,
       source: require('../../../../../res/back-icon.png'), 
-      onPress: onBack
     },
     searchProps = {
-      style: styles.searchText,
+      style: styles.searchText(showBack),
       placeHolder: 'Find a store...',
-      value: searchText,
-      onPress: onSearch,
-      onChangeText: onChangeText, 
+      value: this.state.searchKey,
+      onPress: () => this.searchHandle(),
+      onChangeText: (e) => this.changeTextHandle(e), 
     },
     searchIconProps = {
       source: require('../../../../../res/search-icon-black.png'),
@@ -34,9 +56,11 @@ export default class HeaderSearchComponent extends Component {
     }
     return (
       <View {...viewProps}>
-        <TouchableOpacity onPress={() => goBack()}>
+        {showBack && 
+        <TouchableOpacity onPress={() => this.backHandle()}>
           <EImage {...backProps} />
         </TouchableOpacity>
+        }
         <ETextInput {...searchProps} />
         <EImage {...searchIconProps} />
       </View>
@@ -48,11 +72,15 @@ export default class HeaderSearchComponent extends Component {
 HeaderSearchComponent.propTypes = {
   searchText: PropTypes.string, 
   onSearch: PropTypes.func,
+  onChangeText: PropTypes.func,
+  showBack: PropTypes.bool,
   onBack: PropTypes.func.isRequired, 
 }
 
 HeaderSearchComponent.defaultProps = {
   searchText: '', 
   onSearch: () => {},
+  onChangeText: () => {},
+  showBack: false,
   onBack: () => {goBack()}
 }

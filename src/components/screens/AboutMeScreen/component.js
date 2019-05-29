@@ -18,6 +18,7 @@ import _ from 'lodash';
 import { getStore } from '../../../../App';
 import { appScreenName } from '../../../commons/Constants';
 import EDatePicker from '../../elements/EDatePicker';
+import EDateTime from '../../elements/EDateTime';
 
 
 const INTERESTED = [
@@ -32,12 +33,18 @@ export default class AboutMeComponent extends Component {
   state = {
     firstName: '',
     lastName: '',
-    // dateOfBirth: '',
+    dateOfBirth: '',
     interests: INTERESTED,
     isChecked: false,
   }
   onSubmit = () => {
     getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
+  }
+
+  changeDateTime = (date) => {
+    let _dateOfBirth = this.state.dateOfBirth
+    dateOfBirth = date
+    this.setState({dateOfBirth: _dateOfBirth})
   }
 
   setInterests = (itemInterest) => {
@@ -128,7 +135,8 @@ export default class AboutMeComponent extends Component {
 					<ETextInput {...fitstNameProps} />
 					<ETextInput {...lastNameProps} />
           {/* <ETextInput {...dateOfBirthProps} /> */}
-          <EDatePicker {...dateOfBirthProps}/>
+          {/* <EDatePicker {...dateOfBirthProps}/> */}
+          <EDateTime value={this.dateOfBirth} onChange={(date) => this.changeDateTime(date)} />
 				</View>
         <EText {...titleInterestProps} />
         <View {...aboutFormProps}>
