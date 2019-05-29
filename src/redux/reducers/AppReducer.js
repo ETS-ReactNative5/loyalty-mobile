@@ -23,7 +23,7 @@ const initialAppScreenState = AppNavigator.router.getStateForAction(
 const initialHomeTabState = HomeTabNavigation.router.getStateForAction(
     HomeTabNavigation.router.getActionForPathAndParams(homeTabName.product));
 const initialSearchState = SearchScreenNavigator.router.getStateForAction(
-        SearchScreenNavigator.router.getActionForPathAndParams(searchScreenName.searchDetail));
+        SearchScreenNavigator.router.getActionForPathAndParams(searchScreenName.searchMain));
 
 const appCommons = (state = initState, action = {}) => {
     switch (action.type) {

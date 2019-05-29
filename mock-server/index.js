@@ -31,6 +31,7 @@ var server = app.listen(3000,  "127.0.0.1", function () {
 //Routes
 app.use(ROUTER.APP_DATA.path, require(ROUTER.APP_DATA.route));
 app.use(ROUTER.CATEGORY.path, require(ROUTER.CATEGORY.route));
+app.use(ROUTER.PRODUCT.path, require(ROUTER.PRODUCT.route));
 app.use(ROUTER.SPECIAL_OFFER.path, require(ROUTER.SPECIAL_OFFER.route));
 app.use(ROUTER.PROFILE.path, require(ROUTER.PROFILE.route));
 app.use(ROUTER.LOGIN.path, require(ROUTER.LOGIN.route));

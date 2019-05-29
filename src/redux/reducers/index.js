@@ -9,13 +9,15 @@ import apps from './AppReducer'
 import users from './UserReducer'
 import products from './productReducer';
 import specialOffers from './specialOfferReducer';
+import search from './searchReducer';
 
 //combine all reducer
 const appReducer = combineReducers({
     apps,
     users,
     products,
-    specialOffers
+    specialOffers,
+    search,
 })
 
 export default rootReducer = (state, action) => {

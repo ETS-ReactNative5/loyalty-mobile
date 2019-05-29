@@ -15,9 +15,11 @@ export default StyleSheet.create({
     marginTop: 5,
     height: 20,
   },
-  searchText: {
-    height: 30,
-    width: deviceWidth - 100,
+  searchText: (showBack) => {
+    return {
+      height: 30,
+      width: showBack ? deviceWidth - 100 : deviceWidth - 50,
+    }
   },
    
   searchIcon: {

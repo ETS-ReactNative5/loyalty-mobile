@@ -12,10 +12,21 @@ import EImage from '../../elements/EImage';
 import ETextInput from '../../elements/ETextInput';
 import EListThumbnail from '../../elements/list/EListThumbnail';
 import searchIcon from '../../../../res/search-icon-black.png';
-import { appScreenName } from '../../../commons/Constants';
+import { appScreenName, searchScreenName, homeTabName } from '../../../commons/Constants';
 
 export default class ProductComponent extends Component {
   
+  state = {
+    searchKey: ''
+  }
+
+  searchHandle = () => {
+    getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.search}));
+    getStore().dispatch(NavigationActions.navigate({routeName: searchScreenName.searchMain}));
+    getStore().dispatch(actions.getProduct(this.state.searchKey));
+    getStore().dispatch(actions.doSearch(this.state.searchKey));
+  }
+
   componentDidMount() {
     getStore().dispatch(actions.getProductCategories())
   }
@@ -45,7 +56,9 @@ export default class ProductComponent extends Component {
       style: styles.iconSearchView,
     },
     textSearchProps = {
-      placeholder: 'Search...'
+      placeholder: 'Search...',
+      onChangeText: (text) => {this.setState({searchKey: text})},
+      onBlur: () => this.searchHandle()
     },
     listProductProps = {
       title: 'Product',

@@ -9,4 +9,8 @@ export default LoginServices = {
     return RESTFull.get(API.doCategories)
   },
 
+  getProducts: (name) => {
+    return RESTFull.get(API.doProduct, {name})
+  }
+
 }

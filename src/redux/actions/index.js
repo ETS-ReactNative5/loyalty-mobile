@@ -45,9 +45,27 @@ export const actions = {
       type: ACTION_TYPE.GET_PRODUCT_CATEGORIES
     }
   },
+  getProduct(name) {
+    return {
+      type: ACTION_TYPE.GET_PRODUCT,
+      name
+    }
+  },
   getSpecialOffer() {
     return {
       type: ACTION_TYPE.GET_SPECIAL_OFFER
+    }
+  },
+  doLikeProduct(productId) {
+    return {
+      type: ACTION_TYPE.DO_LIKE_PRODUCT,
+      productId,
+    }
+  },
+  doSearch(searchKey) {
+    return {
+      type: ACTION_TYPE.DO_SEARCH,
+      searchKey
     }
   },
   showNoticedDialog(props) {
