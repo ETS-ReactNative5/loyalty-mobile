@@ -36,7 +36,8 @@ export default class LoginComponent extends Component {
 
 	onLogin = () => {
 		const {email, password} = this.state
-		getStore().dispatch(actions.doLogin(email, password))
+		// getStore().dispatch(actions.doLogin(email, password))
+		getStore().dispatch(NavigationActions.navigate({routeName:appScreenName.home}))
 	}
 
 	openWebLink = (link) => {

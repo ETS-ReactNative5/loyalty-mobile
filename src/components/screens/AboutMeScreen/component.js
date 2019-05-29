@@ -17,6 +17,7 @@ import ECheckbox from '../../elements/ECheckbox';
 import _ from 'lodash';
 import { getStore } from '../../../../App';
 import { appScreenName } from '../../../commons/Constants';
+import EDateTime from '../../elements/EDateTime';
 
 const INTERESTED = [
   {title: 'Special Offers', value: '1', isChoose: true},
@@ -132,7 +133,7 @@ export default class AboutMeComponent extends Component {
 				<View {...aboutFormProps}>
 					<ETextInput {...fitstNameProps} />
 					<ETextInput {...lastNameProps} />
-          <ETextInput {...dateOfBirthProps} />
+          <EDateTime {...dateOfBirthProps} />
 				</View>
         <EText {...titleInterestProps} />
         <View {...aboutFormProps}>
