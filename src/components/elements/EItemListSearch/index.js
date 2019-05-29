@@ -33,6 +33,7 @@ export default class EItemListSearch extends Component {
     const viewProps = {
       style: styles.view,
     },
+    
     pressProps = {
       onPress: () => this.onLocation()
     },
