@@ -13,7 +13,7 @@ export default class HeaderTitleComponent extends Component {
     let backImage = _.get(this.props.style, 'backgroundColor', '#FFFFFF') === '#FFFFFF' 
                     ? require('../../../../../res/back-icon.png')
                     : require('../../../../../res/back-icon-white.png')
-    const { title } = this.props,
+    const { title, showBack } = this.props,
     viewProps = {
       ...this.props,
       style: [styles.view, this.props.style]
@@ -31,9 +31,11 @@ export default class HeaderTitleComponent extends Component {
     }
     return (
       <View {...viewProps}>
-        <TouchableOpacity onPress={this.props.onBack}>
-          <EImage {...backProps} />
-        </TouchableOpacity>
+        {showBack && 
+          <TouchableOpacity style={styles.backView} onPress={this.props.onBack}>
+            <EImage {...backProps} />
+          </TouchableOpacity>
+        }
         <View {...viewTitleProps}>
           <EText {...titleProps} />
         </View>
@@ -45,10 +47,12 @@ export default class HeaderTitleComponent extends Component {
 
 HeaderTitleComponent.propTypes = {
   title: PropTypes.string,
+  showBack: PropTypes.bool,
   onBack: PropTypes.func.isRequired, 
 }
 
 HeaderTitleComponent.defaultProps = {
   title: '',
+  showBack: false,
   onBack: () => {goBack()}
 }

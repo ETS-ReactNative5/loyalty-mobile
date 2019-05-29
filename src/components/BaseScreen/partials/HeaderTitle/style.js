@@ -9,14 +9,21 @@ export default StyleSheet.create({
     height: 100,
     width: '100%',
     backgroundColor: '#FFFFFF',
-    paddingTop: 50,
+  },
+  backView: {
+    position: 'absolute',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   back: {
     height: 20,
   },
   viewTitle: {
     width: deviceWidth - 100,
-		alignItems: 'center',
+    alignItems: 'center',
+    marginHorizontal: 50,
+    justifyContent: 'center',
   },
   text: {
     color: '#323259',

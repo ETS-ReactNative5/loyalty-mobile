@@ -58,6 +58,8 @@ const strings = {
         newPassword: "New Password",
         confirmPassword: "Confirm Password",
         describeProductScreen: "We have promotions and deals from our specialty stores lined up for you.",
-        contenSpecialOfferScreen: "Circle K always brings you new, special, attractive and exciting promotions, from Monthly Promotions, Cheap Prices to daily meals that you can't miss."
+        contenSpecialOfferScreen: "Circle K always brings you new, special, attractive and exciting promotions, from Monthly Promotions, Cheap Prices to daily meals that you can't miss.",
+        registerDate: (time) => {return  "Member since " + time},
+        remindScanQRCode: (name) => {return "Hey " + name + ", don’t forget to scan your unique QR code to earn points when you shop at Circle K Vietnam"}
     }
 }

@@ -38,6 +38,12 @@ export const searchScreenName = {
 	searchDetail: 'searchDetail',
 }
 
+export const rewardTabName = {
+	membership: 0,
+	voucher: 1,
+	history: 2,
+}
+
 export const appStyleConstants = {
 	iphoneXPadding: Platform.OS === 'ios' ? ifIphoneX(25, 0) : 0,
 	smallFont: 13,
@@ -96,6 +102,8 @@ export const DATETIME_TYPE = {
 export const DEFAULT_DATE_FORMAT = 'DD/MM/YYYY'
 export const DEFAULT_TIME_FORMAT = 'HH:mm:ss a'
 export const DEFAULT_DATETIME_FORMAT = DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT
+export const DATETIME_ZMT_FORMAT = 'ddd, MMM DD YYYY A'
+export const FULL_MONTH_FORMAT = 'MMMM YYYY'
 
 // create fade effect for App transition
 export const fade = (props) => {

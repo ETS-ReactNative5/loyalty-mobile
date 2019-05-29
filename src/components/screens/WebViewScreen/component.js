@@ -55,6 +55,7 @@ export default class WebviewComponent extends Component {
       title: "Web View",
       style: styles.baseView,
       titleStyle: styles.titleBase,
+      showBack: true,
       onBackPress: () => {
         goBack();
       }

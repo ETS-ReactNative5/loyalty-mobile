@@ -15,6 +15,7 @@ import _ from 'lodash';
 import EButton, { TextButtonTypes } from '../../elements/EButton';
 import { getStrings } from '../../../commons/Strings';
 import EDateTime from '../../elements/EDateTime';
+import EListPointsView from '../../elements/EListPointsView';
 
 export default class ProfileComponent extends Component {
 
@@ -152,22 +153,17 @@ export default class ProfileComponent extends Component {
     )
   }
 
-  get renderPoints() {
-    return (
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <PointView name={'Rewards Points'} value={145000} />
-        <PointView name={'Vouchers'} value={13} />
-        <PointView name={'Offers'} value={8} />
-      </View>
-    )
-  }
-
   render() {
-    const {avatarImage} = this.props.user
+    const {avatarImage, rewardPoints, vouchers, offers} = this.props.user
     console.log('Image:', avatarImage)
     const avatarProps = {
       avatar: avatarImage
     },
+    points = [
+      {name: 'Rewards Points', value: rewardPoints},
+      {name: 'Vouchers', value: vouchers},
+      {name: 'Offers', value: offers}
+    ]
     submitProps = {
 			text: getStrings().submit,
 			style: styles.submit,
@@ -183,7 +179,7 @@ export default class ProfileComponent extends Component {
           <ScrollView style={styles.scrollView}>
             {this.renderProfile}
             {this.renderInteresting}
-            {this.renderPoints}
+            <EListPointsView data={points} />
             <EButton {...submitProps} />
           </ScrollView>
         </View>
@@ -220,18 +216,6 @@ class EditText extends Component {
           <ETextInput {...textProps} />
           <EImage {...iconProps} />
         </View>
-      </View>
-    )
-  }
-}
-
-class PointView extends Component {
-  render() {
-    const {name, value} = this.props
-    return (
-      <View style={{paddingHorizontal: 20, alignItems: 'center', paddingVertical: 20}}>
-        <EText text={value} style={{color: '#000000', fontWeight: 'bold', fontSize: 18}} />
-        <EText text={name} style={{marginTop: 10}} />
       </View>
     )
   }
