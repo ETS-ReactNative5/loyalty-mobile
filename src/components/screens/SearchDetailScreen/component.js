@@ -13,6 +13,7 @@ import EText from "../../elements/EText";
 export default class SearchDetailComponent extends Component {
   render() {
     const baseProps = {
+<<<<<<< HEAD
       typeHeader: HEADER_TYPE.SEARCH
     };
     const mapProps = {
@@ -48,6 +49,11 @@ export default class SearchDetailComponent extends Component {
         text: "Get Directions",
         onPress: () => {}
       };
+=======
+      typeHeader: HEADER_TYPE.SEARCH,
+      showBack: true,
+    }
+>>>>>>> 88480ddabce8c4c6d16ddc4d3fab851ffd53f8f7
     return (
       <BaseScreen {...baseProps}>
         

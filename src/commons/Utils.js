@@ -56,7 +56,18 @@ export const goBack = () => {
       getStore().dispatch(NavigationActions.back({key: screenState.routes[screenState.routes.length - 1].key}))
     break
   }
+  goBackHomeTab();
+  goBackSearchScreen();
+}
 
+export const goBackSearchScreen = () => {
+  const searchState = getStore().getState().apps.searchScreens
+  getStore().dispatch(NavigationActions.back({key: searchState.routes[searchState.routes.length - 1].key}))
+}
+
+export const goBackHomeTab = () => {
+  const homeState = getStore().getState().apps.homeTabs
+  getStore().dispatch(NavigationActions.back({key: homeState.routes[homeState.routes.length - 1].key}))
 }
 
 export const goBackToHome = () => {

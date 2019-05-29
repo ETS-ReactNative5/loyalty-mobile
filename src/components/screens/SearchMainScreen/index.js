@@ -13,6 +13,8 @@ import { actions } from '../../../redux/actions';
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
+        products: state.products.products,
+        searchKey: state.search.searchKey,
     }
 }
 

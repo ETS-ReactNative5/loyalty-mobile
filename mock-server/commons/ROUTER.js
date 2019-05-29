@@ -2,6 +2,8 @@ const ROUTER = {
   
   CATEGORY: {path: '/product-categories', route: './routes/category'},
 
+  PRODUCT: {path: '/product', route: './routes/product'},
+
   SPECIAL_OFFER: {path: '/special-offer', route: './routes/special-offer'},
 
   PROFILE: {path: '/profile', route: './routes/profile'},
