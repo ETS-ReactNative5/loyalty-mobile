@@ -8,7 +8,8 @@ export default class SearchDetailComponent extends Component {
   
   render() {
     const baseProps = {
-      typeHeader: HEADER_TYPE.SEARCH
+      typeHeader: HEADER_TYPE.SEARCH,
+      showBack: true,
     }
     return (
       <BaseScreen {...baseProps}>
