@@ -22,9 +22,12 @@ export default class RewardComponent extends Component {
   }
 
   get renderRewardView() {
+    const voucherProps = {
+      onNavigateHistory: () => {this.onChangeTab(2)}
+    }
     switch(this.state.activeTab) {
       case 2: return <RewardHistoryScreen />
-      case 1: return <RewardVoucherScreen />
+      case 1: return <RewardVoucherScreen {...voucherProps} />
       case 0: 
       default: return <RewardMembershipScreen />
     }
@@ -56,6 +59,7 @@ export default class RewardComponent extends Component {
     const baseProps = {
       typeHeader: HEADER_TYPE.TITLE,
       title: 'Receipt',
+      style: {backgroundColor: '#FFFFFF'}
     },
     rewardHeaderProps = {
       style: styles.rewardHeader

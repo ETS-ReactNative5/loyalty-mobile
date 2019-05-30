@@ -124,3 +124,10 @@ export const fade = (props) => {
 		transform: [{ translateX }, { translateY }]
 	}
 }
+
+export const REDEEM_DATA = [
+	{vId: 1, vName: 'Voucher 1', vPrice: 12000, vPoints: 50, vImage: "http://triqtran.github.io/images/loyalty/others/profile.png", uAvailables: 2},
+	{vId: 2, vName: 'Voucher 2', vPrice: 7000, vPoints: 30, vImage: "http://triqtran.github.io/images/loyalty/others/profile.png", uAvailables: 0},
+	{vId: 3, vName: 'Voucher 3', vPrice: 500, vPoints: 12, vImage: "http://triqtran.github.io/images/loyalty/others/profile.png", uAvailables: 1},
+	{vId: 4, vName: 'Voucher 4', vPrice: 130, vPoints: 3, vImage: "http://triqtran.github.io/images/loyalty/others/profile.png", uAvailables: 4},
+]

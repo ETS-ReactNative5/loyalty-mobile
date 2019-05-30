@@ -13,7 +13,7 @@ export default StyleSheet.create({
       flexDirection: 'row',      
       borderBottomWidth: 3,
       borderBottomColor: '#F98608',
-      paddingHorizontal: appStyleConstants.NORMAL_SCREEN_MARGIN,
+      marginHorizontal: appStyleConstants.NORMAL_SCREEN_MARGIN,
       marginTop: -20,
       alignItems: 'center',
       justifyContent: 'space-between'
