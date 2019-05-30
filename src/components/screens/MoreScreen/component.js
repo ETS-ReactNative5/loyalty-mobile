@@ -9,22 +9,25 @@ import EList from '../../elements/list/EList';
 import { getStore } from '../../../../App';
 import { actions } from '../../../redux/actions';
 
-const data = [
-  {
-    source: require('../../../../res/avatar-default.png'), 
-    title: 'Tri Tran', 
-    onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))}
-  },
-  {
-    source: require('../../../../res/logout-icon.png'), 
-    title: 'Log out', 
-    onPress: () => {getStore().dispatch(actions.doLogout())}
-  },
-]
+const data = (name, avatar) => {
+  return [
+    {
+      image: avatar, 
+      title: name, 
+      onPress: () => {getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))}
+    },
+    {
+      source: require('../../../../res/logout-icon.png'), 
+      title: 'Log out', 
+      onPress: () => {getStore().dispatch(actions.doLogout())}
+    },
+  ]
+} 
 
 export default class MoreComponent extends Component {
   
   render() {
+    const {name, avatarImage} = this.props.user
     const headerProps = {
       style: styles.headerTitle,
       text: 'More'
@@ -33,7 +36,7 @@ export default class MoreComponent extends Component {
       <BaseScreen>
         <View style={styles.view}>
           <EText {...headerProps} />
-          <EList data={data} />
+          <EList data={data(name, avatarImage)} />
         </View>
       </BaseScreen>
     )

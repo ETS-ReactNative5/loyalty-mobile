@@ -36,12 +36,16 @@ export default StyleSheet.create({
     width: '80%',
   },
   searchView: {
-    flexDirection: 'row',
   },
   iconSearchView: {
     height: 20,
     width: 20,
-    marginTop: 12,
+    position: 'absolute',
+    left: 0,
+    top: 13,
+  },
+  textSearch: {
+    marginLeft: 20,
   },
   listView: {
   }

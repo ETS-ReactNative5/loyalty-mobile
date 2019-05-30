@@ -22,10 +22,13 @@ export default class SpecialOfferComponent extends Component {
   }
 
   searchHandle = () => {
-    getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.search}));
-    getStore().dispatch(NavigationActions.navigate({routeName: searchScreenName.searchMain}));
-    getStore().dispatch(actions.getProduct(this.state.searchKey));
-    getStore().dispatch(actions.doSearch(this.state.searchKey));
+    const {searchKey} = this.state
+    if(!isEmpty(searchKey)) {
+      getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.search}));
+      getStore().dispatch(NavigationActions.navigate({routeName: searchScreenName.searchMain}));
+      getStore().dispatch(actions.getProduct(searchKey));
+      getStore().dispatch(actions.doSearch(searchKey));
+    }
   }
 
   componentDidMount() {

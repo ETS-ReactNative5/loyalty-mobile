@@ -13,6 +13,7 @@ import ETextInput from '../../elements/ETextInput';
 import EListThumbnail from '../../elements/list/EListThumbnail';
 import searchIcon from '../../../../res/search-icon-black.png';
 import { appScreenName, searchScreenName, homeTabName } from '../../../commons/Constants';
+import { isEmpty } from '../../../commons/Utils';
 
 export default class ProductComponent extends Component {
   
@@ -21,10 +22,13 @@ export default class ProductComponent extends Component {
   }
 
   searchHandle = () => {
-    getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.search}));
-    getStore().dispatch(NavigationActions.navigate({routeName: searchScreenName.searchMain}));
-    getStore().dispatch(actions.getProduct(this.state.searchKey));
-    getStore().dispatch(actions.doSearch(this.state.searchKey));
+    const {searchKey} = this.state
+    if(!isEmpty(searchKey)) {
+      getStore().dispatch(NavigationActions.navigate({routeName: homeTabName.search}));
+      getStore().dispatch(NavigationActions.navigate({routeName: searchScreenName.searchMain}));
+      getStore().dispatch(actions.getProduct(searchKey));
+      getStore().dispatch(actions.doSearch(searchKey));
+    }
   }
 
   componentDidMount() {
@@ -56,6 +60,7 @@ export default class ProductComponent extends Component {
       style: styles.iconSearchView,
     },
     textSearchProps = {
+      style: styles.textSearch,
       placeholder: 'Search...',
       onChangeText: (text) => {this.setState({searchKey: text})},
       onBlur: () => this.searchHandle()
