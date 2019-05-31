@@ -3,7 +3,7 @@ import API from '../../commons/API';
 import _ from 'lodash';
 
 
-export default LoginServices = {
+export default ProductServices = {
 
   getCategories: () => {  
     return RESTFull.get(API.doCategories)

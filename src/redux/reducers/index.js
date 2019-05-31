@@ -5,11 +5,13 @@
 */
 import {combineReducers} from 'redux'
 import {ACTION_TYPE} from '../actions/type'
-import apps from './AppReducer'
-import users from './UserReducer'
+import apps from './appReducer'
+import users from './userReducer'
 import products from './productReducer';
 import specialOffers from './specialOfferReducer';
 import search from './searchReducer';
+import rewards from './rewardReducer';
+import stores from './storeReducer';
 
 //combine all reducer
 const appReducer = combineReducers({
@@ -18,6 +20,8 @@ const appReducer = combineReducers({
     products,
     specialOffers,
     search,
+    rewards,
+    stores,
 })
 
 export default rootReducer = (state, action) => {

@@ -18,6 +18,12 @@ export default APIs = {
 
     doProduct: API_HOST + '/product',
 
-    doStore: API_HOST + '/store',
+    doStores: API_HOST + '/store',
+
+    doGoogleMapAPI: API_HOST + '/googlemap',
+
+    doVoucher: API_HOST + '/voucher',
+
+    doHistoryVoucher: API_HOST + '/history-voucher',
 
 }

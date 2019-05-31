@@ -68,6 +68,34 @@ export const actions = {
       searchKey
     }
   },
+  doGetStores(productId, storeName) {
+    return {
+      type: ACTION_TYPE.GET_STORES,
+      productId, storeName
+    }
+  },
+  doCallGoogleMapAPI(addressList) {
+    return {
+      type: ACTION_TYPE.CALL_GOOGLE_MAP_API,
+      addressList,
+    }
+  },
+  doGetVouchers() {
+    return {
+      type: ACTION_TYPE.GET_VOUCHERS,
+    }
+  },
+  doChangeAvailableVoucher(voucherId, availables) {
+    return {
+      type: ACTION_TYPE.CHANGE_AVAILABLE_VOUCHERS,
+      voucherId, availables
+    }
+  },
+  doGetHistoryVoucher() {
+    return {
+      type: ACTION_TYPE.GET_HISTORY_VOUCHERS
+    }
+  },
   showNoticedDialog(props) {
     return {
       type: ACTION_TYPE.SHOW_NOTICED_DIALOG,

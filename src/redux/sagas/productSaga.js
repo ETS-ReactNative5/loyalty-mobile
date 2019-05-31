@@ -55,6 +55,7 @@ function* getProducts(action) {
 function* doLikeProduct(action) {
   try {
     console.log("Pass product ID:", action.productId);
+    
     yield put({
       type: ACTION_TYPE.DO_LIKE_PRODUCT_SUCCESS
     })

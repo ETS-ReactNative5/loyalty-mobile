@@ -131,3 +131,10 @@ export const REDEEM_DATA = [
 	{vId: 3, vName: 'Voucher 3', vPrice: 500, vPoints: 12, vImage: "http://triqtran.github.io/images/loyalty/others/profile.png", uAvailables: 1},
 	{vId: 4, vName: 'Voucher 4', vPrice: 130, vPoints: 3, vImage: "http://triqtran.github.io/images/loyalty/others/profile.png", uAvailables: 4},
 ]
+
+export const HISTORY_VOUCHER = [
+	{name: 'Voucher 1', price: 12000, points: 50, description: 'Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now.'},
+	{name: 'Voucher 2', price: 700, points: 7, description: 'Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now.'},
+	{name: 'Voucher 3', price: 5000, points: 150, description: 'Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now.'},
+	{name: 'Voucher 4', price: 1300, points: 50, description: 'Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now.'},
+]
