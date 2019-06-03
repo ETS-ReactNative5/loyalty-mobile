@@ -7,6 +7,7 @@ export default APIs = {
     doAppData: API_HOST + '/app-data',
 
     doLogin: API_HOST + '/login',
+    // doLogin: 
 
     doLogout: API_HOST + '/logout',
 

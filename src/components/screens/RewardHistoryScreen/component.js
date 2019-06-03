@@ -5,6 +5,7 @@ import { HISTORY_VOUCHER } from '../../../commons/Constants';
 import EListHistoryRewards from '../../elements/list/EListHistoryRewards';
 import { getStrings } from '../../../commons/Strings';
 import EText from '../../elements/EText';
+import { currency } from '../../../commons/Utils';
 
 export default class RewardHistoryComponent extends Component {
   
@@ -14,7 +15,7 @@ export default class RewardHistoryComponent extends Component {
     },
     balanceValueProps = {
       style: styles.balanceValue,
-      text: '45,000',
+      text: currency(45000),
     },
     balanceTextProps = {
       style: styles.balanceText,

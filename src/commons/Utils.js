@@ -27,6 +27,11 @@ export const isEmail = (email) => {
   return email.match(regex)
 }
 
+export const currency = (num) => {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+
+
 function showDialogExitApp() {
   Alert.alert(
     '',

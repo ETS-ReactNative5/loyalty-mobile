@@ -16,6 +16,7 @@ import EButton, { TextButtonTypes } from '../../elements/EButton';
 import { getStrings } from '../../../commons/Strings';
 import EDateTime from '../../elements/EDateTime';
 import EListPointsView from '../../elements/EListPointsView';
+import EImageChange from '../../elements/EImageChange';
 
 export default class ProfileComponent extends Component {
 
@@ -157,7 +158,11 @@ export default class ProfileComponent extends Component {
     const {avatarImage, rewardPoints, vouchers, offers} = this.props.user
     console.log('Image:', avatarImage)
     const avatarProps = {
-      avatar: avatarImage
+      style: styles.avatar,
+      uri: avatarImage,
+      onImageChange: (url)=> {
+        
+      }
     },
     points = [
       {name: 'Rewards Points', value: rewardPoints},
@@ -175,7 +180,7 @@ export default class ProfileComponent extends Component {
       <BaseScreen>
         <View style={styles.view}>
           {this.renderBackButton}
-          <EAvatar {...avatarProps} />
+          <EImageChange {...avatarProps} />
           <ScrollView style={styles.scrollView}>
             {this.renderProfile}
             {this.renderInteresting}

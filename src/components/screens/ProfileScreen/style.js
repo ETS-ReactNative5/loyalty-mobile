@@ -29,6 +29,13 @@ export default StyleSheet.create({
       marginLeft: -10,
       marginTop: 2,
     },
+    avatar: {
+      height: 90,
+      width: 90,
+      borderRadius: 45,
+      borderColor: '#FFFFFF',
+      borderWidth: 3,
+    },
     inforView: {
       paddingVertical: appStyleConstants.NORMAL_SCREEN_MARGIN,
     },
