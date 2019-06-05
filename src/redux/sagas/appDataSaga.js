@@ -9,19 +9,31 @@ import {ACTION_TYPE} from "../actions/type";
 import services from '../../services';
 import { isEmpty } from '../../commons/Utils';
 
-function* getAppData(action) {
+const dataJSON = {
+  "interestedFields": [
+    {"value": 1, "name": "Special Offers"},
+    {"value": 2, "name": "Food"},
+    {"value": 3, "name": "Drinks"},
+    {"value": 4, "name": "Phone Cards"}
+  ],
+  "logo": "http://triqtran.github.io/images/loyalty/others/logo-loyalty.png",
+  "bannerHeaderImage": "http://triqtran.github.io/images/loyalty/others/bg-header.png",
+  "privacyLink": "https://www.circlek.com.vn/vi/chinh-sach-bao-mat/",
+  "termConditionsLink": "https://www.circlek.com.vn/vi/dieu-khoan-su-dung/"
+}
+
+function* getAppData() {
   try {
-    console.log('Calling app Saga here!');
-   const result = yield call(services.appData.getData)
-   console.log('App Data:', result)
-   if(isEmpty(result)) {
-     console.log('Resutl calling:', result)
-     return;
-   }
-   if(result.error < 0) {
-     yield put({ type: ACTION_TYPE.DO_APP_DATA_FAILURE, e: result.message })
-   }
-   yield put({type: ACTION_TYPE.DO_APP_DATA_SUCCESS, data: result.data})
+  //  const result = yield call(services.appData.getData)
+  //  if(isEmpty(result)) {
+  //    console.log('Resutl calling:', result)
+  //    return;
+  //  }
+  //  if(result.error < 0) {
+  //    yield put({ type: ACTION_TYPE.DO_APP_DATA_FAILURE, e: result.message })
+  //  }
+  //  yield put({type: ACTION_TYPE.DO_APP_DATA_SUCCESS, data: result.data})
+  yield put({type: ACTION_TYPE.DO_APP_DATA_SUCCESS, data: dataJSON})
    
   } catch (e) {
     yield put({

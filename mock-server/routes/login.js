@@ -37,7 +37,7 @@ const INIT_ACCOUNT = (email, password) => {
 
 router.post('/', (req, res, next) => {
   const user = {
-    email: req.body.email,
+    email: req.body.username,
     password: req.body.password
   }
   jsonHandler.read(PATH_DATA.PROFILE, (data) => {
@@ -66,7 +66,7 @@ router.post('/', (req, res, next) => {
           });
           DATAS['data'] = updateDATA
           jsonHandler.write(PATH_DATA.PROFILE, DATAS)
-          res.status(200).json({error: 0, data: existedUser.token})
+          res.status(200).json({error: 0, data: {token: existedUser.token}})
         } else {
           res.status(200).json({error: -1, message: 'Log in failed'})
         }

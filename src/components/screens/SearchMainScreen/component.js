@@ -18,7 +18,6 @@ export default class SearchMainComponent extends Component {
 
   render() {
     const {searchKey, products} = this.props
-    console.log("Data products:", products)
     const baseProps = {
       style: {backgroundColor: '#FFF'},
       typeHeader: HEADER_TYPE.SEARCH,

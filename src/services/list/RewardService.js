@@ -9,8 +9,8 @@ export default RewardServices = {
     return RESTFull.get(API.doVoucher);
   },
 
-  updateVoucherAvailables: (voucherId, availables) => {
-    return RESTFull.put(API.doVoucher, JSON.stringify({voucherId, availables}))
+  updateVoucherAvailables: (loyaltyProgramId, uAvailables) => {
+    return RESTFull.put(API.doVoucher, JSON.stringify(loyaltyProgramId, uAvailables) )
   },
 
   getHistoryVouchers: () => {

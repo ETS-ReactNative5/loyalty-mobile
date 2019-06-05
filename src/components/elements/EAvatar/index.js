@@ -28,6 +28,7 @@ export default class EAvatar extends Component {
         iconProps = {
             source: require('../../../../res/edit-icon.png'),
             style: styles.icon,
+            resizeMode: 'stretch'
         }
         return (
             <TouchableOpacity {...viewProps}>

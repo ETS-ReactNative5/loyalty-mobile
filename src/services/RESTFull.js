@@ -3,10 +3,9 @@ import { getStrings } from "../commons/Strings";
 import AsyncStorage from '@react-native-community/async-storage';
 import _ from 'lodash';
 import { isEmpty } from "../commons/Utils";
-import { ERROR_CODE, TOKEN_KEY } from "../commons/Constants";
+import { TOKEN_KEY } from "../commons/Constants";
 import Storage from "../commons/Storage";
-
-const TIME_OUT = 30000;
+import { actions } from "../redux/actions";
 
 const handling = async (_method, url, requestData) => {
 	return await Storage.getToken().then((token) => {
@@ -44,12 +43,19 @@ const handling = async (_method, url, requestData) => {
 			return response.json()
 		})
 		.then(responseJson => {
-			const error = _.get(responseJson, 'error', ERROR_CODE.ERROR)
+			const error = _.get(responseJson, 'error', null) //ERROR_CODE.ERROR
+			if(error === null) {
+				return responseJson;
+			}
+			if(_.isString(error) && _.includes(_.toLower(error), 'token')) {
+				getStore().dispatch(actions.doLogout());
+				return { message: "Invalid access token"}
+			}
 			if(error < 0) {
 				return {message: _.get(responseJson, 'message', 'No message')}
 			}
 			if(_.includes(url, 'login')) {
-				AsyncStorage.setItem(TOKEN_KEY, responseJson.data)
+				AsyncStorage.setItem(TOKEN_KEY, responseJson.data.token)
 			}
 			return responseJson;
 		})
@@ -59,8 +65,7 @@ const handling = async (_method, url, requestData) => {
 
 function checkInternetConnection() {
 	return true
-	// let store = getStore();
-	// return store.getState() && store.getState().apps && store.getState().apps.appCommons && store.getState().apps.appCommons.internetConnection;
+	
 }
 
 export default class RESTFull {

@@ -3,9 +3,9 @@ import API from '../../commons/API';
 import _ from 'lodash';
 
 
-export default LoginServices = {
+export default AppDataServices = {
 
-  getData: (token) => {  
+  getData: () => {  
     return RESTFull.get(API.doAppData)
   },
 

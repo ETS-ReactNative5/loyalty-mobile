@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import {View, ScrollView, TouchableOpacity} from 'react-native';
 import styles from './style';
 import BaseScreen from '../../BaseScreen';
-import EAvatar from '../../elements/EAvatar';
 import ETextInput from '../../elements/ETextInput';
 import EImage from '../../elements/EImage';
 import EText from '../../elements/EText';
 import { goBack } from '../../../commons/Utils';
 import backIcon from '../../../../res/back-icon-black.png';
 import editIcon from '../../../../res/edit-icon.png';
-import { INTERESTED } from '../../../commons/Constants';
 import ECheckbox from '../../elements/ECheckbox';
 import _ from 'lodash';
 import EButton, { TextButtonTypes } from '../../elements/EButton';
@@ -21,50 +19,35 @@ import EImageChange from '../../elements/EImageChange';
 export default class ProfileComponent extends Component {
 
   state = {
-    user: this.props.user || {
-      address: "",
-      avatarImage: "",
-      currentBalancePoints: 0,
-      dateOfBirth: "",
-      email: "",
-      interestedFields: [],
-      language: "en-English",
-      name: "",
-      offers: 0,
-      phone: "+84 ",
-      qrcodeImage: "",
-      registerDate: "",
-      rewardPoints: 0,
-      vouchers: 0
-    }
+    address: this.props.user.address || "",
+    avatarImage: this.props.user.avatarImage || "",
+    currentBalancePoints: this.props.user.currentBalancePoints || 0,
+    dateOfBirth: this.props.user.dateOfBirth || "",
+    email: this.props.user.email || "",
+    interestedFields: this.props.user.interestedFields || [],
+    language: this.props.user.language || "en-English",
+    name: this.props.user.name || "",
+    offers: this.props.user.offers || 0,
+    phone: this.props.user.phone || "+84 ",
+    qrcodeImage: this.props.user.qrcodeImage || "",
+    registerDate: this.props.user.registerDate || "",
+    rewardPoints: this.props.user.rewardPoints || 0,
+    vouchers: this.props.user.vouchers || 0
   }
 
   setInterests = (itemInterest) => {
-    let _user = this.state.user
-    let nextInterests = _.map(_user.interestedFields, (item, key) => {
-      return item.value === itemInterest.value ? itemInterest : item
-    })
-    _user.interestedFields = nextInterests
-    this.setState({
-      user: _user
-    })
+    let interests = this.state.interestedFields;
+    interests.push(itemInterest.value);
+    this.setState({interestedFields: interests});
   }
 
   onSubmit = () => {
-
-  }
-
-  changeDateTime = (date) => {
-    let _user = this.state.user
-    _user.dateOfBirth = date
-    this.setState({user: _user})
+    console.log('Change state:\n', this.state)
   }
 
   getInterestFields = () => {
-    const {interestedFields} = this.props
-    const { user } = this.state
-    const userFields = user.interestedFields
-    return _.map(interestedFields, (item, k) => {
+    const userFields = this.state.interestedFields
+    return _.map(this.props.interestedFields, (item, k) => {
       return {
         value: item.value,
         name: item.name,
@@ -96,22 +79,28 @@ export default class ProfileComponent extends Component {
     )
   }
 
+  onChangeValueText = (name, textname) => {
+    this.setState({
+      [name]: textname
+    })
+  }
+
   get renderProfile() {
-    const {user} = this.props
+    const {name, dateOfBirth, address, phone, email} = this.state
     
     inforProps = {
       style: styles.inforView
     }
     return (
       <View {...inforProps}>
-        <EditText title={'Name'} value={user.name} />
+        <EditText title={'Name'} value={name} onChangeText={(text) => this.onChangeValueText('name', text)} />
         <View style={{alignItems: 'center'}}>
           <EText style={{fontWeight: 'bold', color: '#000000'}} text={'Date of Birth'} />
-          <EDateTime iconButton={editIcon} value={user.dateOfBirth} onChange={(date) => this.changeDateTime(date)} />
+          <EDateTime iconButton={editIcon} value={dateOfBirth} onChange={(date) => this.onChangeValueText('dateOfBirth', date)} />
         </View>
-        <EditText title={'Address'} value={user.address} />
-        <EditText title={'Phone'} value={user.phone} />
-        <EditText title={'Email'} value={user.email} />
+        <EditText title={'Address'} value={address} onChangeText={(text) => this.onChangeValueText('address', text)} />
+        <EditText title={'Phone'} value={phone} onChangeText={(text) => this.onChangeValueText('phone', text)} />
+        <EditText title={'Email'} value={email} onChangeText={(text) => this.onChangeValueText('email', text)} />
       </View>
     )
   }
@@ -155,14 +144,12 @@ export default class ProfileComponent extends Component {
   }
 
   render() {
-    const {avatarImage, rewardPoints, vouchers, offers} = this.props.user
+    const {avatarImage, rewardPoints, vouchers, offers} = this.state
     console.log('Image:', avatarImage)
     const avatarProps = {
       style: styles.avatar,
       uri: avatarImage,
-      onImageChange: (url)=> {
-        
-      }
+      onImageChange: (url) => this.onChangeValueText('avatarImage', url)
     },
     points = [
       {name: 'Rewards Points', value: rewardPoints},
@@ -195,7 +182,7 @@ export default class ProfileComponent extends Component {
 
 class EditText extends Component {
   render() {
-    const {title, value} = this.props
+    const {title, value, onChangeText} = this.props
     const editViewProps = {
       style: styles.editView
     },
@@ -208,7 +195,8 @@ class EditText extends Component {
     },
     textProps = {
       value: value,
-      textInputStyle: styles.editValue
+      textInputStyle: styles.editValue,
+      onChangeText
     },
     iconProps = {
       source: editIcon,

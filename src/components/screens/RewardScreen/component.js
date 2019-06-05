@@ -43,7 +43,7 @@ export default class RewardComponent extends Component {
       onChange: () => this.onChangeTab(rewardTabName.membership)
     },
     voucherProps = {
-      title: 'Rewards',
+      title: 'New Rewards',
       isActive: _.indexOf([rewardTabName.voucher, rewardTabName.history], this.state.activeTab) >= 0,
       onChange: () => this.onChangeTab(rewardTabName.voucher)
     }

@@ -16,7 +16,7 @@ import { appScreenName } from '../../commons/Constants';
 
 function* doLogin(action) {
   try {
-    const result = yield call(services.login.doLogin, action.email, action.pass)
+    const result = yield call(services.login.doLogin, action.username, action.pass)
     if(isEmpty(result) || !_.has(result, 'token') || isEmpty(result.token)) {
       yield put({
         type: ACTION_TYPE.DO_LOGIN_FAILURE,
@@ -47,7 +47,7 @@ function* doLogin(action) {
 
 function* doLogout() {
   try {
-    AsyncStorage.clear();
+    yield call(services.login.doLogout);
     yield put({
       type: ACTION_TYPE.DO_LOGOUT_SUCCESS,
     })

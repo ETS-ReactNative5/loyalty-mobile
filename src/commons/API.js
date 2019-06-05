@@ -2,29 +2,38 @@ export const API_DOMAIN = 'http://127.0.0.1:3000';
 export const API_VERSION = '';
 const API_HOST = API_DOMAIN + API_VERSION;
 
+export const HEROKU_HOST = 'http://nin-loyalty-backend.herokuapp.com';
+export const HEROKU_API_VERSION = '/api/v1'
+export const HEROKU_AUTH = '/auth'
+
+const useHeroku = true
+
+const API = useHeroku ? HEROKU_HOST + HEROKU_API_VERSION : API_HOST
+
 export default APIs = {
 
-    doAppData: API_HOST + '/app-data',
+    doAppData: API + '/app-data',
 
-    doLogin: API_HOST + '/login',
-    // doLogin: 
+    doLogin: HEROKU_HOST + HEROKU_AUTH + '/login-create',
 
-    doLogout: API_HOST + '/logout',
+    doLogout: HEROKU_HOST + HEROKU_AUTH + '/logout',
 
-    doProfile: API_HOST + '/profile',
+    doProfile: API + '/user/profile',
 
-    doCategories: API_HOST + '/product-categories',
+    doCategories: API + '/product-categories',
 
-    doSpecialOffer: API_DOMAIN + '/special-offer',
+    doSpecialOffer: API + '/specialoffer',
 
-    doProduct: API_HOST + '/product',
+    doProduct: API + '/product',
 
-    doStores: API_HOST + '/store',
+    doStores: API + '/store',
 
-    doGoogleMapAPI: API_HOST + '/googlemap',
+    doNewProgramVoucher: API + '/program',
 
-    doVoucher: API_HOST + '/voucher',
+    doMyReward: API + '/my-reward',
 
-    doHistoryVoucher: API_HOST + '/history-voucher',
+    doHistoryVoucher: API + '/history-voucher',
+
+    doGoogleMapAPI: API + '/googlemap',
 
 }

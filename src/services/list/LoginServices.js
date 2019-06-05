@@ -1,18 +1,16 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import RESTFull from '../RESTFull';
 import API from '../../commons/API';
-import {isEmpty} from '../../commons/Utils';
 import _ from 'lodash';
-import { TOKEN_KEY } from '../../commons/Constants';
 import Storage from '../../commons/Storage';
 
 
 export default LoginServices = {
 
-  doLogin: (email, pass) => {
+  doLogin: (username, password) => {
     let body = JSON.stringify({
-      email: email,
-      password: pass
+      username,
+      password
     });
     return RESTFull.post(API.doLogin, body)
   },
@@ -20,7 +18,7 @@ export default LoginServices = {
   doLogout: () => {
     try {
       AsyncStorage.clear();
-      return {error: 0, message: 'Log out successfully!'}
+      // return RESTFull.get(API.doLogout);
     } catch(e) {
       console.error('Error:', e);
       return {error: -1, message: e}

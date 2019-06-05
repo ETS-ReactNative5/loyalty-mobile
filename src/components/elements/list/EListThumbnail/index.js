@@ -19,6 +19,8 @@ export default class EListThumbnail extends Component {
   }
 
   renderItem = (itemData) => {
+    const {name, description, image, web_link} = itemData.item
+    
     return <EItemThumbnailList {...itemData.item} />
   }
 

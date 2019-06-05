@@ -30,6 +30,12 @@ export default StyleSheet.create({
       width: deviceWidth - appStyleConstants.LARGE_SCREEN_MARGIN*2,
       textAlign: 'justify',
     },
+    utilities: {
+      flexDirection: 'row',
+    },
+    plugin: {
+      height: 30,
+    },
     phone: {
       flexDirection: 'row',
       paddingVertical: 10,

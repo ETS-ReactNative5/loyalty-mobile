@@ -19,7 +19,7 @@ export default class EItemListSearch extends Component {
     const {productId} = this.props
     getStore().dispatch(NavigationActions.navigate({
       routeName: searchScreenName.searchDetail, 
-      params: productId
+      params: {productId}
     }));
   } 
 

@@ -10,7 +10,6 @@ import ImagePicker from 'react-native-image-crop-picker';
 import FastImage from 'react-native-fast-image'
 import styles from './style'
 import EText from "../EText";
-import { isEmpty } from '../../../commons/Utils';
 
 const IMAGE_FORMAT = (mime, data) => {
   return `data:${mime};base64, ${data}`

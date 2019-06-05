@@ -19,10 +19,10 @@ export const actions = {
       type: ACTION_TYPE.DO_APP_DATA
     }
   },
-  doLogin(email, pass) {
+  doLogin(username, pass) {
     return {
       type: ACTION_TYPE.DO_LOGIN,
-      email, pass,
+      username, pass,
     }
   },
   doLogout() {

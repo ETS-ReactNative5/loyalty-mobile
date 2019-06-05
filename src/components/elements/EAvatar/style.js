@@ -30,6 +30,5 @@ export default StyleSheet.create({
     icon: {
         height: 20,
         width: 20,
-        
     }
 })
