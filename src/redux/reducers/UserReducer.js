@@ -59,7 +59,7 @@ export default users = (state = initState, action = {}) => {
 		case ACTION_TYPE.GET_PROFILE:
 			return {
 				...state,
-				isFetching: true,
+				isFetching: false,
 			}
 		case ACTION_TYPE.GET_PROFILE_SUCCESS:
 			return {
@@ -73,6 +73,22 @@ export default users = (state = initState, action = {}) => {
 				isFetching: false,
 				e: action.e
 			}
+			case ACTION_TYPE.POST_PROFILE:
+				return {
+					...state,
+					isFetching: true,
+				}
+			case ACTION_TYPE.POST_PROFILE_SUCCESS:
+				return {
+					...state,
+					isFetching: false
+				}
+			case ACTION_TYPE.POST_PROFILE_FAILURE:
+				return {
+					...state,
+					isFetching: false,
+					e: action.e
+				}
 		default:
 			return state
 	}

@@ -9,6 +9,7 @@ import services from '../../services';
 import _ from 'lodash';
 import { getStore } from '../../../App';
 import { actions } from '../actions';
+import { showMessage } from '../../commons/Utils';
 
 function* getVouchers() {
   try {
@@ -32,6 +33,28 @@ function* getVouchers() {
 
 }
 
+function* getMyRewards() {
+  try {
+    const result = yield call(services.reward.getMyRewards)
+    if(result.error  < 0) {
+      yield put({
+        type: ACTION_TYPE.GET_MY_REWARDS_FAILURE,
+        e: result.message
+      })
+    }
+    yield put({
+      type: ACTION_TYPE.GET_MY_REWARDS_SUCCESS,
+      data: result.data,
+    })
+  } catch(e) {
+    yield put({
+      type: ACTION_TYPE.GET_MY_REWARDS_FAILURE,
+      e
+    })
+  }
+
+}
+
 function* updateVoucherAvailables(action) {
   try {
     const {voucherId, availables} = action;
@@ -42,10 +65,11 @@ function* updateVoucherAvailables(action) {
         e: result.message
       })
     }
+    console.log('Voucher ID:', voucherId, ' - uAvailables:', availables);
     getStore().dispatch(actions.doGetVouchers());
+    showMessage('Congratulations', result.data.Message) /* result.data.message */
     yield put({
       type: ACTION_TYPE.CHANGE_AVAILABLE_VOUCHERS_SUCCESS,
-      data: result.data,
     })
   } catch(e) {
     yield put({
@@ -64,7 +88,6 @@ function* getHistoryVouchers() {
         e: result.message
       })
     }
-    getStore().dispatch(actions.doGetVouchers());
     yield put({
       type: ACTION_TYPE.GET_HISTORY_VOUCHERS_SUCCESS,
       data: result.data,
@@ -79,6 +102,7 @@ function* getHistoryVouchers() {
 
 export default function* root() {
   yield all([
+    takeLatest(ACTION_TYPE.GET_MY_REWARDS, getMyRewards),
     takeLatest(ACTION_TYPE.GET_VOUCHERS, getVouchers),
     takeLatest(ACTION_TYPE.CHANGE_AVAILABLE_VOUCHERS, updateVoucherAvailables),
     takeLatest(ACTION_TYPE.GET_HISTORY_VOUCHERS, getHistoryVouchers),

@@ -12,7 +12,7 @@ import EImage from '../../elements/EImage';
 import ETextInput from '../../elements/ETextInput';
 import EListThumbnail from '../../elements/list/EListThumbnail';
 import searchIcon from '../../../../res/search-icon-black.png';
-import { appScreenName, searchScreenName, homeTabName } from '../../../commons/Constants';
+import { appScreenName, searchScreenName, homeTabName, AVATAR_DEFAULT } from '../../../commons/Constants';
 import { isEmpty } from '../../../commons/Utils';
 
 export default class ProductComponent extends Component {

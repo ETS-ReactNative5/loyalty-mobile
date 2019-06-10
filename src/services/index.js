@@ -3,6 +3,7 @@ import ProductServices from './list/ProductServices';
 import AppDataService from './list/AppDataService';
 import SpecialOfferServices from './list/SpecialOfferServices';
 import StoreService from './list/StoreService';
+import RewardService from './list/RewardService';
 
 
 export default services = {
@@ -11,4 +12,5 @@ export default services = {
   product: ProductServices,
   specialOffer: SpecialOfferServices,
   store: StoreService,
+  reward: RewardService,
 }

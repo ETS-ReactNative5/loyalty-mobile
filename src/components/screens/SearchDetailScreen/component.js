@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, ScrollView, TouchableOpacity} from 'react-native';
 import styles from './style';
 import BaseScreen from '../../BaseScreen';
 import { HEADER_TYPE, STORE_DATA } from '../../../commons/Constants';
@@ -10,15 +10,27 @@ import locationIcon from '../../../../res/location-icon.png';
 import EMapView from '../../elements/EMapView';
 import { getStore } from '../../../../App';
 import { actions } from '../../../redux/actions';
+import { isEmpty } from '../../../commons/Utils';
 
 export default class SearchDetailComponent extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      productId: this.props.navigation.getParam('productId', 0)
+      productId: this.props.navigation.getParam('productId', 0),
+      direction: '',
     }
   }
+
+  getTextSearch = () => {
+    if(!isEmpty(this.state.direction)) {
+      return this.state.direction;
+    }
+    if(!isEmpty(this.props.seacrhKey)) {
+      return this.props.seacrhKey;
+    }
+    return '';
+  } 
 
   onSearch = (textKey) => {
     getStore().dispatch(actions.doGetStores(1, textKey));
@@ -84,7 +96,9 @@ export default class SearchDetailComponent extends Component {
         </View>
         <View {...locationProps}>
           <EImage {...locationIconProps} />
-          <EText {...locationDetectProps} />
+          <TouchableOpacity onPress={() => {this.onSearch(storeInfor.address), this.setState({direction: storeInfor.address})}}>
+            <EText {...locationDetectProps} />
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -96,6 +110,7 @@ export default class SearchDetailComponent extends Component {
       typeHeader: HEADER_TYPE.SEARCH,
       showBack: true,
       style: styles.view,
+      searchText: this.getTextSearch(),
       onSearch: (textKey) => this.onSearch(textKey)
     },
     mapProps = {
@@ -103,10 +118,10 @@ export default class SearchDetailComponent extends Component {
     }
     return (
       <BaseScreen {...baseProps}>
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <EMapView {...mapProps} />
           {this.renderStoreInfo}
-        </View>
+        </ScrollView>
       </BaseScreen>
     )
   }

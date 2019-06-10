@@ -8,18 +8,18 @@ import { getStore } from '../../../../App';
 import { actions } from '../../../redux/actions';
 import { currency } from '../../../commons/Utils';
 
-export default class RewardVoucherComponent extends Component {
+export default class RewardOfUserComponent extends Component {
   
   navigateToHistory = () => {
     this.props.onNavigateHistory();
   }
 
   componentDidMount() {
-    getStore().dispatch(actions.doGetVouchers());
+    getStore().dispatch(actions.doGetMyRewards());
   }
 
   render() {
-    const {vouchers, user} = this.props
+    const {myrewards, user} = this.props
     const balanceProps = {
       style: styles.balance
     },
@@ -44,7 +44,7 @@ export default class RewardVoucherComponent extends Component {
           <EText {...balanceTextProps} />
           <EText {...balanceValueProps} />
         </View>
-        <EListRewards data={vouchers} />
+        <EListRewards data={myrewards} />
         <View {...historyViewProps}>
           <TouchableOpacity onPress={() => this.navigateToHistory()}>
             <EText {...historyTextProps} />

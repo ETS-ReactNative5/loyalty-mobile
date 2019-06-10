@@ -31,6 +31,12 @@ export default LoginServices = {
 
   getProfile: () => {
     return RESTFull.get(API.doProfile);
+  },
+
+  postProfile: (body) => {
+    body.firstName = body.name
+    body.lastName = ''
+    return RESTFull.post(API.doProfile, JSON.stringify(body));
   }
 
 }

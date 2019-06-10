@@ -5,10 +5,13 @@
 */
 
 import React, {Component} from 'react'
+import { View } from "react-native";
 import {connect} from 'react-redux'
 import {actions} from "../redux/actions";
 import {bindActionCreators} from 'redux';
 import RootAppComponent from './component';
+import EWaitLoading from '../components/elements/EWaitLoading';
+import EShowMessage from '../components/elements/EShowMessage';
 
 const mapStateToProps = (state) => {
     return {
@@ -24,7 +27,11 @@ const mapDispatchToProps = (dispatch) => {
 class RootApp extends Component {
     render() {
         return (
-            <RootAppComponent {...this.props}/>
+            <View style={{flex: 1}}>
+                <EWaitLoading />
+                <RootAppComponent {...this.props}/>
+                <EShowMessage />
+            </View>
         )
     }
 }

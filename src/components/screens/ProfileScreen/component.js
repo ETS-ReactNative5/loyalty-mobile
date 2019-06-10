@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {View, ScrollView, TouchableOpacity} from 'react-native';
+import {View, ScrollView, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
 import styles from './style';
 import BaseScreen from '../../BaseScreen';
 import ETextInput from '../../elements/ETextInput';
 import EImage from '../../elements/EImage';
 import EText from '../../elements/EText';
-import { goBack } from '../../../commons/Utils';
+import { goBack, currency, isEmpty } from '../../../commons/Utils';
 import backIcon from '../../../../res/back-icon-black.png';
 import editIcon from '../../../../res/edit-icon.png';
 import ECheckbox from '../../elements/ECheckbox';
@@ -15,24 +15,21 @@ import { getStrings } from '../../../commons/Strings';
 import EDateTime from '../../elements/EDateTime';
 import EListPointsView from '../../elements/EListPointsView';
 import EImageChange from '../../elements/EImageChange';
+import { getStore } from '../../../../App';
+import { actions } from '../../../redux/actions';
+import { AVATAR_DEFAULT } from '../../../commons/Constants';
 
 export default class ProfileComponent extends Component {
 
   state = {
     address: this.props.user.address || "",
     avatarImage: this.props.user.avatarImage || "",
-    currentBalancePoints: this.props.user.currentBalancePoints || 0,
     dateOfBirth: this.props.user.dateOfBirth || "",
     email: this.props.user.email || "",
     interestedFields: this.props.user.interestedFields || [],
     language: this.props.user.language || "en-English",
     name: this.props.user.name || "",
-    offers: this.props.user.offers || 0,
     phone: this.props.user.phone || "+84 ",
-    qrcodeImage: this.props.user.qrcodeImage || "",
-    registerDate: this.props.user.registerDate || "",
-    rewardPoints: this.props.user.rewardPoints || 0,
-    vouchers: this.props.user.vouchers || 0
   }
 
   setInterests = (itemInterest) => {
@@ -43,6 +40,7 @@ export default class ProfileComponent extends Component {
 
   onSubmit = () => {
     console.log('Change state:\n', this.state)
+    getStore().dispatch(actions.postProfile(this.state));
   }
 
   getInterestFields = () => {
@@ -81,7 +79,7 @@ export default class ProfileComponent extends Component {
 
   onChangeValueText = (name, textname) => {
     this.setState({
-      [name]: textname
+      [name]: textname,
     })
   }
 
@@ -144,15 +142,15 @@ export default class ProfileComponent extends Component {
   }
 
   render() {
-    const {avatarImage, rewardPoints, vouchers, offers} = this.state
-    console.log('Image:', avatarImage)
+    const {avatarImage} = this.state
+    const {currentBalancePoints, vouchers, offers} = this.props.user
     const avatarProps = {
       style: styles.avatar,
-      uri: avatarImage,
+      uri: isEmpty(avatarImage) ? AVATAR_DEFAULT : avatarImage ,
       onImageChange: (url) => this.onChangeValueText('avatarImage', url)
     },
     points = [
-      {name: 'Rewards Points', value: rewardPoints},
+      {name: 'Rewards Points', value: currency(currentBalancePoints) || 0},
       {name: 'Vouchers', value: vouchers},
       {name: 'Offers', value: offers}
     ]
@@ -168,7 +166,9 @@ export default class ProfileComponent extends Component {
         <View style={styles.view}>
           {this.renderBackButton}
           <EImageChange {...avatarProps} />
-          <ScrollView style={styles.scrollView}>
+        </View>
+        <View style={styles.scrollView}>
+          <ScrollView>
             {this.renderProfile}
             {this.renderInteresting}
             <EListPointsView data={points} />

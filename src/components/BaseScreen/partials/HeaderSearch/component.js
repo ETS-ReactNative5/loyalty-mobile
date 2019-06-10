@@ -11,8 +11,11 @@ import { actions } from '../../../../redux/actions';
 
 export default class HeaderSearchComponent extends Component {
   
-  state = {
-    searchKey: this.props.searchText || '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchKey: this.props.searchText || '',
+    }
   }
 
   searchHandle = () => {

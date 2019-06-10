@@ -16,7 +16,7 @@ export default StyleSheet.create({
     flex: 1,
     width: WIDTH,
     justifyContent: 'space-evenly',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   price: {
     fontWeight: 'bold',

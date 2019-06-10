@@ -7,13 +7,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import RewardHistoryComponent from './component';
+import RewardOfUserComponent from './component';
 import { actions } from '../../../redux/actions';
 
 const mapStateToProps = (state) => {
     return {
         //map state from store to component props
-        histories: state.rewards.histories,
+        myrewards: state.rewards.myrewards,
         user: state.users.user,
     }
 }
@@ -23,12 +23,12 @@ const mapDispatchToProps = (dispatch) => {
     return {...{dispatch: dispatch}, ...bindActionCreators(actions, dispatch)};
 }
 
-class RewardHistoryScreen extends Component {
+class RewardOfUserScreen extends Component {
     render() {
         return (
-            <RewardHistoryComponent {...this.props}/>
+            <RewardOfUserComponent {...this.props}/>
         )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RewardHistoryScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(RewardOfUserScreen)

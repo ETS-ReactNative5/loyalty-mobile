@@ -6,7 +6,7 @@ import _ from 'lodash';
 export default StoreServices = {
 
   getListStores: (productId, storeName) => {  
-    return RESTFull.get(API.doStores, {productId, storeName, address: '', phone: ''});
+    return RESTFull.get(API.doStores, {productId, key: storeName});
   },
 
   getListLocation: (address) => {

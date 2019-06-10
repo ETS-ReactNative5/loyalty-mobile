@@ -3,7 +3,8 @@
 @author tri.tran on 2/15/19
 *
 */
-import { Platform, Dimensions } from "react-native";
+import React from 'react';
+import { Platform, Dimensions, Text } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 
 export const { width: deviceWidth, height: deviceHeight } = Dimensions.get(
@@ -14,6 +15,10 @@ export const AES_KEY = "LOYALTY_AES_KEY";
 export const PAGE_SIZE = 10;
 
 export const TOKEN_KEY = "12j098y3bd938ju9";
+
+export const AVATAR_DEFAULT = 'http://triqtran.github.io/images/loyalty/others/profile-default.png';
+
+export const PERCENT = 160 / 375;
 
 export const appScreenName = {
   splash: "splash",
@@ -40,7 +45,8 @@ export const searchScreenName = {
 export const rewardTabName = {
   membership: 0,
   voucher: 1,
-  history: 2
+  history: 2,
+  myreward: 3,
 };
 
 export const appStyleConstants = {
@@ -303,3 +309,8 @@ export const STORE_DATA = [
     address: "62 Phạm Ngọc Thạch, Phường 06, Quận 3, Tp.HCM, Việt Nam"
   }
 ];
+
+export const HISTORY_DESCRIPTION = (point, price, voucherName) => {
+  const text = ` $${price} ${voucherName}. Tap this voucher to redeem now.`
+  return <Text>Congratulations, you earned <Text style={{color: '#2F80ED', fontWeight: 'bold'}}>{point}</Text> {text}</Text>
+} 

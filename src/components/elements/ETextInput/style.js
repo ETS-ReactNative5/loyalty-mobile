@@ -24,7 +24,7 @@ export default StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: appStyleConstants.UI_ITEM_HEIGHT,
-		marginLeft: appStyleConstants.LARGE_SCREEN_MARGIN,
+		marginHorizontal: appStyleConstants.LARGE_SCREEN_MARGIN,
 		fontSize: appStyleConstants.mediumFont,
 	},
 	validate: {

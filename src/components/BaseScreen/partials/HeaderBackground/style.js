@@ -1,16 +1,14 @@
 import {StyleSheet} from 'react-native';
-import { deviceWidth } from '../../../../commons/Constants';
-
-const percent = 160 / 375;
+import { deviceWidth, PERCENT } from '../../../../commons/Constants';
 
 export default StyleSheet.create({
   view: {
-    height: deviceWidth * percent,
+    height: deviceWidth * PERCENT,
     width: '100%',
     backgroundColor: '#FFFFFF',
   },
   background: {
     width: '100%',
-    height: deviceWidth * percent,
+    height: deviceWidth * PERCENT,
   }
 })

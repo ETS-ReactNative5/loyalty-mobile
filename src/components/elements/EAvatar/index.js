@@ -20,7 +20,7 @@ export default class EAvatar extends Component {
             style: styles.view,
             onPress
         },
-        avatarProp = _.isEmpty(avatar) ? {style: avatarStyle, source: require('../../../../res/avatar-default.png')}
+        avatarProp = _.isEmpty(avatar) ? {style: avatarStyle, source: require('../../../../res/profile-default.png')}
                     : {style: avatarStyle, uri: avatar},
         editProps = {
             style: styles.edit,

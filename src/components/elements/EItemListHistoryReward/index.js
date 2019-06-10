@@ -5,15 +5,29 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import EText from '../EText';
 import { getStrings } from '../../../commons/Strings';
+import { HISTORY_DESCRIPTION } from '../../../commons/Constants';
 
 export default class EItemListHistoryReward extends Component {
 
   /*
-  history voucher infor: name, price, points, description
+    history voucher infor: name, price, points, description
+    "voucherName": "Voucher 2 bia tươi Gammer và 1 xúc xích",
+    "voucherId": 2,
+    "price": 300,
+    "uAvailables": 1,
+    "loyaltyProgramId": 7,
+    "currency": "VND",
+    "rewardDate": "04/06/2019",
+    "point": 4000
   */
 
+  get getDescription() {
+    const {uAvailables, price, voucherName} = this.props
+    return HISTORY_DESCRIPTION(uAvailables, price, voucherName);
+  }
+
   render() {
-    const { name, price, points, description } = this.props
+    const { voucherName, price, point, currency } = this.props
     const viewProps = {
       style: styles.view,
     },
@@ -22,23 +36,24 @@ export default class EItemListHistoryReward extends Component {
     }
     priceProps = {
       style: styles.price,
-      text: price,
+      text: '$ ' +  price + ' ' + currency,
     },
     nameProps = {
-      text: name,
+      text: voucherName,
       style: styles.name,
     },
     pointProps = {
-      text: getStrings().pointVoucher(points),
+      text: getStrings().pointVoucher(point),
       style: styles.point,
     },
     contentProps = {
       style: styles.content,
-    },
-    descriptionProps = {
-      style: styles.description,
-      text: description
     }
+    // descriptionProps = {
+    //   style: styles.description,
+    //   text: description
+    // }
+
     return (
       <View {...viewProps}>
         <View {...titleProps}>
@@ -47,7 +62,8 @@ export default class EItemListHistoryReward extends Component {
           <EText {...pointProps} />
         </View>
         <View {...contentProps}>
-          <EText {...descriptionProps} />
+          {/* <EText {...descriptionProps} /> */}
+          {this.getDescription}
         </View>
       </View>
     )

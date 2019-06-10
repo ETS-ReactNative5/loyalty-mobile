@@ -72,7 +72,6 @@ export default class EMapView extends Component {
     if(_.isEmpty(data)) {
       return null;
     }
-    console.log("Data stores:", data)
     return _.map(data, (item, k) => {
       const {name, address, latitude, longitude} = item
       markerProps = {

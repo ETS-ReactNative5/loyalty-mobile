@@ -1,8 +1,6 @@
 import {StyleSheet} from 'react-native';
 import { deviceWidth } from '../../../../commons/Constants';
 
-const percent = 160 / 375;
-
 export default StyleSheet.create({
   view: {
     flexDirection: 'row',

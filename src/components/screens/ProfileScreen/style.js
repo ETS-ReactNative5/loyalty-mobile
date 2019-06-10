@@ -5,6 +5,7 @@
 */
 
 import {StyleSheet, Platform} from 'react-native'
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 import { deviceHeight, appStyleConstants, deviceWidth } from '../../../commons/Constants';
 
 const headerHeight = 90
@@ -15,7 +16,7 @@ export default StyleSheet.create({
       alignItems: 'center',
       position: 'absolute',
       width: '100%',
-      top: headerHeight + (Platform.OS === 'ios' ? 25 : 0),
+      top: headerHeight + (Platform.OS === 'ios' ? ifIphoneX(25, 0) : 0),
     },
     backView: {
       flexDirection: 'row',
@@ -40,7 +41,9 @@ export default StyleSheet.create({
       paddingVertical: appStyleConstants.NORMAL_SCREEN_MARGIN,
     },
     scrollView: {
-      
+      flex: 1,
+      marginTop: 60,
+      marginHorizontal: appStyleConstants.NORMAL_SCREEN_MARGIN,
     },
     viewProfile: {
       backgroundColor: '#FFFFFF',
@@ -52,6 +55,7 @@ export default StyleSheet.create({
     },
     editView: {
       alignItems: 'center',
+      width: deviceWidth - appStyleConstants.NORMAL_SCREEN_MARGIN*2,
     },
     editTitle: {
       color: '#000000',
@@ -60,10 +64,12 @@ export default StyleSheet.create({
     inputView: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingVertical: 5,
+      justifyContent: 'center',
+      padding: 5,
     },
     editValue: {
       color: '#828282',
+      width: 150,
     },
     editIconView: {
       height: 20,

@@ -5,13 +5,14 @@
 */
 
 import {StyleSheet} from 'react-native'
-import { appStyleConstants } from '../../../commons/Constants';
+import { appStyleConstants, deviceWidth } from '../../../commons/Constants';
+
+const WIDTH_SEGMENT = (deviceWidth - appStyleConstants.NORMAL_SCREEN_MARGIN*2) / 3;
 
 export default StyleSheet.create({
     rewardHeader: {
       backgroundColor: '#FFFFFF',
-      flexDirection: 'row',      
-      borderBottomWidth: 3,
+      borderBottomWidth: 1,
       borderBottomColor: '#F98608',
       marginHorizontal: appStyleConstants.NORMAL_SCREEN_MARGIN,
       marginTop: -20,
@@ -19,38 +20,39 @@ export default StyleSheet.create({
       justifyContent: 'space-between'
     },
     titleView: {
-
+      flexDirection: 'row', 
+      alignItems: 'center',  
+      paddingVertical: 10,   
     },
     name: {
-      fontSize: 18,
-      color: '#000000',
+      fontSize: 25,
+      color: '#F98608',
+      fontWeight: 'bold',
     },
     thankyou: {
       fontSize: 14,
-      color: '#000000',
-      paddingVertical: 5,
+      color: '#828282',
+      paddingHorizontal: 5,
+      fontWeight: 'bold',
     },
     segmentView: {
       flexDirection: 'row',
       borderColor: '#BDBDBD',
-      borderWidth: 1,
-      borderRadius: 10,
       height: 30,
+      width: '100%',
+      justifyContent: 'space-between',
     },
     segment: (isActive) => {
       return isActive 
       ? {
-        backgroundColor: '#EF3026',
-        borderWith: 1,
-        borderColor: '#BDBDBD',
-        borderRadius: 10,
-        paddingHorizontal: 10,
+        width: WIDTH_SEGMENT,
+        backgroundColor: '#F98608',
         flexWrap: "wrap",
         alignItems: 'center',
         justifyContent: 'center',
       }
       : {
-        paddingHorizontal: 10,
+        width: WIDTH_SEGMENT,
         flexWrap: "wrap",
         alignItems: 'center',
         justifyContent: 'center',

@@ -12,6 +12,7 @@ import specialOffers from './specialOfferReducer';
 import search from './searchReducer';
 import rewards from './rewardReducer';
 import stores from './storeReducer';
+import modals from './modalReducer';
 
 //combine all reducer
 const appReducer = combineReducers({
@@ -22,6 +23,7 @@ const appReducer = combineReducers({
     search,
     rewards,
     stores,
+    modals,
 })
 
 export default rootReducer = (state, action) => {

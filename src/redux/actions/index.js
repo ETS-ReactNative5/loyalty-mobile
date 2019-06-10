@@ -40,6 +40,12 @@ export const actions = {
       type: ACTION_TYPE.GET_PROFILE
     }
   },
+  postProfile(body) {
+    return {
+      type: ACTION_TYPE.POST_PROFILE,
+      body
+    }
+  },
   getProductCategories() {
     return {
       type: ACTION_TYPE.GET_PRODUCT_CATEGORIES
@@ -85,6 +91,11 @@ export const actions = {
       type: ACTION_TYPE.GET_VOUCHERS,
     }
   },
+  doGetMyRewards() {
+    return {
+      type: ACTION_TYPE.GET_MY_REWARDS,
+    }
+  },
   doChangeAvailableVoucher(voucherId, availables) {
     return {
       type: ACTION_TYPE.CHANGE_AVAILABLE_VOUCHERS,
@@ -107,4 +118,15 @@ export const actions = {
       type: ACTION_TYPE.HIDE_NOTICED_DIALOG,
     }
   },
+  openMessage(title, message) {
+    return {
+      type: ACTION_TYPE.OPEN_MESSAGE,
+      title, message,
+    }
+  },
+  closeMessage() {
+    return {
+      type: ACTION_TYPE.CLOSE_MESSAGE
+    }
+  }
 }

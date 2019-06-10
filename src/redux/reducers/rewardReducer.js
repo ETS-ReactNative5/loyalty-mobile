@@ -9,7 +9,8 @@ import {ACTION_TYPE} from "../actions/type";
 
 const initState = {
   isFetching: false,
-  vouchers: [],
+	vouchers: [],
+	myrewards: [],
   histories: [],
 }
 
@@ -32,7 +33,24 @@ export default rewards = (state = initState, action = {}) => {
 				...state,
 				isFetching: false,
 				e: action.e
-      }
+			}
+			case ACTION_TYPE.GET_MY_REWARDS:
+				return {
+					...state,
+					isFetching: true
+				}
+			case ACTION_TYPE.GET_MY_REWARDS_SUCCESS:
+				return {
+					...state,
+					myrewards: action.data,
+					isFetching: false
+				}
+			case ACTION_TYPE.GET_MY_REWARDS_FAILURE:
+				return {
+					...state,
+					isFetching: false,
+					e: action.e
+				}
     case ACTION_TYPE.CHANGE_AVAILABLE_VOUCHERS:
       return {
         ...state,

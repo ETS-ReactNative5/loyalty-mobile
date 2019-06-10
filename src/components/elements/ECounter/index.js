@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import EText from '../EText';
 import { getStrings } from '../../../commons/Strings';
+import { getStore } from '../../../../App';
+import { actions } from '../../../redux/actions';
 
 export default class ECounter extends Component {
 
@@ -21,12 +23,12 @@ export default class ECounter extends Component {
   }
 
   handleRedeem = () => {
-    const {voucherId} = this.props
-    console.log('Change redeem: voucherId=', voucherId, ' - availables=', this.state.counting);
+    const {voucherId} = this.props;
+    getStore().dispatch(actions.doChangeAvailableVoucher(voucherId, this.state.counting));
   }
 
   render() {
-    const {availables, style} = this.props
+    const {availables, status, style} = this.props
     const viewProps = {
       style: [styles.view, style]
     },
@@ -84,7 +86,9 @@ export default class ECounter extends Component {
         : <View {...availableProps}></View>
         }
         <View {...redeemProps}>
-          <EButton {...redeemButtonProps} />
+          {status && 
+            <EButton {...redeemButtonProps} />
+          }
         </View>
       </View>
     )

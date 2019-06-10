@@ -3,7 +3,7 @@
 @author tri.tran on 2/19/19
 *
 */
-import {StyleSheet} from 'react-native'
+import {StyleSheet, Platform} from 'react-native'
 
 export default StyleSheet.create({
     view: {
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     avatar: {
         height: '100%',
         width: '100%',
-        borderRadius: 45,
+        borderRadius: Platform.OS === 'ios' ? 45 : 135,
         borderColor: '#757575',
         borderWidth: 1,
     },

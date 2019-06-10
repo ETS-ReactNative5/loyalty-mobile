@@ -8,6 +8,7 @@ import RewardVoucherScreen from '../RewardVoucherScreen';
 import RewardHistoryScreen from '../RewardHistoryScreen';
 import EText from '../../elements/EText';
 import _ from 'lodash';
+import RewardOfUserScreen from '../RewardOfUserScreen';
 
 export default class RewardComponent extends Component {
 
@@ -26,6 +27,7 @@ export default class RewardComponent extends Component {
       onNavigateHistory: () => {this.onChangeTab(2)}
     }
     switch(this.state.activeTab) {
+      case 3: return <RewardOfUserScreen {...voucherProps} />
       case 2: return <RewardHistoryScreen />
       case 1: return <RewardVoucherScreen {...voucherProps} />
       case 0: 
@@ -46,11 +48,17 @@ export default class RewardComponent extends Component {
       title: 'New Rewards',
       isActive: _.indexOf([rewardTabName.voucher, rewardTabName.history], this.state.activeTab) >= 0,
       onChange: () => this.onChangeTab(rewardTabName.voucher)
+    },
+    myrewardProps = {
+      title: 'My Rewards',
+      isActive: _.indexOf([rewardTabName.myreward], this.state.activeTab) >= 0,
+      onChange: () => this.onChangeTab(rewardTabName.myreward)
     }
     return (
       <View {...segmentViewProps}>
         <SegmentItem {...membershipProps} />
         <SegmentItem {...voucherProps} />
+        <SegmentItem {...myrewardProps} />
       </View>
     )
   }

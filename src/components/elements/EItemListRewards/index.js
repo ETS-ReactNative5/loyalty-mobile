@@ -11,12 +11,13 @@ import ECounter from '../ECounter';
 export default class EItemListRewards extends Component {
 
   /*
-  voucher infor: vId, vName, vPrice, vPoints, vImage
+  voucher infor: loyaltyProgramId, voucherName, price, point, image
   user own available vouchers: uAvailables - PropTypes.number
   */
 
   render() {
-    const {vId, vName, vPrice, vPoints, vImage, uAvailables} = this.props
+    const {loyaltyProgramId, voucherName, price, point, image, status} = this.props
+    const uAvailables = parseInt(this.props.uAvailables)
     const viewProps = {
       style: styles.view,
     },
@@ -25,26 +26,27 @@ export default class EItemListRewards extends Component {
     },
     imageProps = {
       style: styles.image,
-      uri: vImage,
+      uri: image,
     },
     contentProps = {
       style: styles.content,
     }
     priceProps = {
       style: styles.price,
-      text: vPrice,
+      text: "$" + price,
     },
     nameProps = {
-      text: vName,
+      text: voucherName,
       style: styles.name,
     },
     pointProps = {
-      text: getStrings().pointVoucher(vPoints),
+      text: getStrings().pointVoucher(point),
       style: styles.point,
     },
     counterProps = {
-      voucherId: vId,
+      voucherId: loyaltyProgramId,
       availables: uAvailables,
+      status,
     }
     return (
       <View {...viewProps}>
@@ -64,20 +66,20 @@ export default class EItemListRewards extends Component {
 }
 
 EItemListRewards.propTypes = {
-  vName: PropTypes.string.isRequired,
-  vPrice: PropTypes.number.isRequired,
-  vPoints: PropTypes.number.isRequired,
-  vImage: PropTypes.string.isRequired,
-  uAvailables: PropTypes.number.isRequired,
+  voucherName: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  point: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  // uAvailables: PropTypes.number.isRequired,
   onPress: PropTypes.func,
 }
 
 EItemListRewards.defaultProps = {
-  vName: '',
-  vPrice: 0,
-  vPoints: 0,
-  vImage: '',
-  uAvailables: 0,
+  voucherName: '',
+  price: 0,
+  point: 0,
+  image: '',
+  // uAvailables: 0,
   onPress: () => {},
 
 }

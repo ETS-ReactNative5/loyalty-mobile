@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import styles from './style';
 import EText from '../../elements/EText';
 import moment from 'moment';
@@ -7,6 +7,7 @@ import { DATETIME_ZMT_FORMAT, FULL_MONTH_FORMAT } from '../../../commons/Constan
 import { getStrings } from '../../../commons/Strings';
 import EImage from '../../elements/EImage';
 import EListPointsView from '../../elements/EListPointsView';
+import { currency } from '../../../commons/Utils';
 
 export default class RewardMembershipComponent extends Component {
   
@@ -14,9 +15,9 @@ export default class RewardMembershipComponent extends Component {
   render() {
     const {user} = this.props
     const points = [
-      {name: 'Rewards Points', value: user.rewardPoints},
-      {name: 'Vouchers', value: user.vouchers},
-      {name: 'Offers', value: user.offers}
+      {name: 'Rewards Points', value: currency(user.currentBalancePoints)},
+      {name: 'Vouchers', value: currency(user.vouchers)},
+      {name: 'Offers', value: currency(user.offers)}
     ]
     const sinceProps = {
       text: getStrings().registerDate(moment(user.registerDate, DATETIME_ZMT_FORMAT).format(FULL_MONTH_FORMAT)),
@@ -34,14 +35,16 @@ export default class RewardMembershipComponent extends Component {
       style: styles.qrcode
     }
     return (
-      <View style={styles.content}>
-        <EText {...sinceProps} />
-        <EText {...remindQRCodeProps} />
-        <View {...viewQRCodeProps}>
-          <EImage {...QRCodeProps} />
+      <ScrollView>
+        <View style={styles.content}>
+          <EText {...sinceProps} />
+          <EText {...remindQRCodeProps} />
+          <View {...viewQRCodeProps}>
+            <EImage {...QRCodeProps} />
+          </View>
           <EListPointsView data={points} />
         </View>
-      </View>
+      </ScrollView>
     )
   }
 

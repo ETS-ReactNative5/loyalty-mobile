@@ -13,6 +13,7 @@ import HeaderSearchComponent from './component';
 function mapStateToProps(state) {
   return {
     //map state from store to component props
+    searchKey: state.search.searchKey
   }
 }
 

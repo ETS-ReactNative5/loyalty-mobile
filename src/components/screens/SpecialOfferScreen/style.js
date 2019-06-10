@@ -5,6 +5,7 @@
 */
 
 import {StyleSheet, Platform} from 'react-native'
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 import { deviceWidth, appStyleConstants } from '../../../commons/Constants';
 
 const headerHeight = 90
@@ -15,7 +16,7 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
     position: 'absolute',
     width: deviceWidth - appStyleConstants.NORMAL_SCREEN_MARGIN*2,
-    top: headerHeight + (Platform.OS === 'ios' ? 25 : 0),
+    top: headerHeight + (Platform.OS === 'ios' ? ifIphoneX(25, 0) : 0),
     zIndex: 2,
 
   },

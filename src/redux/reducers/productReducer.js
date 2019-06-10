@@ -53,7 +53,7 @@ export default products = (state = initState, action = {}) => {
 		case ACTION_TYPE.DO_LIKE_PRODUCT:
 			return {
 				...state,
-				isFetching: true
+				isFetching: false
 			}
 		case ACTION_TYPE.DO_LIKE_PRODUCT_SUCCESS:
 			return {

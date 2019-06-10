@@ -20,7 +20,6 @@ export default class WebviewComponent extends Component {
   };
 
   handleMessage = message => {
-    console.log(message.nativeEvent.data);
     this.setState({ title: message.nativeEvent.data });
   };
 
@@ -49,7 +48,6 @@ export default class WebviewComponent extends Component {
     if (!_.includes(url, "http://") && !_.includes(url, "https://")) {
       url = "http://" + url;
     }
-    console.log("URL:", url)
     const containerProps = {
       typeHeader: HEADER_TYPE.TITLE,
       title: "Web View",

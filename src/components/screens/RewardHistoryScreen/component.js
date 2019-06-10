@@ -6,16 +6,23 @@ import EListHistoryRewards from '../../elements/list/EListHistoryRewards';
 import { getStrings } from '../../../commons/Strings';
 import EText from '../../elements/EText';
 import { currency } from '../../../commons/Utils';
+import { getStore } from '../../../../App';
+import { actions } from '../../../redux/actions';
 
 export default class RewardHistoryComponent extends Component {
   
+  componentDidMount() {
+    getStore().dispatch(actions.doGetHistoryVoucher());
+  }
+
   render() {
-    const balanceProps = {
+    const {user, histories} = this.props,
+    balanceProps = {
       style: styles.balance
     },
     balanceValueProps = {
       style: styles.balanceValue,
-      text: currency(45000),
+      text: currency(user.currentBalancePoints) || '45,000',
     },
     balanceTextProps = {
       style: styles.balanceText,
@@ -27,7 +34,7 @@ export default class RewardHistoryComponent extends Component {
           <EText {...balanceTextProps} />
           <EText {...balanceValueProps} />
         </View>
-        <EListHistoryRewards data={HISTORY_VOUCHER} />
+        <EListHistoryRewards data={histories} />
       </View>
     )
   }

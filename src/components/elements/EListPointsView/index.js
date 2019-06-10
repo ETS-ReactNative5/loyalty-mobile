@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
 import EText from '../EText';
 import _ from 'lodash';
 
@@ -9,7 +10,7 @@ export default class EListPointsView extends Component {
     const hasData = !_.isEmpty(data) && _.isArray(data)
     const size = data.length
     return (
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View style={[{flexDirection: 'row', justifyContent: 'space-between'}, this.props.style]}>
         {hasData &&
         _.map(data, (point, k) => {
           const pointProps = {
@@ -33,7 +34,7 @@ class PointView extends Component {
     const {name, value, hasLastItem} = this.props
     return (
       <View style={{
-        paddingHorizontal: 20, 
+        paddingHorizontal: ifIphoneX(20, 10), 
         alignItems: 'center', 
         marginVertical: 20,
         borderRightColor: hasLastItem ? null : '#BDBDBD',

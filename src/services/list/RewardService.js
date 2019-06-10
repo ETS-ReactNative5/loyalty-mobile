@@ -6,11 +6,15 @@ import _ from 'lodash';
 export default RewardServices = {
 
   getVouchers: () => {  
-    return RESTFull.get(API.doVoucher);
+    return RESTFull.get(API.doNewProgramVoucher);
   },
 
-  updateVoucherAvailables: (loyaltyProgramId, uAvailables) => {
-    return RESTFull.put(API.doVoucher, JSON.stringify(loyaltyProgramId, uAvailables) )
+  getMyRewards: () => {  
+    return RESTFull.get(API.doMyRewards);
+  },
+
+  updateVoucherAvailables: (loyaltyProgramId, availableVoucher) => {
+    return RESTFull.post(API.doVoucher, JSON.stringify({loyaltyProgramId, availableVoucher}) )
   },
 
   getHistoryVouchers: () => {

@@ -14,6 +14,7 @@ import EAvatar from '../../elements/EAvatar';
 import ETextInput from '../../elements/ETextInput';
 import EListThumbnail from '../../elements/list/EListThumbnail';
 import { appScreenName, homeTabName, searchScreenName } from '../../../commons/Constants';
+import { isEmpty } from '../../../commons/Utils';
 
 export default class SpecialOfferComponent extends Component {
   

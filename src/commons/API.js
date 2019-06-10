@@ -30,9 +30,11 @@ export default APIs = {
 
     doNewProgramVoucher: API + '/program',
 
-    doMyReward: API + '/my-reward',
+    doMyRewards: API + '/my-rewards',
 
-    doHistoryVoucher: API + '/history-voucher',
+    doHistoryVoucher: API + '/redeem-histories',
+
+    doVoucher: API + '/redeem',
 
     doGoogleMapAPI: API + '/googlemap',
 

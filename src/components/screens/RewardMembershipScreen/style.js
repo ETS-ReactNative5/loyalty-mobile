@@ -23,7 +23,7 @@ export default StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'space-around',
-      paddingVertical: 30,
+      paddingVertical: 0,
     },
     qrcode: {
       height: 172,
