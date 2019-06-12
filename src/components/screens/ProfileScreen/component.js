@@ -25,7 +25,6 @@ export default class ProfileComponent extends Component {
     address: this.props.user.address || "",
     avatarImage: this.props.user.avatarImage || "",
     dateOfBirth: this.props.user.dateOfBirth || "",
-    email: this.props.user.email || "",
     interestedFields: this.props.user.interestedFields || [],
     language: this.props.user.language || "en-English",
     name: this.props.user.name || "",
@@ -33,8 +32,15 @@ export default class ProfileComponent extends Component {
   }
 
   setInterests = (itemInterest) => {
+    itemInterest.isChoose = !itemInterest.isChoose
     let interests = this.state.interestedFields;
-    interests.push(itemInterest.value);
+    if(itemInterest.isChoose) {
+      interests.push(itemInterest.value);
+    } else {
+      interests = _.filter(interests, (item, k) => { 
+        return item !== itemInterest.value 
+      });
+    }
     this.setState({interestedFields: interests});
   }
 
@@ -84,8 +90,9 @@ export default class ProfileComponent extends Component {
   }
 
   get renderProfile() {
-    const {name, dateOfBirth, address, phone, email} = this.state
-    
+    const {name, dateOfBirth, address, phone} = this.state
+    const newEmail = this.props.navigation.getParam('newEmail', '');
+    const email = !isEmpty(newEmail) ? newEmail : _.get(this.props.user, 'email', '') 
     inforProps = {
       style: styles.inforView
     }
@@ -98,7 +105,7 @@ export default class ProfileComponent extends Component {
         </View>
         <EditText title={'Address'} value={address} onChangeText={(text) => this.onChangeValueText('address', text)} />
         <EditText title={'Phone'} value={phone} onChangeText={(text) => this.onChangeValueText('phone', text)} />
-        <EditText title={'Email'} value={email} onChangeText={(text) => this.onChangeValueText('email', text)} />
+        <EditText title={'Email'} value={email} />
       </View>
     )
   }
@@ -121,10 +128,7 @@ export default class ProfileComponent extends Component {
             let checkboxProps = {
               text: item.name,
               isChecked: item.isChoose,
-              onPress: () => {
-                item.isChoose = !item.isChoose
-                _this.setInterests(item)
-              }
+              onPress: () => {_this.setInterests(item)}
             },
             viewCheckBoxProps = {
               key: item.value,
@@ -206,8 +210,8 @@ class EditText extends Component {
       <View {...editViewProps} >
         <EText {...titleProps} />
         <View {...inputProps}>
-          <ETextInput {...textProps} />
-          <EImage {...iconProps} />
+          {title === 'Email' ? <EText text={value} style={{color: '#828282'}}/> : <ETextInput {...textProps} />}
+          {onChangeText && <EImage {...iconProps} />}
         </View>
       </View>
     )

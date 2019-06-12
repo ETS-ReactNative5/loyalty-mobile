@@ -52,7 +52,7 @@ const handling = async (_method, url, requestData) => {
 				return { message: "Invalid access token"}
 			}
 			if(error < 0) {
-				return {message: _.get(responseJson, 'message', 'No message')}
+				return responseJson; //{error: -1, message: _.get(responseJson.data, 'message', 'No message')}
 			}
 			if(_.includes(url, 'login')) {
 				AsyncStorage.setItem(TOKEN_KEY, responseJson.data.token)

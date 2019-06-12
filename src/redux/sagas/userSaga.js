@@ -16,12 +16,13 @@ import { appScreenName } from '../../commons/Constants';
 function* doLogin(action) {
   try {
     const result = yield call(services.login.doLogin, action.username, action.pass)
-    if(isEmpty(result) || !_.has(result, 'token') || isEmpty(result.token)) {
+    if(result.error < 0) {
       showMessage('Login', 'Login failed: wrong password');
       yield put({
         type: ACTION_TYPE.DO_LOGIN_FAILURE,
         e: 'Login error'
       })
+      return;
     }
     getStore().dispatch(actions.getProfile())
     yield put({
@@ -33,7 +34,7 @@ function* doLogin(action) {
       if(result.error === 0) {
         getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.home}))
       } else if (result.error === 1) {
-        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile}))
+        getStore().dispatch(NavigationActions.navigate({routeName: appScreenName.profile, params: {newEmail: action.username}}))
       }
     }, 200)
   } catch (e) {
