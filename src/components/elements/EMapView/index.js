@@ -51,7 +51,7 @@ export default class EMapView extends Component {
   *
   * {
 		"storeId": 3,
-		"name": "",
+		"name": "SC",
 		"phone": "+84 28 3526 1003",
 		"utilities": [
 			"https://www.circlek.com.vn/wp-content/uploads/2016/01/seat.png",
