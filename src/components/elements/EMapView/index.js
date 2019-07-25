@@ -3,7 +3,7 @@ import {View, ViewPropTypes} from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import logoMarker from '../../../../res/circle-k-logo.png';
+import logoMarker from '../../../../res/loyalty-logo.png';
 import styles from './style';
 
 export default class EMapView extends Component {
@@ -51,7 +51,7 @@ export default class EMapView extends Component {
   *
   * {
 		"storeId": 3,
-		"name": "Circle K",
+		"name": "",
 		"phone": "+84 28 3526 1003",
 		"utilities": [
 			"https://www.circlek.com.vn/wp-content/uploads/2016/01/seat.png",

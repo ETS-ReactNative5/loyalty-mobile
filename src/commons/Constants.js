@@ -192,35 +192,35 @@ export const HISTORY_VOUCHER = [
     price: 12000,
     points: 50,
     description:
-      "Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now."
+      "Congratulations, you earned 1 $232K Loyalty Voucher. Tap this voucher to redeem now."
   },
   {
     name: "Voucher 2",
     price: 700,
     points: 7,
     description:
-      "Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now."
+      "Congratulations, you earned 1 $232K Loyalty Voucher. Tap this voucher to redeem now."
   },
   {
     name: "Voucher 3",
     price: 5000,
     points: 150,
     description:
-      "Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now."
+      "Congratulations, you earned 1 $232K Loyalty Voucher. Tap this voucher to redeem now."
   },
   {
     name: "Voucher 4",
     price: 1300,
     points: 50,
     description:
-      "Congratulations, you earned 1 $232K Circle K Voucher. Tap this voucher to redeem now."
+      "Congratulations, you earned 1 $232K Loyalty Voucher. Tap this voucher to redeem now."
   }
 ];
 
 export const STORE_DATA = [
   {
     storeId: 1,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.7992202,
@@ -229,7 +229,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 2,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.7955759,
@@ -238,7 +238,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 3,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.77496,
@@ -247,7 +247,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 4,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.7729456,
@@ -256,7 +256,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 5,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.768191,
@@ -265,7 +265,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 6,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.7725285,
@@ -274,7 +274,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 7,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.774498,
@@ -283,7 +283,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 8,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
 		latitude: 10.792414,
@@ -292,7 +292,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 9,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.76815,
@@ -301,7 +301,7 @@ export const STORE_DATA = [
   },
   {
     storeId: 10,
-    name: "Circle K",
+    name: "Loyalty",
     phone: "+84 28 3526 1003",
     utilities: [1, 2, 3, 4, 5, 6],
     latitude: 10.786109500465226,

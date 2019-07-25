@@ -50,8 +50,6 @@ PODS:
   - QBImagePickerController (3.4.0)
   - React (0.59.1):
     - React/Core (= 0.59.1)
-  - react-native-async-storage (1.2.1):
-    - React
   - react-native-fast-image (5.2.0):
     - FLAnimatedImage
     - React
@@ -64,7 +62,7 @@ PODS:
     - React
   - react-native-maps (0.24.2):
     - React
-  - react-native-netinfo (1.4.0):
+  - react-native-netinfo (1.4.1):
     - React
   - react-native-webview (5.10.0):
     - React
@@ -96,9 +94,13 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNDeviceInfo (1.1.0):
+  - RNCAsyncStorage (1.5.1):
     - React
-  - RNImageCropPicker (0.23.0):
+  - RNDeviceInfo (1.8.0):
+    - React
+  - RNGestureHandler (1.3.0):
+    - React
+  - RNImageCropPicker (0.23.1):
     - QBImagePickerController
     - React/Core
     - RSKImageCropper
@@ -116,7 +118,6 @@ DEPENDENCIES:
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - Google-Maps-iOS-Utils
   - GoogleMaps
-  - "react-native-async-storage (from `../node_modules/@react-native-community/async-storage`)"
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
@@ -133,7 +134,9 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
@@ -152,8 +155,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-linear-gradient"
   React:
     :path: "../node_modules/react-native"
-  react-native-async-storage:
-    :path: "../node_modules/@react-native-community/async-storage"
   react-native-fast-image:
     :path: "../node_modules/react-native-fast-image"
   react-native-google-maps:
@@ -164,8 +165,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNImageCropPicker:
     :path: "../node_modules/react-native-image-crop-picker"
   yoga:
@@ -179,18 +184,19 @@ SPEC CHECKSUMS:
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   React: 34a405ead72252839fdc4afc1f972a7ed984af84
-  react-native-async-storage: 2b63e701c150adc669c5996d34474be60715852c
   react-native-fast-image: 21d2d84a46b12cacbe7958ab6414fe828c094f82
   react-native-google-maps: 568cb03d0eae7fef93626f65d05be55642404ed4
   react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
-  react-native-netinfo: 2d5ce6f7318341da3cff8567af853f111fa8e0e0
-  react-native-webview: 96e0d6f019f7a215691f5a9a01843b0d1349caa3
-  RNDeviceInfo: bcb9494e3c9efd7536c3b25d4c16cf879c84042d
-  RNImageCropPicker: e56deca5b463b9493d22e966cfd83cb1fc5c99bb
+  react-native-netinfo: cb3988d9a2115ec4cf7a8cecbc1cfee0d188c7c9
+  react-native-webview: 3c79685b61a68d1fe99136f98f2f34b04dce2e02
+  RNCAsyncStorage: b63d6e83fc629b01df6b624688f17944cea5637f
+  RNDeviceInfo: 9e6a0aece8e7455515103ce23372b393843a7ee7
+  RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
+  RNImageCropPicker: a4c8db5757926bda8b04ba6796cc2a21cc6fd783
   RSKImageCropper: 98296ad26b41753f796b6898d015509598f13d97
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   yoga: 8fb47f180b19b0dadb285a09e4c74c8a41721d3a
 
-PODFILE CHECKSUM: 932acb2e8673beffe90cd6b71ff12881d9db46b8
+PODFILE CHECKSUM: bd3595d9bc9ed2b9e5c1ba47292d366aea696c1b
 
 COCOAPODS: 1.6.1

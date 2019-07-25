@@ -77,7 +77,7 @@ export default class RewardComponent extends Component {
     },
     nameProps = {
       style: styles.name,
-      text: 'Circle K Rewards'
+      text: 'Rewards'
     },
     thankyouProps = {
       style: styles.thankyou,

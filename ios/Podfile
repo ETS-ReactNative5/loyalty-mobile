@@ -27,7 +27,6 @@ target 'Loyalty' do
 
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
 
-  pod 'react-native-async-storage', :path => '../node_modules/@react-native-community/async-storage'
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
 
 
@@ -38,6 +37,10 @@ target 'Loyalty' do
   pod 'react-native-google-maps', path: rn_maps_path
   pod 'GoogleMaps'  # Uncomment this line if you want to support GoogleMaps on iOS
   pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
 end
 
